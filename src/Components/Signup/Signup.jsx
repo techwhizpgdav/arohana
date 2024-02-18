@@ -17,6 +17,7 @@ const Signup = () => {
         password_confirmation: '',
         screenshot: '',
         college: '',
+        college_id: '',
     };
 
     const validationSchema = Yup.object({
@@ -31,13 +32,15 @@ const Signup = () => {
         password_confirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Required'),
         screenshot: Yup.mixed().required('A screenshot is required'),
         college: Yup.string().required('Required'), 
+        phone: Yup.string().required('Required').matches(/^[6-9]\d{9}$/, 'Invalid phone number'), 
+        college_id: Yup.string().required('Photo ID is required'),
     });
 
     const onSubmit = async (values) => {
         setIsLoading(true);
         const formData = new FormData();
         for (const key in values) {
-            if (key === 'screenshot' && values[key]) {
+            if ((key == 'screenshot' || key == 'college_id') && values[key]) {
                 formData.append(key, values[key], values[key].name);
             } else {
                 formData.append(key, values[key]);
@@ -92,7 +95,9 @@ const Signup = () => {
             password,
             password_confirmation,
             screenshot: selectedFile, // Add the selected file to the form data
-            college
+            college, 
+            phone: e.target.elements.phone.value,
+            college_id: e.target.elements.college_id.value,
         };
         onSubmit(values);
     };
@@ -134,19 +139,25 @@ const Signup = () => {
                                 <span className="focus-input100" data="&#xf133;"></span>
                                 </div>
                                 <ErrorMessage name="college" component="div" className="error-message" />
-                                {/* ** Indian Phone number */}
                                 <div className="wrap-input100 validate-input" data-validate="Enter college">
                                 <Field type="text" name="phone" className="input100 placeholder:text-white" placeholder="Phone" />
                                 <span className="focus-input100" data="&#xf155;"></span>
                                 </div>
                                 <ErrorMessage name="phone" component="div" className="error-message" />
-                                {/* ** Indian Phone number */}
-                              <div className="validate-input">
+
+                            <div className="validate-input mb-4">
+                            <Field name="college_id" type="file" className="input100 placeholder:text-white file-input" accept="image/*" id="college_id" />
+                            <label htmlFor="college_id" className="file-label">
+                                {values.college_id ? values.college_id.split('\\').pop() : 'Upload College ID'}
+                            </label>
+                            </div>
+                            <ErrorMessage name="college_id" component="div" className="error-message" />
+                            <div className="validate-input">
                             <Field name="screenshot" type="file" className="input100 placeholder:text-white file-input" accept="image/*" id="screenshot" />
                             <label htmlFor="screenshot" className="file-label">
                                 {values.screenshot ? values.screenshot.split('\\').pop() : 'Upload Screenshot'}
                             </label>
-                        </div>
+                            </div>
                             <ErrorMessage name="screenshot" component="div" className="error-message" />
                               <div className="text-center">
                                 <Link to="/registration" className="txt1" > How to do this task?</Link>

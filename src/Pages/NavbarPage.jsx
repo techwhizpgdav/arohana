@@ -42,13 +42,15 @@ const NavbarPage = () => {
       if(token){
       authUser();
       const congratulationsShown = localStorage.getItem('congratulations-shown');
-      if(congratulationsShown == 0 && user?.email_verified_at == null && !user?.is_verified == true  ){
+      if(congratulationsShown == 0 && user?.email_verified_at != null && user?.is_verified == true  ){
             localStorage.setItem('congratulations-shown', 1);
-            setAlertMessage('Congratulations! Your account has been verified by the admin. You can now participate in the events.');
+            setAlertMessage('Congratulations! Your account has been verified by the admin.');
        }
       }
      }, [navigate]);     
      
+     
+
   return (
      <>
      <Modal isOpen={!!alertMessage} onRequestClose={() => setAlertMessage(null)}
