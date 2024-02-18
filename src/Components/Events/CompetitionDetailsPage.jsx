@@ -56,42 +56,35 @@ const CompetitionDetailsPage = () => {
         setAlreadyParticipated(response?.data?.data?.participated);
         setEvent(response?.data?.data?.competition  );
         if (response?.data?.data?.competition?.sponsor_task == 1) {
-          console.log(response?.data?.data?.competition?.sponsor_task);
           setSponsorStep(1);
         }
       }
     });
 
-    const checkParticipation = async () => {
-      const token = localStorage.getItem('token');
-      if(token){
-        authUser().then((data) => {
-          setUser(data?.data);
-        });
-      }
-    }
-    checkParticipation();
-  }, []);
-  console.log(event);
+  }, [navigate]);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if(!token){
       setStep(1);
     }
     else{
+      const checkParticipation = async () => {
+            authUser().then((data) => {
+              setUser(data);
+              if(data?.email_verified_at == null){
+                console.log("user is " + data?.name);
+                setStep(2);
+              } else if(data?.email_verified_at!= null){
+                setStep(4);
+              }
+            });
+          }
+      checkParticipation();
       // ! Imortant, change the step after production
-      if(user?.email_verified_at == null){
-        setStep(4);
-      } else if(user?.email_verified_at !== null && user?.is_verified == null){
-        setStep(3);
-      }
-      else if(user?.email_verified_at !== null && user?.is_verified == true){
-        setStep(4);
-      }
     }
-  }, [user]);
+  }, [navigate]);
   const {date, description, start_at, ends_at, rounds, paid_event, minimum_size, maximum_size , society , tag_line, title, team_fee , upi_id, venue , image_url , sponsor_task} = event;
-  console.log(rounds);
   function closeModal() {
     setIsOpen(false)
   }
@@ -380,12 +373,6 @@ const CompetitionDetailsPage = () => {
               step === 2 && <button>
               <Link to = {'/verify'} className=' bg-black p-2 rounded-lg text-white hover:bg-haldi transition-all duration-500 '>Verify Email</Link>
               </button>
-            }
-            {
-              step === 3 && <p className=" max-w-60">
-                Please wait for the admin to verify your account.
-              </p>
-
             }
             {
               step == 4 && <>

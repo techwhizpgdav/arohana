@@ -18,16 +18,15 @@ const UserEventDetails = ({user}) => {
 
 
  useEffect(() => {
-  if(user?.email_verified_at === null){
+  if(user?.email_verified_at == null){
     setStep(2);
-  } else if(user?.email_verified_at !== null && user?.is_verified == null){
-    setStep(3);
-  }
-  else if(user?.email_verified_at !== null && user?.is_verified == true){
+  } 
+  else if(user?.email_verified_at != null ){
     setIsLoading(true);
     setStep(4);
       fetchApi('get', `api/participations`).then((data) => {
         setParticipatedEvents(data?.data?.data[0]?.competitions);
+        console.log(data);
       setIsLoading(false);
     });
   }
@@ -63,7 +62,7 @@ if(step ==3){
 }
 
 
-if(participatedEvents?.length === 0){
+if(participatedEvents?.length == 0){
   return (
     <div className='flex flex-col items-center justify-center pt-20'>
     <p>

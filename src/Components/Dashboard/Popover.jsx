@@ -2,6 +2,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 export default function PopOver({ details }) {
+  console.log({details})
   return (
     <div className="w-full max-w-sm px-4 sm:px-0">
       <Popover className="">
@@ -45,7 +46,7 @@ export default function PopOver({ details }) {
                       <div className='flex gap-10'>
                       <p>Entry:
                       {
-                        details?.paid_event ? ' Paid' : 'Free'
+                        details.paid_event ? ' Paid' : 'Free'
                       }
                     </p>
                     <p>
