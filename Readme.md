@@ -53,15 +53,15 @@ Make sure you have the following installed on your system:
 ## Contributors
 
 - Backend Devs:
-- Lead: Rishi
-     Suraj Yadav
+- Lead: Rishi 
+     - Suraj Yadav
 
 - Frontend Devs:
 - Lead: Nishant Kumar Singh
-     Anubhav Shukla
-     Pratyush Jha
-     Susheel Sahu
-     Harsh Kumar 
+     - Anubhav Shukla
+     - Pratyush Jha
+     - Susheel Sahu
+     - Harsh Kumar 
 
 Feel free to reach out to the respective leads if you have any questions or need assistance with the project.
 
