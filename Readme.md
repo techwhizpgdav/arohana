@@ -53,11 +53,11 @@ Make sure you have the following installed on your system:
 ## Contributors
 
 - Backend Devs:
-- Lead: Rishi 
+      - Lead: Rishi 
      - Suraj Yadav
 
 - Frontend Devs:
-- Lead: Nishant Kumar Singh
+     - Lead: Nishant Kumar Singh
      - Anubhav Shukla
      - Pratyush Jha
      - Susheel Sahu
