@@ -53,7 +53,7 @@ Make sure you have the following installed on your system:
 ## Contributors
 
 - Backend Devs:
-      - Lead: Rishi 
+     - Lead: Rishi 
      - Suraj Yadav
 
 - Frontend Devs:
