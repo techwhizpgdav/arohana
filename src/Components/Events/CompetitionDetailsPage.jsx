@@ -5,6 +5,7 @@ import { BsCalendar2Date } from "react-icons/bs";
 import { PiMapPinLine } from "react-icons/pi";
 import { HiOutlineClock } from "react-icons/hi2";
 import { IoTicketOutline } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Tab } from "@headlessui/react";
@@ -198,8 +199,8 @@ const CompetitionDetailsPage = () => {
         </div>
 
         {/* Basic Details */}
-        <div className="flex flex-col justify-center md:w-1/2 mt-8 md:mt-0">
-          <div className="flex flex-row justify-around md:justify-start mt-4">
+        <div className="flex flex-col md:w-1/2 mt-8 md:mt-0">
+          <div className="flex flex-row gap-10 md:justify-start mt-4">
             <div className="flex flex-col items-center">
               <BsCalendar2Date size={40} color="#475569" />
               <p className="my-2 font-semibold text-slate-600 text-sm md:text-base">
@@ -448,17 +449,24 @@ const CompetitionDetailsPage = () => {
 
               {
                 sponsorStep == 1 ? (
-                  <>
-                    <div>
+                  <div className=" flex flex-col justify-center items-center gap-10 mt-5">
+                    <div className="">
                        Complete the sponsor task to participate in the event.
                     </div>
-                    <button onClick={()=>setSponsorStep(0)}  className="bg-rose-500 text-white rounded-md p-2 w-full ">  
+                    <button onClick={()=>setSponsorStep(0)}  className="bg-rose-500 text-white rounded-md p-2 w-20 ">  
                       Next
                     </button>
-                  </>
+                  </div>
                 )
                 :  (
                   <>
+                  {
+                    sponsor_task == 1 && (
+                        <button onClick={()=>setSponsorStep(1)}  className="bg-rose-500 absolute top-5 text-white rounded-md p-2 ">
+                            <IoMdArrowRoundBack size={20} />
+                        </button>
+                    )
+                  }
                   {
                 paid_event ? <PaidPart event={event} closeModal={closeModal} onParticipation={handleChildParticipation}  /> : <UnpaidPart event={event} closeModal={closeModal} onParticipation= {handleChildParticipation} />
               }

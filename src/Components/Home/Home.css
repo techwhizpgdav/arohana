@@ -61,30 +61,30 @@
     transform: translate(-50%, -50%);
     text-align: center;
     color: rgb(255, 255, 255);
-    font-family: 'Times New Roman', Times, serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 100px;
+    font-size: 140px;
     text-shadow: 2px 2px 4px #000000;
     z-index: 10;
     animation: Trim 2s;
+    font-family: 'Samarkan';
    }
   .row{
     position: absolute;
     right: 20px;
     bottom: 15%;
     color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: 3px 3px 4px #000000;
     font-family: "Marck Script", cursive;
     font-weight: 300;
     font-style: normal;
-    font-size: 50px;
+    font-size: 70px;
     z-index: 10;
   }
 
   @media screen and (max-width: 768px) {
     .header_Arohana{
-      font-size: 50px;
+      font-size: 80px;
     }
     .row{
       font-size: 30px;

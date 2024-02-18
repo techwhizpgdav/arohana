@@ -14,6 +14,10 @@
      src: url('../src/assets/Fonts/Olive/TTF/OliveVillage-Regular.ttf');
 }
 
+@font-face {
+     font-family:Samarkan ;
+     src: url('../src/assets/Fonts/Samarkan/SAMARO__.TTF');
+}
 *{
      font-family: 'Poppins', sans-serif;
 

@@ -12,9 +12,11 @@ const EventByCategories = () => {
   const [events, setEvents] = useState([]);
   const { id , name} = useParams();
   const { fetchApi } = Api();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const result = fetchApi('GET', `api/category-competitions/${id}` , 'events');
     result.then(response => {
+      setLoading(false);
       if (response?.status === 200) {
         setEvents(response?.data?.data );
       }
@@ -22,10 +24,16 @@ const EventByCategories = () => {
   }
   , []);
 
- if(events.length === 0){
+  if(loading){
+   return <div className=' w-screen h-screen flex justify-center items-center'>
+      <Spinner2 />
+  </div>
+  }
+
+ if(events.length == 0){
   return (
-      <div className=' w-screen h-screen flex justify-center items-center'>
-            <Spinner2 />
+      <div className=' w-screen h-screen flex justify-center items-center font-semibold text-red'>
+            No Events Found
       </div>
   );
   }

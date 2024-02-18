@@ -32,7 +32,7 @@ const Footer = () => {
                                 <span className={`flip self-center text-5xl font-bold whitespace-nowrap text-${textColor}`}>Arohana</span>
                             </Link>
                         </div>
-                        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6">
                         <div>
                                 <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>Resources</h2>
                                 <ul className={`text-${textColor} dark:text-${textColor} font-medium`}>
