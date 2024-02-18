@@ -88,14 +88,14 @@ if(participatedEvents?.length  == 0){
       <div className='flex flex-wrap items-center gap-44 justify-center pt-20 pb-40'>
         {
           participatedEvents?.map((event, index) => (
-            <div key={index} className='flex items-center justify-center gap-10'>
+            <div key={index} className='flex items-center justify-center gap-10 border-2 border-rose-800 rounded-2xl  p-6'>
               {
                 (
                   <>
-                    <div className='flex gap-4 '>
+                    <div className='flex justify-between w-80 items-center '>
                         <div>
-                          <h2 className='text-xl font-semibold text-gray-700'>
-                            {event?.title}
+                          <h2 className='text-xl font-semibold text-gray-700 max-w-40 overflow-hidden'>
+                            {event?.title.split(' ').slice(0,1).join(' ')}
                           </h2>
                           <h3>
                             {
