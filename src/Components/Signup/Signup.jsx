@@ -15,9 +15,9 @@ const Signup = () => {
         email: '',
         password: '',
         password_confirmation: '',
-        screenshot: '',
+        screenshot: null,
         college: '',
-        college_id: '',
+        college_id: null,
     };
 
     const validationSchema = Yup.object({
@@ -80,28 +80,27 @@ const Signup = () => {
         };
         checkAndNavigate();
     }, [navigate]);
-
-    const handleAutofill = (e) => {
-        e.preventDefault();
-        const name = e.target.elements.name.value;
-        const email = e.target.elements.email.value;
-        const password = e.target.elements.password.value;
-        const password_confirmation = e.target.elements.password_confirmation.value;
-        const selectedFile = e.target.elements.screenshot.files[0]; // Get the uploaded file
-        const college = e.target.elements.college.value;
-        const values = {
-            name,
-            email,
-            password,
-            password_confirmation,
-            screenshot: selectedFile, // Add the selected file to the form data
-            college, 
-            phone: e.target.elements.phone.value,
-            college_id: e.target.elements.college_id.value,
-        };
-        onSubmit(values);
+const handleAutofill = (e) => {
+    e.preventDefault();
+    const name = e.target.elements.name.value;
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+    const password_confirmation = e.target.elements.password_confirmation.value;
+    const screenshotFile = e.target.elements.screenshot.files[0]; // Get the uploaded file
+    const college = e.target.elements.college.value;
+    const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
+    const values = {
+        name,
+        email,
+        password,
+        password_confirmation,
+        screenshot: screenshotFile, // Add the selected file to the form data
+        college, 
+        phone: e.target.elements.phone.value,
+        college_id: college_idFile, // Add the selected file to the form data
     };
-
+    onSubmit(values);
+};
     return (
         <div className={`${isLoading ? 'opacity-40' : 'opacity-100'} `}>
             <div className="container-login100 min-h-screen mt-2 ">
