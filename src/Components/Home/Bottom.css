@@ -1,0 +1,142 @@
+.bottomPage {
+     --color: #1F242D;
+     --color-invert: #ffffff;
+     --clip-path: circle(15px at left);
+     --clip-path-hover: circle(70px at left);
+     --clip-path-clicked: circle(100vw at left);
+     --duration: .4s;
+     --timing-function: ease;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100%;
+   }
+   .bottomPage .video {
+     height: 100vh;
+     overflow: hidden;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-left: 15px;
+     -webkit-clip-path: var(--clip-path);
+             clip-path: var(--clip-path);
+     transition: -webkit-clip-path var(--duration) var(--timing-function);
+     transition: clip-path var(--duration) var(--timing-function);
+     transition: clip-path var(--duration) var(--timing-function), -webkit-clip-path var(--duration) var(--timing-function);
+     z-index: -10;
+   }
+   .bottomPage .video .source {
+     position: fixed;
+     background: #c4cbde;
+     top: 50%;
+     left: 50%;
+     min-width: 100%;
+     min-height: 100%;
+     width: auto;
+     height: auto;
+     transform: translate(-50%, -50%);
+   }
+   .bottomPage .text {
+     position: relative;
+     text-transform: uppercase;
+     font-weight: 600;
+     letter-spacing: 0.2px;
+     opacity: var(--opacity, 1);
+     transition: opacity 0.3s var(--timing-function) 0.2s;
+   }
+   .bottomPage .text::before, .bottomPage .text::after {
+     content: "";
+     position: absolute;
+     bottom: 0;
+     left: -1px;
+     right: 25px;
+     height: 0;
+   }
+   .bottomPage .text::before {
+     box-shadow: 26px 0 0 1px var(--color);
+     right: var(--r, 100%);
+     opacity: var(--opacity, 0);
+     transition: right 0.5s ease-in, opacity 0.1s linear;
+   }
+   .bottomPage .text::after {
+     box-shadow: 26px 0 0 1px var(--color-invert);
+     -webkit-clip-path: var(--clip-path);
+             clip-path: var(--clip-path);
+     transition: -webkit-clip-path var(--duration) var(--timing-function);
+     transition: clip-path var(--duration) var(--timing-function);
+     transition: clip-path var(--duration) var(--timing-function), -webkit-clip-path var(--duration) var(--timing-function);
+   }
+   .bottomPage .text > span::before, .bottomPage .text > span::after {
+     content: attr(data-text);
+     padding-left: 26px;
+   }
+   .bottomPage .text > span::before {
+     color: var(--color);
+   }
+   .bottomPage .text > span::after {
+     color: var(--color-invert);
+     -webkit-clip-path: var(--clip-path);
+             clip-path: var(--clip-path);
+     transition: -webkit-clip-path var(--duration) var(--timing-function);
+     transition: clip-path var(--duration) var(--timing-function);
+     transition: clip-path var(--duration) var(--timing-function), -webkit-clip-path var(--duration) var(--timing-function);
+     position: absolute;
+     left: 0;
+   }
+   .bottomPage input {
+     width: 220px;
+     height: 40px;
+     margin: auto;
+     position: absolute;
+     left: 0;
+     right: 0;
+     border-radius: 40px;
+     outline: none;
+     z-index: 2;
+     -webkit-appearance: none;
+        -moz-appearance: none;
+             appearance: none;
+     cursor: pointer;
+   }
+   .bottomPage input:focus {
+     outline: 0;
+   }
+   .bottomPage input:hover ~ .video {
+     -webkit-clip-path: var(--clip-path-hover);
+             clip-path: var(--clip-path-hover);
+   }
+   .bottomPage input:hover ~ .text::before {
+     --r: 25px;
+     --opacity: 1;
+   }
+   .bottomPage input:hover ~ .text::after {
+     -webkit-clip-path: var(--clip-path-hover);
+             clip-path: var(--clip-path-hover);
+   }
+   .bottomPage input:hover ~ .text > span::after {
+     -webkit-clip-path: var(--clip-path-hover);
+             clip-path: var(--clip-path-hover);
+   }
+   .bottomPage input:checked {
+     width: 100%;
+     height: 100%;
+     border-radius: 0;
+   }
+   .bottomPage input:checked ~ .video {
+     -webkit-clip-path: var(--clip-path-clicked);
+             clip-path: var(--clip-path-clicked);
+   }
+   .bottomPage input:checked ~ .text {
+     --opacity: 0;
+     transition: opacity 0.3s var(--timing-function);
+   }
+   .bottomPage input:checked ~ .text::after {
+     -webkit-clip-path: var(--clip-path-clicked);
+             clip-path: var(--clip-path-clicked);
+   }
+   .bottomPage input:checked ~ .text > span::after {
+     -webkit-clip-path: var(--clip-path-clicked);
+             clip-path: var(--clip-path-clicked);
+   }
+   

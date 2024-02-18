@@ -1,0 +1,16 @@
+.footer-transition {
+     transition: background-color 0.3s ease;
+ }
+ 
+ .footer-transition:hover {
+     transform: translateY(-3px);
+ }
+ 
+ .logo-animation {
+     transition: transform 0.3s ease;
+ }
+ 
+ .logo-animation:hover {
+     transform: scale(1.1);
+ }
+ 

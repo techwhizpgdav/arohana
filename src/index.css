@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+     font-family: 'Berkshire Swash' ;
+     src: url(../src/assets/Fonts/Berkshire/BerkshireSwash-Regular.ttf);
+}
+@font-face {
+     font-family: 'Audrey' ;
+     src: url('../src/assets/Fonts/Audrey/Audrey-Medium.otf');
+}
+@font-face {
+     font-family: Olive-font;
+     src: url('../src/assets/Fonts/Olive/TTF/OliveVillage-Regular.ttf');
+}
+
+*{
+     font-family: 'Poppins', sans-serif;
+
+}
+.logo {
+     /* font-family: 'Berkshire Swash' , cursive; */
+     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     opacity: 0.9;
+}
+
+.signup-button {
+     position: absolute;
+     top: 80%;
+}
+
+::-webkit-scrollbar {
+     width: 0px;
+}
+h1, h2, h3, h4, h5, h6 , p, a , text{
+     font-family: 'Poppins', sans-serif;
+}
+
+.spinner {
+height: 15px;
+aspect-ratio: 4;
+--_g: no-repeat radial-gradient(farthest-side,#0080ff ,#0080ff);
+background: 
+     var(--_g) left, 
+     var(--_g) right;
+background-size: 25% 100%;
+display: flex;
+zoom: 0.7;
+}
+.spinner:before{
+content: "";
+flex: 1;
+background: inherit;
+animation: l50 2s infinite;
+}
+@keyframes l50 {
+0%    {transform: translate( 37.5%) rotate(0)     }
+16.67%{transform: translate( 37.5%) rotate(90deg) }
+33.33%{transform: translate(-37.5%) rotate(90deg) }
+50%   {transform: translate(-37.5%) rotate(180deg)}
+66.67%{transform: translate(-37.5%) rotate(270deg)}
+83.33%{transform: translate( 37.5%) rotate(270deg)}
+100%  {transform: translate( 37.5%) rotate(360deg)}
+}
+
+
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.spinner2 {
+     
+     width: 40px;
+     aspect-ratio: 2;
+     --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+     background: 
+       var(--_g) 0%   50%,
+       var(--_g) 50%  50%,
+       var(--_g) 100% 50%;
+     background-size: calc(100%/3) 50%;
+     animation: l3 1s infinite linear;
+   }
+   @keyframes l3 {
+       20%{background-position:0%   0%, 50%  50%,100%  50%}
+       40%{background-position:0% 100%, 50%   0%,100%  50%}
+       60%{background-position:0%  50%, 50% 100%,100%   0%}
+       80%{background-position:0%  50%, 50%  50%,100% 100%}
+   }
