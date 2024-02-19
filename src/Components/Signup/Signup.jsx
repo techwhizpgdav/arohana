@@ -18,6 +18,7 @@ const Signup = () => {
         screenshot: null,
         college: '',
         college_id: null,
+        instagram_id: '',
     };
 
     const validationSchema = Yup.object({
@@ -98,6 +99,7 @@ const handleAutofill = (e) => {
         college, 
         phone: e.target.elements.phone.value,
         college_id: college_idFile, // Add the selected file to the form data
+        insta_id: e.target.elements.insta_id.value,
     };
     onSubmit(values);
 };
@@ -144,6 +146,13 @@ const handleAutofill = (e) => {
                                 </div>
                                 <ErrorMessage name="phone" component="div" className="error-message" />
 
+                                <div className="wrap-input100 validate-input" data-validate="Enter college">
+                                <Field type="text" name="instagram_id" className="input100 placeholder:text-white" placeholder="Instagram ID" />
+                                <span className="focus-input100" data="&#xf16d;"></span>
+                                </div>
+                                <div className=' max-w-60 text-white mb-4'>
+                                    If you have 1k+ followers on Instagram, please provide your Instagram ID.
+                                </div>
                             <div className="validate-input mb-4">
                             <Field name="college_id" type="file" className="input100 placeholder:text-white file-input" accept="image/*" id="college_id" />
                             <label htmlFor="college_id" className="file-label">
