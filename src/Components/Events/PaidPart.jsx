@@ -68,6 +68,7 @@ const validationSchemaTeam = Yup.object({
                     }
                 });
                if (response.status === 200 || response.status === 204) {
+                    console.log(response);
                     setIsParticipated(true);
                    
                } else {
@@ -95,6 +96,8 @@ const validationSchemaTeam = Yup.object({
                 
                if (response.status == 200 || response.status ===204) {
                     setIsParticipated(true);
+                    console.log(response);
+
                } else {
                     alert("Participation failed! Please try again.");
                }
