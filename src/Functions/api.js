@@ -23,7 +23,8 @@ const Api = () => {
         }
       });
       const data = response.data.data.user;
-      if (response.status === 401) {
+      if (response.status == 401 || response.status == 404) {
+        localStorage.removeItem('token');
         navigate('/login');
       }
       return data;
