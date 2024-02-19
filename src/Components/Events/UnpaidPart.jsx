@@ -11,6 +11,8 @@ const UnpaidPart = ({event , closeModal ,onParticipation }) => {
   const navigate = useNavigate();
 const [buttonSelected, setButtonSelected] = useState("Solo");
 const [isParticipated, setIsParticipated] = useState(false);
+const [teamCode , setTeamCode] = useState('');
+const [team, setTeam] = useState(false);
 
 useEffect(() => {
      onParticipation(isParticipated);
@@ -62,6 +64,10 @@ const onSubmit = async (values) => {
     if (response.status === 200 || response.status === 204) {
       setIsParticipated(true)
       console.log(response);
+      if(response?.data?.team){
+        setTeam(true);
+        setTeamCode(response?.data?.data?.team_code);
+   }
 
     } else {
       alert("Participation failed! Please try again.");
@@ -89,7 +95,10 @@ const onSubmitTeam = async (values) => {
   if (response.status === 200 || response.status === 204) {
     setIsParticipated(true)
     console.log(response);
-
+    if(response?.data?.team){
+      setTeam(true);
+      setTeamCode(response?.data?.data?.team_code);
+ }
   } else {
     alert("Participation failed! Please try again.");
   }
@@ -103,6 +112,9 @@ return (
   <>
  {isParticipated? <div className=" flex flex-col gap-10 justify-center items-center pt-10 pb-10 ">
    🎉 Your participation has been recorded. 🎉
+   <p>
+   {team && `Your team code is ${teamCode}. Share this code with your team members to join the team.`}   
+   </p>
    </div>
 :
 <div>
@@ -154,10 +166,15 @@ return (
                   <Field 
                     type = 'text'
                     id = 'remarks'
-                    placeholder = {event.remarks_label}
+                    placeholder = 'Remarks'
                     name = 'remarks'
                     className="w-72 h-12 bg-slate-700 border-2 border-gray-800 rounded-md p-4 placeholder:text-white text-white"
                   />
+                  <div>
+                    {
+                      event.remarks_label
+                    }
+                  </div>
                   <ErrorMessage name="remarks" />
                   {
                     sponsor_task == 1 && (

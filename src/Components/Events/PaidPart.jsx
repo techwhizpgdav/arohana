@@ -14,6 +14,8 @@ const PaidPart = ({event , closeModal ,onParticipation }) => {
      const [buttonSelected, setButtonSelected] = useState("Solo");
      const [isModalOpen, setIsModalOpen] = useState(false);
      const [isParticipated, setIsParticipated] = useState(false);
+     const [teamCode , setTeamCode] = useState('');
+     const [team, setTeam] = useState(false);
 
      useEffect(() => {
           onParticipation(isParticipated);
@@ -70,6 +72,10 @@ const validationSchemaTeam = Yup.object({
                if (response.status === 200 || response.status === 204) {
                     console.log(response);
                     setIsParticipated(true);
+                    if(response?.data?.team){
+                         setTeam(true);
+                         setTeamCode(response?.data?.data?.team_code);
+                    }
                    
                } else {
                     alert("Participation failed! Please try again.");
@@ -97,7 +103,10 @@ const validationSchemaTeam = Yup.object({
                if (response.status == 200 || response.status ===204) {
                     setIsParticipated(true);
                     console.log(response);
-
+                    if(response?.data?.team){
+                         setTeam(true);
+                         setTeamCode(response?.data?.data?.team_code);
+                    }
                } else {
                     alert("Participation failed! Please try again.");
                }
@@ -114,6 +123,9 @@ const validationSchemaTeam = Yup.object({
  
    {isParticipated? <div className=" flex flex-col gap-10 justify-center items-center pt-10 pb-10 ">
    🎉 Your participation has been recorded. 🎉
+   <p>
+            {team && `Your team code is ${teamCode}. Share this code with your team members to join the team.`}   
+   </p>
    </div>
    
    : <div>                              
