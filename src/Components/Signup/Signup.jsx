@@ -41,9 +41,9 @@ const Signup = () => {
         setIsLoading(true);
         const formData = new FormData();
         for (const key in values) {
-            if ((key == 'screenshot' || key == 'college_id') && values[key]) {
+            if ((key == 'screenshot' || key == 'college_id' || key == 'instagram_id') && values[key]) {
                 formData.append(key, values[key], values[key].name);
-            } else {
+            } else if (values[key] != null) { // Don't append null or undefined values
                 formData.append(key, values[key]);
             }
         }
