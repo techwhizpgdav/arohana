@@ -13,9 +13,7 @@ const DesktopHome = () => {
       <BottomPage />
       </div>
 
-      <div className='z-10 '>
-      <FaqSection />
-      </div>
+
     </div>
   );
 };

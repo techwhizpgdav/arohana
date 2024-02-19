@@ -47,14 +47,14 @@ const UserProfile = ({ user }) => {
         </div>
         <div className='flex gap-8 items-center justify-center flex-col  '>
           <p className="font-bold text-black">Unique QR Code</p>
-          {!qrCode ? (
+          {is_verified ? (
             <div className=' flex items-center justify-center flex-col'>
               <img src={Qrcode} alt="QR Code" className="w-32 h-32 "  />
               <p className="text-sm"> .</p>
             </div>
             
           ) : (
-            <p>QR Code not available</p>
+            <p>QR Code not available, please wait until your account get Verified from the admin.</p>
           )}
         </div>
       </div>

@@ -34,6 +34,7 @@ const Dashboard = () => {
       if (token) {
         authUser().then((data) => {
           setUser(data);
+          console.log(data);
           setIsLoading(false);
         })
         setIsLoggedIn(true);
@@ -52,7 +53,7 @@ const Dashboard = () => {
     AOS.refresh(); // This line will refresh AOS and cause animations to trigger again
   }, []);
 
-  if (user?.length === 0) {
+  if (user?.length === 0 || isLoading) {
     return <div className='dashboard-hero h-screen flex justify-center items-center text-white'>
       <Spinner2 />
     </div>;
