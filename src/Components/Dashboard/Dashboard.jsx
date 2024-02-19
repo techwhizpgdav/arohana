@@ -11,8 +11,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Welcome from './Welcome';
 import '../../Button.css';
-import { FaUser, FaCalendar, FaUsers } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaUsers, FaRegFilePdf } from 'react-icons/fa';
 import Spinner2 from '../ShimmerAndSpinner/Spinner2';
+import Submission from './Submission';
 
 
 const Dashboard = () => {
@@ -104,6 +105,15 @@ const Dashboard = () => {
                       <p>Teams</p>
                     </button>
                   </div>
+                  <div>
+                    <FaRegFilePdf className=' absolute scale-125 text-white left-52 translate-y-4'/>
+                    <button
+                      onClick={() => setActiveComponent('userSubmission')}
+                      className={`button ${activeComponent === 'userSubmission' ? 'open' : 'close'}`}
+                    >
+                      <p>Submission</p>
+                    </button>
+                  </div>
                 </div>
       
               <div className='flex gap-1 absolute top-10 '>
@@ -146,6 +156,7 @@ const Dashboard = () => {
             {activeComponent === 'userProfile' && <UserProfile user={user} />}
             {activeComponent === 'userEventDetails' && <UserEventDetails user={user} />}
             {activeComponent === 'userTeams' && <UserTeams user={user} />}
+            {activeComponent === 'userSubmission' && <Submission user={user} />}
         </div>
       </div>
     </>
