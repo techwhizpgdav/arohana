@@ -7,14 +7,14 @@ const Submission = () => {
   useEffect(() => {
   }, []);
 
-  if (submissions.length === 0) {
-    return (
-      <div>
-        <h1 className="text-4xl">Submission</h1>
-        <p className=" flex w-screen h-60 justify-center items-center">Page under working, hold your patience.</p>
-      </div>
-    );
-  }
+  // if (submissions.length === 0) {
+  //   return (
+  //     <div>
+  //       <h1 className="text-4xl">Submission</h1>
+  //       <p className=" flex w-screen h-60 justify-center items-center">Page under working, hold your patience.</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>

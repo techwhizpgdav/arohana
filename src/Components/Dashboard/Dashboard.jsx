@@ -23,7 +23,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState('userProfile');
+  const [activeComponent, setActiveComponent] = useState('userTeams');
   const [hamOpen, setHamOpen] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,6 @@ const Dashboard = () => {
       if (token) {
         authUser().then((data) => {
           setUser(data);
-          console.log(data);
           setIsLoading(false);
         })
         setIsLoggedIn(true);

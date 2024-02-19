@@ -34,6 +34,7 @@ useEffect(() => {
   }
   , [user]);
 
+  console.log(user)
 
 if(isLoading){
   return <div className= 'absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
