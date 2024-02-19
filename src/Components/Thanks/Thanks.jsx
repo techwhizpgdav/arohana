@@ -16,6 +16,7 @@ const Thanks = () => {
 
      const closeModal = () => {
           setModalIsOpen(false);
+          navigate('/');
      };
      return (
           <div className=' overflow-hidden'>
