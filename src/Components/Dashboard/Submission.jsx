@@ -1,10 +1,16 @@
 // import { HStack, Table, TableCaption, TableContainer, Thead, Tr, Td, Th, Tbody } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import Api from "../../Functions/api";
 
 const Submission = () => {
   const [submissions, setSubmissions] = useState([]);
-
+  const { fetchApi } = Api();
   useEffect(() => {
+
+    fetchApi('get', 'api/submissions').then((data) => {
+      console.log(data);
+      setSubmissions(data);
+    });
   }, []);
 
   // if (submissions.length === 0) {
