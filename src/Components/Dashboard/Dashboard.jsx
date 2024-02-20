@@ -23,7 +23,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState('userTeams');
+  const [activeComponent, setActiveComponent] = useState('userSubmission');
   const [hamOpen, setHamOpen] = useState(false);
 
   useEffect(() => {
