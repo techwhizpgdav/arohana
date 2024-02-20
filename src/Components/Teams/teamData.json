@@ -1,14 +1,16 @@
 {
-    "incharge": [
+    "principal": [
         {
-            "name": "Nishant Kumar Singh",
+            "name": "Prof. Krishna Sharma",
             "photo": "path/to/john_photo.png",
-            "position": "Coordinator"
-        },
+            "position": "Principal"
+        }
+    ],
+    "incharge": [
         {
             "name": "Jane Smith",
             "photo": "path/to/jane_photo.png",
-            "position": "Coordinator"
+            "position": "Convenor"
         },
         {
             "name": "John Doe",
