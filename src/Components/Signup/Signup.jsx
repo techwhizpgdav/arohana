@@ -9,7 +9,7 @@ import { API_URL } from "../../Functions/Constants";
 const Signup = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const [pgdav, setPgdav] = useState(false);
+//   const [pgdav, setPgdav] = useState(false);
   const initialValues = {
     name: "",
     email: "",
@@ -20,9 +20,8 @@ const Signup = () => {
     college: "",
     college_id: null,
     instagram_id: "",
-    pgdav: pgdav,
+    // pgdav: pgdav,
   };
-
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
@@ -36,7 +35,8 @@ const Signup = () => {
     password_confirmation: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Required"),
-    screenshot: Yup.mixed().required("A screenshot is required"),
+    // pgdavBool: Yup.boolean(pgdav),
+    screenshot: Yup.string().required("A screenshot is required"),
     college: Yup.string().required("Required"),
     phone: Yup.string()
       .required("Required")
@@ -110,7 +110,7 @@ const Signup = () => {
       phone: e.target.elements.phone.value,
       college_id: college_idFile,
       instagram_id: e.target.elements.instagram_id.value,
-      pgdav: pgdav,
+    //   pgdav: pgdav,
     };
     onSubmit(values);
   };
@@ -200,7 +200,7 @@ const Signup = () => {
                   component="div"
                   className="error-message"
                 />
-                <div className="flex flex-row my-3 text-white">
+                {/* <div className="flex flex-row my-3 text-white">
                   <input
                     type="checkbox"
                     className="h-4 w-4 mt-3"
@@ -214,7 +214,7 @@ const Signup = () => {
                   <p className="ml-3 mt-2">
                     I am a student of P.G.D.A.V. College(M)
                   </p>
-                </div>
+                </div> */}
                 <div
                   className="wrap-input100 validate-input"
                   data-validate="Enter college"
@@ -222,7 +222,7 @@ const Signup = () => {
                   <Field
                     type="text"
                     name="college"
-                    disabled={pgdav}
+                    // disabled={pgdav}
                     className="input100 placeholder:text-white"
                     placeholder="College"
                   />
@@ -286,7 +286,7 @@ const Signup = () => {
                   component="div"
                   className="error-message"
                 />
-                {pgdav ? (
+                {/* {pgdav ? ( */}
                   <>
                     <div className="validate-input">
                       <Field
@@ -314,7 +314,7 @@ const Signup = () => {
                       </Link>
                     </div>
                   </>
-                ) : null}
+                {/* ) : null} */}
                 <div className="container-login100-form-btn">
                   <button
                     type="submit"
