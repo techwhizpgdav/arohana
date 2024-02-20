@@ -15,6 +15,7 @@ const Signup = () => {
         email: '',
         password: '',
         password_confirmation: '',
+        phone: '',
         screenshot: null,
         college: '',
         college_id: null,
@@ -41,16 +42,20 @@ const Signup = () => {
         setIsLoading(true);
         const formData = new FormData();
         for (const key in values) {
-            if ((key == 'screenshot' || key == 'college_id' || key == 'instagram_id') && values[key]) {
+            if (!values[key]) continue; // Skip if the value is undefined
+    
+            if ((key == 'screenshot' || key == 'college_id') && values[key].name) {
                 formData.append(key, values[key], values[key].name);
-            } else if (values[key] != null) { // Don't append null or undefined values
+            } else if (key === 'instagram_id' && values[key] !== '') {
+                formData.append(key, values[key]);
+            } else if (key !== 'instagram_id') { 
                 formData.append(key, values[key]);
             }
         }
         try {
             const response = await axios.post(`${API_URL}/register`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data',  
                     'Accept': 'application/json',
                 }
             });
@@ -95,11 +100,11 @@ const handleAutofill = (e) => {
         email,
         password,
         password_confirmation,
-        screenshot: screenshotFile, // Add the selected file to the form data
+        screenshot: screenshotFile,
         college, 
         phone: e.target.elements.phone.value,
-        college_id: college_idFile, // Add the selected file to the form data
-        insta_id: e.target.elements.insta_id.value,
+        college_id: college_idFile, 
+        instagram_id: e.target.elements.instagram_id.value,
     };
     onSubmit(values);
 };
@@ -147,7 +152,7 @@ const handleAutofill = (e) => {
                                 <ErrorMessage name="phone" component="div" className="error-message" />
 
                                 <div className="wrap-input100 validate-input" data-validate="Enter college">
-                                <Field type="text" name="instagram_id" className="input100 placeholder:text-white" placeholder="Instagram ID" />
+                                    <input type="text" name="instagram_id" placeholder="Instagram ID (optional)" className='input100' />
                                 <span className="focus-input100" data="&#xf16d;"></span>
                                 </div>
                                 <div className=' max-w-60 text-white mb-4'>
