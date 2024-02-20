@@ -20,7 +20,7 @@
   min-height: 375px;
   position: relative;
   animation: zoomIn 1s;
-  background-size: 100%;
+  background-size: cover;
 }
    
    @media (min-height: 830px) {
@@ -43,7 +43,8 @@
    
    @media (max-height: 499px) {
      #hero {
-       background-position: center -450px;
+      background-image: url("https://arohana.b-cdn.net/123%20(1).png");
+      background-size: cover;
      }
    }
    

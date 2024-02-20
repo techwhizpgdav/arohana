@@ -40,10 +40,12 @@ const Submission = () => {
     formData.append('competition_id', values.competition_id);
     formData.append('url', values.url);
     formData.append('remarks', values.remarks);
+    const token = localStorage.getItem('token');
     try {
         axios.post(`${API_URL}/api/submissions`, formData, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}`
           }
         }).then((response) => {
           console.log(response);

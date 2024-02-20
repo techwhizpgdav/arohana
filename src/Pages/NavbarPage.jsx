@@ -69,15 +69,7 @@ const NavbarPage = () => {
       }
     };
 
-     useEffect(() => {
-      fetchApi('GET', 'status').then((response) => {
-        if(response?.data?.status == "down"){
-          setAlertMessage('Respected Madam, please launch the Website.');
-        }
-      }
-      )
-      }
-      , [navigate, alertMessage]);
+
 
 
   return (
@@ -89,22 +81,12 @@ const NavbarPage = () => {
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
     >
       <p className='text-lg font-semibold'>{alertMessage}</p>
-
-      <div className='flex flex-col items-center justify-center w-full space-y-4'>
-        <input
-          className=' p-2 border border-gray-300 rounded-md text-black'
-          type="text"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          placeholder="Pass Phrase"
-        />
         <button 
-          onClick={handleButtonClick} 
-          className="py-2 px-4 bg-gray-700 text-white rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 "
+          onClick={() => setAlertMessage(null)} 
+          className="py-2 px-4 text-white rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 "
         >
-          Start Server
+          Close
         </button>
-      </div>
     </Modal>
 
      {width < breakpoint ? <MobileNav /> : <DesktopNav />}
