@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Api from '../../Functions/api';
-import { useNavigate } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import DayTabs from './DayTabs';
 import Spinner2 from '../ShimmerAndSpinner/Spinner2';
@@ -9,7 +8,6 @@ import './timeline.css';
 
 const Timeline = () => {
   const { fetchApi, isLoading } = Api();
-  const navigate = useNavigate();
   const [eventsData, setEventsData] = useState([]);
   const [length, setLength] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
@@ -49,7 +47,7 @@ const Timeline = () => {
         <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold mt-4 mb-8 text-white underline font-serif" data-aos="fade-up">Timeline</h1>
       </div>
       <div className='min-h-screen w-full'>
-        <div className='min-w-full m-auto flex items-center justify-center'>
+        <div className='w-full m-auto flex items-center justify-center'>
           <DayTabs eventsData={eventsData} activeTab={activeTab} onTabClick={handleTabClick} />
         </div>
         <div className='min-w-full m-auto flex flex-col items-center justify-center'>

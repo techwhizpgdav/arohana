@@ -1,0 +1,119 @@
+{
+    "incharge": [
+        {
+            "name": "Nishant Kumar Singh",
+            "photo": "path/to/john_photo.png",
+            "position": "Coordinator"
+        },
+        {
+            "name": "Jane Smith",
+            "photo": "path/to/jane_photo.png",
+            "position": "Coordinator"
+        },
+        {
+            "name": "John Doe",
+            "photo": "path/to/john_photo.png",
+            "position": "Project Manager"
+        }
+    ],
+    "core_team": [
+        {
+            "name": "Nishant Kumar Singh",
+            "photo": "path/to/john_photo.png",
+            "position": "Coordinator",
+            "mobile": "+1234567890",
+            "instagram": "https://instagram.com/"
+        },
+        {
+            "name": "Jane Smith",
+            "photo": "path/to/jane_photo.png",
+            "position": "Coordinator",
+            "mobile": "+1234567890",
+            "instagram": "https://instagram.com/"
+        },
+        {
+            "name": "John Doe",
+            "photo": "path/to/john_photo.png",
+            "position": "Project Manager",
+            "mobile": "+1234567890",
+            "instagram": "https://instagram.com/"
+        },
+        {
+            "name": "Nishant Kumar Singh",
+            "photo": "path/to/john_photo.png",
+            "position": "Coordinator",
+            "mobile": "+1234567890",
+            "instagram": "https://instagram.com/"
+        },
+        {
+            "name": "Jane Smith",
+            "photo": "path/to/jane_photo.png",
+            "position": "Coordinator",
+            "mobile": "+1234567890",
+            "instagram": "https://instagram.com/"
+        },
+        {
+            "name": "John Doe",
+            "photo": "path/to/john_photo.png",
+            "position": "Project Manager",
+            "mobile": "+1234567890",
+            "instagram": "https://instagram.com/"
+        }
+    ],
+    "web_developer": [
+        {
+            "name": "Nishant Kumar Singh",
+            "photo": "path/to/john_photo.png",
+            "position": "Coordinator",
+            "role": "Full Stack Developer",
+            "instagram": "https://instagram.com/",
+            "github": "https://github.com/",
+            "linkedin": "https://www.linkedin.com/in/john-doe/"
+        },
+        {
+            "name": "Jane Smith",
+            "photo": "path/to/jane_photo.png",
+            "position": "Coordinator",
+            "role": "Full Stack Developer",
+            "instagram": "https://instagram.com/",
+            "github": "https://github.com/",
+            "linkedin": "https://www.linkedin.com/in/jane-smith/"
+        },
+        {
+            "name": "John Doe",
+            "photo": "path/to/john_photo.png",
+            "position": "Project Manager",
+            "role": "Frontend Developer",
+            "instagram": "https://instagram.com/",
+            "github": "https://github.com/",
+            "linkedin": "https://www.linkedin.com/in/john-doe/"
+        },
+        {
+            "name": "Nishant Kumar Singh",
+            "photo": "path/to/john_photo.png",
+            "position": "Coordinator",
+            "role": "Full Stack Developer",
+            "instagram": "https://instagram.com/",
+            "github": "https://github.com/",
+            "linkedin": "https://www.linkedin.com/in/john-doe/"
+        },
+        {
+            "name": "Jane Smith",
+            "photo": "path/to/jane_photo.png",
+            "position": "Coordinator",
+            "role": "Full Stack Developer",
+            "instagram": "https://instagram.com/",
+            "github": "https://github.com/",
+            "linkedin": "https://www.linkedin.com/in/jane-smith/"
+        },
+        {
+            "name": "John Doe",
+            "photo": "path/to/john_photo.png",
+            "position": "Project Manager",
+            "role": "Frontend Developer",
+            "instagram": "https://instagram.com/",
+            "github": "https://github.com/",
+            "linkedin": "https://www.linkedin.com/in/john-doe/"
+        }
+    ]
+}
