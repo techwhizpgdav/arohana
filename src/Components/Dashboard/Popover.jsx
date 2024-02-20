@@ -2,21 +2,22 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 export default function PopOver({ details }) {
+  console.log({details})
   return (
-    <div className="w-full max-w-sm px-4 sm:px-0">
+    <div className="w-full max-w-sm px-4 sm:px-0 ">
       <Popover className="">
         {({ open }) => (
           <>
             <Popover.Button
               className={`
                 ${open ? 'text-white' : 'text-white/90'}
-                group inline-flex items-center rounded-md bg-orange-700 px-2 py-2 text-base font-medium hover:text-white sm:text-sm md:text-base lg:text-lg`}
+                group flex items-center rounded-md bg-orange-700 px-2 py-2 text-base font-medium hover:text-white sm:text-sm md:text-base lg:text-lg`}
             >
               <span>Details</span>
               <svg
                 className={`
-                  ${open ? 'text-white' : 'text-white/90'}
-                  ml-2 h-5 w-5 group-hover:text-white/90 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6`}
+                  ${open ? '' : ' transform rotate-180'}
+                  ml-2 h-5 w-5 group-hover:text-white sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6`}
                 x-description="Heroicon name: solid/chevron-down"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -42,22 +43,20 @@ export default function PopOver({ details }) {
               <Popover.Panel className="absolute  mdmax:left-52 z-10 mt-3  -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
                   <div className="relative grid gap-8 bg-white p-7 ">
+                  <div className=' flex justify-center'>
+                        <p>Team Code: {details?.team_code}</p>
+                      </div>
                       <div className='flex gap-10'>
                       <p>Entry:
                       {
-                        details?.paid_event ? ' Paid' : 'Free'
+                        details.paid_event ? ' Paid' : ' Free'
                       }
+                      
                     </p>
-                    <p>
-                      Approval: {
-                        details?.allowed ? ' Approved' : ' Not Approved'
-                      }
-                    </p>
+                    <p>Team Size: {details?.team_size}</p>
+
                       </div>
-                      <div className=' flex gap-10'>
-                        <p>Team Size: {details?.team_size}</p>
-                        <p>Team Code: {details?.team_code}</p>
-                      </div>
+  
                   </div>
                   <div className="bg-gray-50 p-4">
 

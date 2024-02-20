@@ -15,8 +15,11 @@ const Signup = () => {
         email: '',
         password: '',
         password_confirmation: '',
-        screenshot: '',
+        phone: '',
+        screenshot: null,
         college: '',
+        college_id: null,
+        instagram_id: '',
     };
 
     const validationSchema = Yup.object({
@@ -31,22 +34,27 @@ const Signup = () => {
         password_confirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Required'),
         screenshot: Yup.mixed().required('A screenshot is required'),
         college: Yup.string().required('Required'), 
+        phone: Yup.string().required('Required').matches(/^[6-9]\d{9}$/, 'Invalid phone number'), 
+        college_id: Yup.string().required('Photo ID is required'),
     });
 
     const onSubmit = async (values) => {
         setIsLoading(true);
         const formData = new FormData();
         for (const key in values) {
-            if (key === 'screenshot' && values[key]) {
+            if (!values[key]) continue; 
+            if ((key == 'screenshot' || key == 'college_id') && values[key].name) {
                 formData.append(key, values[key], values[key].name);
-            } else {
+            } else if (key === 'instagram_id' && values[key] !== '') {
+                formData.append(key, values[key]);
+            } else if (key !== 'instagram_id') { 
                 formData.append(key, values[key]);
             }
         }
         try {
             const response = await axios.post(`${API_URL}/register`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data',  
                     'Accept': 'application/json',
                 }
             });
@@ -77,26 +85,28 @@ const Signup = () => {
         };
         checkAndNavigate();
     }, [navigate]);
-
-    const handleAutofill = (e) => {
-        e.preventDefault();
-        const name = e.target.elements.name.value;
-        const email = e.target.elements.email.value;
-        const password = e.target.elements.password.value;
-        const password_confirmation = e.target.elements.password_confirmation.value;
-        const selectedFile = e.target.elements.screenshot.files[0]; // Get the uploaded file
-        const college = e.target.elements.college.value;
-        const values = {
-            name,
-            email,
-            password,
-            password_confirmation,
-            screenshot: selectedFile, // Add the selected file to the form data
-            college
-        };
-        onSubmit(values);
+const handleAutofill = (e) => {
+    e.preventDefault();
+    const name = e.target.elements.name.value;
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+    const password_confirmation = e.target.elements.password_confirmation.value;
+    const screenshotFile = e.target.elements.screenshot.files[0]; // Get the uploaded file
+    const college = e.target.elements.college.value;
+    const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
+    const values = {
+        name,
+        email,
+        password,
+        password_confirmation,
+        screenshot: screenshotFile,
+        college, 
+        phone: e.target.elements.phone.value,
+        college_id: college_idFile, 
+        instagram_id: e.target.elements.instagram_id.value,
     };
-
+    onSubmit(values);
+};
     return (
         <div className={`${isLoading ? 'opacity-40' : 'opacity-100'} `}>
             <div className="container-login100 min-h-screen mt-2 ">
@@ -134,19 +144,32 @@ const Signup = () => {
                                 <span className="focus-input100" data="&#xf133;"></span>
                                 </div>
                                 <ErrorMessage name="college" component="div" className="error-message" />
-                                {/* ** Indian Phone number */}
                                 <div className="wrap-input100 validate-input" data-validate="Enter college">
                                 <Field type="text" name="phone" className="input100 placeholder:text-white" placeholder="Phone" />
                                 <span className="focus-input100" data="&#xf155;"></span>
                                 </div>
                                 <ErrorMessage name="phone" component="div" className="error-message" />
-                                {/* ** Indian Phone number */}
-                              <div className="validate-input">
+
+                                <div className="wrap-input100 validate-input" data-validate="Enter college">
+                                    <input type="text" name="instagram_id" placeholder="Instagram ID (optional)" className='input100' />
+                                <span className="focus-input100" data="&#xf16d;"></span>
+                                </div>
+                                <div className=' max-w-60 text-white mb-4'>
+                                    If you have 1k+ followers on Instagram, please provide your Instagram ID.
+                                </div>
+                            <div className="validate-input mb-4">
+                            <Field name="college_id" type="file" className="input100 placeholder:text-white file-input" accept="image/*" id="college_id" />
+                            <label htmlFor="college_id" className="file-label">
+                                {values.college_id ? values.college_id.split('\\').pop() : 'Upload College ID'}
+                            </label>
+                            </div>
+                            <ErrorMessage name="college_id" component="div" className="error-message" />
+                            <div className="validate-input">
                             <Field name="screenshot" type="file" className="input100 placeholder:text-white file-input" accept="image/*" id="screenshot" />
                             <label htmlFor="screenshot" className="file-label">
                                 {values.screenshot ? values.screenshot.split('\\').pop() : 'Upload Screenshot'}
                             </label>
-                        </div>
+                            </div>
                             <ErrorMessage name="screenshot" component="div" className="error-message" />
                               <div className="text-center">
                                 <Link to="/registration" className="txt1" > How to do this task?</Link>

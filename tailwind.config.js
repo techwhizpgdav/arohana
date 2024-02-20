@@ -29,6 +29,7 @@ export default {
         'haldi-orange':'#FF5C01',
         'haldi-red':'#B01432',
         'haldi-yellow':'#EECF1A',
+        'shade-haldi':'rgb(252, 76, 2)',
       },
       screens: {
         'sm': '425px',

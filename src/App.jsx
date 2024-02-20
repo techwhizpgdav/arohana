@@ -30,7 +30,7 @@ const AppLayout = () => (
 )
 
 const appRouters = () => (
-  <Router  basename='/arohana'>
+  <Router  basename='/'>
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />

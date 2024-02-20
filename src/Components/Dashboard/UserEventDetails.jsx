@@ -18,16 +18,15 @@ const UserEventDetails = ({user}) => {
 
 
  useEffect(() => {
-  if(user?.email_verified_at === null){
+  if(user?.email_verified_at == null){
     setStep(2);
-  } else if(user?.email_verified_at !== null && user?.is_verified == null){
-    setStep(3);
-  }
-  else if(user?.email_verified_at !== null && user?.is_verified == true){
+  } 
+  else if(user?.email_verified_at != null ){
     setIsLoading(true);
     setStep(4);
       fetchApi('get', `api/participations`).then((data) => {
         setParticipatedEvents(data?.data?.data[0]?.competitions);
+        console.log(data);
       setIsLoading(false);
     });
   }
@@ -63,7 +62,7 @@ if(step ==3){
 }
 
 
-if(participatedEvents?.length === 0){
+if(participatedEvents?.length == 0){
   return (
     <div className='flex flex-col items-center justify-center pt-20'>
     <p>
@@ -86,45 +85,33 @@ if(isLoading){
 
 
 return (
-  <div className="container mx-auto py-10">
-    {participatedEvents.length > 0 && (
-      <>
-        <h1 className="text-center text-2xl font-bold pt-10 ">Here Are the details of the events you have participated in:</h1>
+  <div className="container mx-auto py-10 px-4 md:px-0">
+  {participatedEvents.length > 0 && (
+    <>
+      <h1 className="text-center text-xl font-bold pt-10 ">Here are the details of the events you have participated in:</h1>
 
-        <div className="grid gap-6 mt-10 ml-40">
-          {participatedEvents.map((event, index) => (
-            <div key={index} className="border p-4 rounded-lg flex justify-evenly w-4/5 items-center bg-slate-300">
-                <h2 className="text-xl font-bold">{index + 1}</h2>
+      <div className="grid gap-20 w-screen mt-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {participatedEvents.map((event, index) => (
+          <div key={index} className="border p-8 rounded-lg flex flex-col md:flex-row justify-around items-center bg-slate-300  w-full  " >
+            <h2 className="text-xl font-bold absolute -translate-y-16 -translate-x-24 ">{index + 1}</h2>
 
-              <div className=' flex flex-col justify-center gap-10'>
-                <h1 className="text-lg font-semibold">{event?.title}</h1>
-              {
-                event?.pivot?.team_size > 1 && (
-                  <div >
-                  <h2 className=" text-gray-800 font-semibold"
-                  >Team Name:</h2>
-                  <p className="text-gray-700">{event?.pivot?.team_name}</p>
-                  </div>
-                )
-              }
-              </div>
-              <div className=' flex flex-col gap-5'>
-                <p className=" text-gray-700">
-                  Approval: {event?.pivot?.allowed ? 'Allowed' : 'Pending'}
-                </p>
-                <p className="text-gray-700">
-                  {event?.pivot?.team_size > 1 ? `Team Size: ${event?.pivot?.team_size}` : 'Solo'}
-                </p>
-                {event?.pivot?.team_size > 1 && (
-                  <p className=" text-gray-700">Team Code: {event?.pivot?.team_code}</p>
-                )}
-              </div>
+            <div className='flex flex-col justify-center gap-10 '>
+              <h1 className="text-lg font-semibold">{event?.title.split(' ').slice(0,1)}</h1>
+              <p className="text-gray-700">
+                Approval: {event?.pivot?.allowed ? 'Allowed' : 'Pending'}
+              </p>
+              
+              <p className="text-gray-700">
+                {event?.pivot?.team_name !=null ? `Team Size: ${event?.pivot?.team_size}` : 'Solo'}
+              </p>
             </div>
-          ))}
-        </div>
-      </>
-    )}
-  </div>
+
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+</div>
 );
 }
 

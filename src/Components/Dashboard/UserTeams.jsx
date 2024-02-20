@@ -17,25 +17,24 @@ const UserTeams = ({user}) => {
 // * Uncomment this code after working on this section 
 
 
- useEffect(() => {
-  if(user?.email_verified_at === null){
+
+useEffect(() => {
+  if(user?.email_verified_at == null){
     setStep(2);
-  } else if(user?.email_verified_at !== null && user?.is_verified == null){
-    setStep(3);
   }
-  else if(user?.email_verified_at !== null && user?.is_verified == true){
+  else if(user?.email_verified_at != null ){
     setIsLoading(true);
     setStep(4);
     fetchApi('get', `api/my-team`).then((data) => {
-      setParticipatedEvents(data?.data);
+      console.log(data?.data?.data);
+      setParticipatedEvents(data?.data.data);
       setIsLoading(false);
     });
   }
   }
   , [user]);
 
-
-
+  console.log(user)
 
 if(isLoading){
   return <div className= 'absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
@@ -65,13 +64,13 @@ if(step ==3){
 }
 
 
-if(participatedEvents?.length === 0){
+if(participatedEvents?.length  == 0){
   return (
     <div className='flex flex-col items-center justify-center pt-20'>
     <p>
       You are not in any team yet, please participate in the events to join a team.
     </p>
-    <Link className= 'bg-black p-2 rounded-lg text-white hover:bg-teal-600 transition-all duration-500' to = {'/events'}
+    <Link className= 'bg-black p-2 rounded-lg text-white hover:bg-teal-600 transition-all duration-500' to = {'/categories'}
     >
         Participate Now 
     </Link>
@@ -90,15 +89,14 @@ if(participatedEvents?.length === 0){
       <div className='flex flex-wrap items-center gap-44 justify-center pt-20 pb-40'>
         {
           participatedEvents?.map((event, index) => (
-            <div key={index} className='flex items-center justify-center gap-10'>
+            <div key={index} className='flex items-center justify-center gap-10 border-2 border-rose-800 rounded-2xl  p-6'>
               {
-                event?.team_size > 1 && 
                 (
                   <>
-                    <div className='flex gap-4 '>
+                    <div className='flex justify-between w-80 items-center '>
                         <div>
-                          <h2 className='text-xl font-semibold text-gray-700'>
-                            {event?.title}
+                          <h2 className='text-xl font-semibold text-gray-700 max-w-40 overflow-hidden'>
+                            {event?.title.split(' ').slice(0,1).join(' ')}
                           </h2>
                           <h3>
                             {
@@ -107,6 +105,9 @@ if(participatedEvents?.length === 0){
                           </h3>
                         </div>
                         <div >
+                          {
+                            console.log("Events is "+ event)
+                          }
                           <PopOver details={event} />
                         </div>
                         <div>

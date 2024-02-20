@@ -16,7 +16,7 @@ const Thanks = () => {
 
      const closeModal = () => {
           setModalIsOpen(false);
-          navigate('/verify');
+          navigate('/');
      };
      return (
           <div className=' overflow-hidden'>
@@ -43,14 +43,14 @@ const Thanks = () => {
           >
                <div style={{ textAlign: 'center' }} data-aos="fade-down" className=' overflow-hidden'>
                     <h2 className='text-brown font-bold text-2xl'>🎉 Thank You for Registering! 🎉</h2>
-                    <p className='text-brown font-medium text-lg'>Make sure You verify Your Email</p>
+                    <p className='text-brown font-medium text-lg'>We have sent you an confirmation email, make sure You verify Your Email</p>
                </div>
                <button 
                     className="py-2 px-2 font-large text-red rounded mt-6"
                     onClick={closeModal}
                     data-aos="fade-up"
                >
-                    Verify
+                    Close
                </button>
                </Modal>
           </div>

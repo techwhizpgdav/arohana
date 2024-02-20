@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Qrcode from '../../assets/qrcode.jpg';
 import { Link } from 'react-router-dom';
 const UserProfile = ({ user }) => {
-  const { name, dob, collegeName, qrCode, email, email_verified_at, is_verified } = user;
+  const { name, college, qrCode, email, email_verified_at, is_verified,phone_number } = user;
 
   return (
     <div className="border rounded-md shadow-md p-4 h-3/4 ">
@@ -36,25 +36,30 @@ const UserProfile = ({ user }) => {
           <div className="flex gap-2 mb-4"
           >
           <p className="font-bold">College:</p>
-          <p>{collegeName}</p>
+          <p>{college}</p>
           </div>
           <div className="flex gap-2 mb-4"
           >
-          <p className="font-bold">Sponsor Verified:</p>
+          <p className="font-bold">Phone Number:</p>
+          <p>+91 {phone_number}</p>
+          </div>
+          <div className="flex gap-2 mb-4"
+          >
+          <p className="font-bold">Account Verification Status:</p>
           <p>{is_verified == 0 ? 'Pending' : 'Verified'
            }</p>
           </div>
         </div>
         <div className='flex gap-8 items-center justify-center flex-col  '>
           <p className="font-bold text-black">Unique QR Code</p>
-          {!qrCode ? (
+          {is_verified ? (
             <div className=' flex items-center justify-center flex-col'>
               <img src={Qrcode} alt="QR Code" className="w-32 h-32 "  />
               <p className="text-sm"> .</p>
             </div>
             
           ) : (
-            <p>QR Code not available</p>
+            <p>QR Code not available, please wait until your account get Verified from the admin.</p>
           )}
         </div>
       </div>

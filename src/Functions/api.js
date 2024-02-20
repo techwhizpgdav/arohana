@@ -23,7 +23,8 @@ const Api = () => {
         }
       });
       const data = response.data.data.user;
-      if (response.status === 401) {
+      if (response.status == 401 || response.status == 404) {
+        localStorage.removeItem('token');
         navigate('/login');
       }
       return data;
@@ -72,9 +73,11 @@ const login = async(values) => {
           const data = await response.json();     
           if (response.status == 200 || response.status == 204) {
               setIsLoading(false);
+              console.log(response)
               localStorage.setItem('token', data?.access_token);
               authUser().then((data) => {  
-                    if(data?.data?.email_verified_at == null){
+                console.log(data)
+                    if(data?.email_verified_at == null){
                         navigate('/verify');
                     }
               })
