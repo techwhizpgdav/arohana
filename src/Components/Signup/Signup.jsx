@@ -42,8 +42,7 @@ const Signup = () => {
         setIsLoading(true);
         const formData = new FormData();
         for (const key in values) {
-            if (!values[key]) continue; // Skip if the value is undefined
-    
+            if (!values[key]) continue; 
             if ((key == 'screenshot' || key == 'college_id') && values[key].name) {
                 formData.append(key, values[key], values[key].name);
             } else if (key === 'instagram_id' && values[key] !== '') {

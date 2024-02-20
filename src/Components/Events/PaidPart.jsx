@@ -9,7 +9,7 @@ import { useNavigate , Link} from 'react-router-dom';
 import Modal from 'react-modal';
 
 const PaidPart = ({event , closeModal ,onParticipation }) => {
-     const { date, description, start_at, ends_at, rounds, paid_event, minimum_size , society , tag_line, title,  upi_id, venue , image_url, individual_fee, team_fee, maximum_size, id } = event;
+     const { date, description, start_at, ends_at, rounds, paid_event, minimum_size , society , tag_line, title,  upi_id, venue , image_url, individual_fee, team_fee, maximum_size, id , sponsor_task } = event;
      const navigate = useNavigate();
      const [buttonSelected, setButtonSelected] = useState("Solo");
      const [isModalOpen, setIsModalOpen] = useState(false);
@@ -106,6 +106,7 @@ const validationSchemaTeam = Yup.object({
                     if(response?.data?.team){
                          setTeam(true);
                          setTeamCode(response?.data?.data?.team_code);
+                         console.log(response?.data?.data?.team_code);
                     }
                } else {
                     alert("Participation failed! Please try again.");
@@ -123,7 +124,7 @@ const validationSchemaTeam = Yup.object({
  
    {isParticipated? <div className=" flex flex-col gap-10 justify-center items-center pt-10 pb-10 ">
    🎉 Your participation has been recorded. 🎉
-   <p>
+   <p className=' text-black'>
             {team && `Your team code is ${teamCode}. Share this code with your team members to join the team.`}   
    </p>
    </div>
@@ -209,10 +210,15 @@ const validationSchemaTeam = Yup.object({
                          <Field 
                               type = 'text'
                               id = 'remarks'
-                              placeholder = {event.remarks_label}
+                              placeholder = "Remarks"
                               name = 'remarks'
                               className="w-72 h-12 bg-slate-700 border-2 border-gray-800 rounded-md p-4 placeholder:text-white text-white"
                          />
+                    <div>
+                    {
+                      event.remarks_label
+                    }
+                  </div>
                          <ErrorMessage name="remarks" />
                          {
                               sponsor_task == 1 && (
