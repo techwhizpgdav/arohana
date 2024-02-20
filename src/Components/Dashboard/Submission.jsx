@@ -6,11 +6,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 import { API_URL } from "../../Functions/Constants";
+import { useNavigate } from "react-router-dom";
 const Submission = () => {
   const [submissions, setSubmissions] = useState([]);
   const [Competition, setCompetition] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { fetchApi } = Api();
+  const navigate = useNavigate();
   const initialValues = {
     competition_id: '',
     url : '',
@@ -21,43 +23,44 @@ const Submission = () => {
     url: Yup.string().url('Invalid URL').required('Required'),
     remarks: Yup.string(),
   });
-  useEffect(() => {
 
-    fetchApi('get', 'api/submissions').then((data) => {
-      setSubmissions(data);
-    });
-
-    fetchApi('get', 'api/participations').then((data) => {
-      console.log(data?.data?.data[0]?.competitions);
-      setCompetition(data?.data?.data[0]?.competitions);
-      setIsLoading(false);
-    }
-    );
-  }, []);
-
-  const onSubmitForm = (values, { setSubmitting }) => {
-    const formData = new FormData();  
-    formData.append('competition_id', values.competition_id);
-    formData.append('url', values.url);
-    formData.append('remarks', values.remarks);
-    const token = localStorage.getItem('token');
-    try {
-        axios.post(`${API_URL}/api/submissions`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer ${token}`
-          }
-        }).then((response) => {
-          console.log(response);
-          alert('Submission Successful');
+    const onSubmitForm = (values, { setSubmitting }) => {
+      const formData = new FormData();  
+      formData.append('competition_id', values.competition_id);
+      formData.append('url', values.url);
+      formData.append('remarks', values.remarks);
+      const token = localStorage.getItem('token');
+      
+      axios.post(`${API_URL}/api/submissions`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
         }
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    setSubmitting(false);
+      }).then((response) => {
+        console.log(response);
+        alert('Submission Successful');
+        fetchApi('get', 'api/submissions').then((data) => {
+          setSubmissions(data?.data?.data[0]?.competition_submissions);
+        });
+      }).catch((error) => {
+        alert(error?.response?.data?.message);
+      }).finally(() => {
+        setSubmitting(false);
+      });
     }
-  
+
+    useEffect(() => {
+      fetchApi('get', 'api/submissions').then((data) => {
+        setSubmissions(data?.data?.data[0]?.competition_submissions);
+        console.log(data?.data?.data[0]?.competition_submissions);
+      });
+      fetchApi('get', 'api/participations').then((data) => {
+        setCompetition(data?.data?.data[0]?.competitions);
+        setIsLoading(false);
+      }
+      );
+    }, []);
+
   if (isLoading) {
     return <div className='dashboard-hero h-screen flex justify-center items-center text-white'>
       <Spinner2 />
@@ -103,11 +106,13 @@ const Submission = () => {
                   >
                     <option value="">Select Competition</option>
                     {Competition?.map((comp) => {
-                      return <option value={comp?.pivot?.competition_id} 
-                      key={comp?.pivot?.competition_id} 
-                      name = {comp?.pivot?.competition_id}
-                      id = { comp?.pivot?.competition_id}
-                      >{comp?.title}</option>;
+                        if(comp?.pivot?.leader){
+                          return <option value={comp?.pivot?.competition_id} 
+                          key={comp?.pivot?.competition_id} 
+                          name = {comp?.pivot?.competition_id}
+                          id = { comp?.pivot?.competition_id}
+                          >{comp?.title}</option>;
+                        }
                     })}
                   </Field>
                   <ErrorMessage name="competition_id" />
@@ -131,39 +136,36 @@ const Submission = () => {
         </Formik>
 
 
-      <h1 className="text-4xl">Submission</h1>
+      <h1 className="text-4xl">Your Submission</h1>
       <div className="relative overflow-x-auto mt-12">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-slate-200 dark:text-gray-600">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                Competition
-              </th>
-              <th scope="col" className="px-6 py-3">
-                URL
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Submitted At
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="bg-white border-b dark:bg-slate-100 dark:border-gray-700">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black"
-              >
-                Apple MacBook Pro 17"
-              </th>
-              <td className="px-6 py-4 text-black">Silver</td>
-              <td className="px-6 py-4 text-black">Laptop</td>
-              <td className="px-6 py-4 text-black">$2999</td>
-            </tr>
-          </tbody>
-        </table>
+      {
+        !submissions.length > 0 ? 
+        <div>
+          <h1 className="text-2xl">No Submissions Yet</h1>
+        </div> :
+        submissions.map((submission, index) => (
+          <table key={index} className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-slate-200 dark:text-gray-600">
+              <tr>
+                <th scope="col" className="px-6 py-3">Competition</th>
+                <th scope="col" className="px-6 py-3">URL</th>
+                <th scope="col" className="px-6 py-3">Status</th>
+                <th scope="col" className="px-6 py-3">Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-white border-b dark:bg-slate-100 dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
+                  {submission?.title}
+                </th>
+                <td className="px-6 py-4 text-black">{submission?.pivot?.url}</td>
+                <td className="px-6 py-4 text-black capitalize">{submission?.pivot?.status}</td>
+                <td className="px-6 py-4 text-black">{submission?.pivot?.remarks}</td>
+              </tr>
+            </tbody>
+          </table>
+        ))
+      }
       </div>
     </div>
   );
