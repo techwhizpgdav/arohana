@@ -48,8 +48,26 @@ const NavbarPage = () => {
        }
       }
      }, [navigate]);     
-     
-     
+     const serverStart = async () => {
+      // Just sending a request to the server to start the server
+      const response = await axios.post(`${API_URL}/status`
+      , {
+        status: "up"
+      });
+    }
+
+     useEffect(() => {
+      fetchApi('GET', 'status').then((response) => {
+        // console.log(response);
+        if(response?.data?.status == "down"){
+          setAlertMessage('Respected Madam, please click the button to launch the Website.');
+        }
+      }
+      )
+      }
+      , [navigate, serverStart]);
+
+
 
   return (
      <>
@@ -58,11 +76,13 @@ const NavbarPage = () => {
        absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-haldi-orange text-white p-8 rounded-lg flex flex-col items-center gap-2 mdmax:w-4/5 mdmax:p-3` }
       >
         <p className=''>{alertMessage}</p>
-        <p>🎉 We have generated a unique QR code for you 🎉 </p>
-      <Link to ={'/dashboard'}>
+        {/* <p>🎉 We have generated a unique QR code for you 🎉 </p> */}
+      <Link to ={'/'}>
       <button className='bg-white text-black p-2 rounded-lg mt-4 w-40 '
          onClick={() => {
-          setAlertMessage(null)}}>See QR</button>
+        serverStart() ;
+        setAlertMessage(null);
+      }}>Launch Website</button>
       </Link>
       </Modal>
 

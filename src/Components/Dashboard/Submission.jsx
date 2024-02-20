@@ -130,7 +130,6 @@ const Submission = () => {
 
 
       <h1 className="text-4xl">Submission</h1>
-
       <div className="relative overflow-x-auto mt-12">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-slate-200 dark:text-gray-600">
