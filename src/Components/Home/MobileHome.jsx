@@ -26,6 +26,11 @@ const MobileHome = () => {
 
   return (
     <>
+    <div className='flex items-center h-20 justify-around bg-haldi-red  text-white' onClick={() => navigate('/categories')}>
+      <p>
+      Registration is Live, Participate Now !!!
+      </p>
+    </div>
        <div className=' h-screen flex justify-center items-center mobileHome'>
        </div>
 

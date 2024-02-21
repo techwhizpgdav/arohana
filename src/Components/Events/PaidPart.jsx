@@ -29,6 +29,7 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
     id,
     sponsor_task,
   } = event;
+  console.log(event); 
   const navigate = useNavigate();
   const [buttonSelected, setButtonSelected] = useState("Solo");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -229,7 +230,7 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
                     <p>This event is a paid event.</p>
                     <p>
                       The fee for this event is{" "}
-                      {team_fee == null
+                      {team_fee == null || team_fee == 0
                         ? `Rs. ${
                             individual_fee *
                             (maximum_size > 1 ? minimum_size : 1)
