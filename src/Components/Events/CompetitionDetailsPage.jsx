@@ -55,6 +55,7 @@ const CompetitionDetailsPage = () => {
       if (response?.status === 200) {
         setAlreadyParticipated(response?.data?.data?.participated);
         setEvent(response?.data?.data?.competition);
+        console.log(response?.data?.data?.competition);
         if (response?.data?.data?.competition?.sponsor_task == 1) {
           setSponsorStep(1);
         }

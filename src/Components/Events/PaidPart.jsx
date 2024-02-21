@@ -187,6 +187,9 @@ const validationSchemaTeam = Yup.object({
                                    (maximum_size > 1 ? minimum_size : 1)}` : `Rs. ${team_fee} `
                               } for whole team.
                          </p>
+                         <p className='flex font-semibold '>
+                              UPI ID: {upi_id}
+                         </p>
                          <div>
                          <input
                               id="screenshot"
