@@ -234,13 +234,11 @@ const Signup = () => {
                   className="wrap-input100 validate-input"
                   data-validate="Enter college"
                 >
-                  <input
+                  <Field
                     type="text"
                     name="instagram_id"
-                    value={values.instagram_id || ""}
-                    placeholder="Instagram ID (optional)"
-                    className="input100"
-                    onChange={(e) => (values.instagram_id = e.target.value)}
+                    className="input100 placeholder:text-white"
+                    placeholder="Instagram ID"
                   />
                   <span className="focus-input100" data="&#xf16d;"></span>
                 </div>
