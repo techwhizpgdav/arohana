@@ -63,11 +63,12 @@ const onSubmit = async (values) => {
     });
     if (response.status === 200 || response.status === 204) {
       setIsParticipated(true)
-      console.log(response);
-      if(response?.data?.team){
+      console.log("onsubmit \n"+response);
+      if(response?.data?.data?.team){
         setTeam(true);
         setTeamCode(response?.data?.data?.team_code);
    }
+   
 
     } else {
       alert("Participation failed! Please try again.");
@@ -94,11 +95,8 @@ const onSubmitTeam = async (values) => {
   });
   if (response.status === 200 || response.status === 204) {
     setIsParticipated(true)
-    console.log(response);
-    if(response?.data?.team){
-      setTeam(true);
-      setTeamCode(response?.data?.data?.team_code);
- }
+    console.log("OnsubmitTeam \n"+response);
+
   } else {
     alert("Participation failed! Please try again.");
   }
@@ -111,9 +109,18 @@ catch (error) {
 return (
   <>
  {isParticipated? <div className=" flex flex-col gap-10 justify-center items-center pt-10 pb-10 ">
-   🎉 Your participation has been recorded. 🎉
-   <p>
-   {team && `Your team code is ${teamCode}. Share this code with your team members to join the team.`}   
+    <p>
+    🎉 Your participation has been recorded. 🎉
+    </p>
+   <p className=' text-black  '>
+   {
+      team ? <div className='flex flex-col gap-2 items-center'>
+        <p className='flex gap-1'>Your team code is 
+          <p className=' font-semibold'>{teamCode}.</p>
+        </p>
+        <p>Share this code with your team members to join the team.</p>
+      </div>: null
+   }   
    </p>
    </div>
 :

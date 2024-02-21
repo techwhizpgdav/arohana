@@ -72,7 +72,7 @@ const validationSchemaTeam = Yup.object({
                if (response.status === 200 || response.status === 204) {
                     console.log(response);
                     setIsParticipated(true);
-                    if(response?.data?.team){
+                    if(response?.data?.data?.team){
                          setTeam(true);
                          setTeamCode(response?.data?.data?.team_code);
                     }
@@ -103,11 +103,6 @@ const validationSchemaTeam = Yup.object({
                if (response.status == 200 || response.status ===204) {
                     setIsParticipated(true);
                     console.log(response);
-                    if(response?.data?.team){
-                         setTeam(true);
-                         setTeamCode(response?.data?.data?.team_code);
-                         console.log(response?.data?.data?.team_code);
-                    }
                } else {
                     alert("Participation failed! Please try again.");
                }
@@ -122,10 +117,19 @@ const validationSchemaTeam = Yup.object({
   return (
      <>
  
-   {isParticipated? <div className=" flex flex-col gap-10 justify-center items-center pt-10 pb-10 ">
-   🎉 Your participation has been recorded. 🎉
-   <p className=' text-black'>
-            {team && `Your team code is ${teamCode}. Share this code with your team members to join the team.`}   
+ {isParticipated? <div className=" flex flex-col gap-10 justify-center items-center pt-10 pb-10 ">
+    <p>
+    🎉 Your participation has been recorded. 🎉
+    </p>
+   <p className=' text-black  '>
+   {
+      team ? <div className='flex flex-col gap-2 items-center'>
+        <p className='flex gap-1'>Your team code is 
+          <p className=' font-semibold'>{teamCode}.</p>
+        </p>
+        <p>Share this code with your team members to join the team.</p>
+      </div>: null
+   }   
    </p>
    </div>
    
