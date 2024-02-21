@@ -11,6 +11,7 @@ import '../../Button.css'
 import { TypeAnimation } from 'react-type-animation'
 import { useLocation } from 'react-router-dom'
 import Spinner2 from '../ShimmerAndSpinner/Spinner2'
+import Submission from './Submission'
 const MobileDasboard = () => {
      const { authUser } = Api();
      const [user, setUser] = useState({});
@@ -24,7 +25,6 @@ const MobileDasboard = () => {
          const token = localStorage.getItem('token');
          if (token) {
           await authUser().then((data) => {
-            console.log(data.name);
              setUser(data);
               setIsLoading(false);
            })
@@ -86,6 +86,15 @@ const MobileDasboard = () => {
                >
                      Teams
                </button>
+                <button
+                  className={`button ${activeComponent === 'userSubmission' ? 'open' : 'close'}`} 
+                  onClick={() => {
+                    setHamOpen(false);
+                    setActiveComponent('userSubmission')}}
+                >
+                      Submissions
+                </button>
+                
                 <div className='  mt-20'>
                 <TypeAnimation
               sequence={[
@@ -117,6 +126,7 @@ const MobileDasboard = () => {
             {activeComponent === 'userProfile' && <UserProfile user={user} />}
             {activeComponent === 'userEventDetails' && <UserEventDetails user={user} />}
             {activeComponent === 'userTeams' && <UserTeams user={user} />}
+            {activeComponent === 'userSubmission' && <Submission user={user} />}
         </div>
      </>
 

@@ -21,7 +21,7 @@ const BottomPage = () => {
 
      <div className="video">
       
-      <img className='source opacity-100' src={background1}>
+      <img className='source opacity-100' src='https://arohana.b-cdn.net/Bg-bottom1%20(1).jpg'>
       </img>
 
      </div>

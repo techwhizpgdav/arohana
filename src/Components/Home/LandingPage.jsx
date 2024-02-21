@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 
-
 const LandingPage = () => {
   const [opacity, setOpacity] = useState(0);
 
-
-  
   useEffect(() => {
     $(window).scroll(function(e){          
       if($(document).scrollTop() > 120) {
@@ -38,7 +35,7 @@ const LandingPage = () => {
     function setParallaxPosition($doc, multiplier, $object){
       var offset = getOffSet();
       var from_top = $doc.scrollTop(),
-        bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
+        bg_css = 'center ' +(multiplier * from_top - offset +150) + 'px';
       $object.css({"background-position" : bg_css });
     }      
 
@@ -68,16 +65,11 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className='landingPage' data-aos = "fade-up">
+    <div className='landingPage' data-aos="fade-up" >
         <section id="hero" className="text-white tm-font-big tm-parallax">    
         <div className="dark-div"></div> 
         <div className="row" style={{opacity: opacity , transition: 'opacity 0.5s'}}>
                 The Annual Cultural Fest 
-        </div>
-          <div>
-              <h1  className="header_Arohana" >
-                  Arohana
-              </h1>
         </div>
         </section>
     </div>

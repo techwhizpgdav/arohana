@@ -50,44 +50,22 @@ const NavbarPage = () => {
       }
      }, [navigate]);     
 
-     const serverStart = async () => {
-      const response = await axios.post(`${API_URL}/status`, {
-        status: "up"
-      });
-      if (response?.status == 200){
-        setIsloading(false);
-      }
-    }
-
-    const handleButtonClick = () => {
-      if (password === 'antarman' || password === 'Antarman' || password === 'ANTARMAN' ) {
-        setIsloading(true);
-        serverStart();
-        setAlertMessage(null); 
-      } else {
-        alert('Incorrect password');
-      }
-    };
-
-
 
 
   return (
      <>
-    <Modal 
-      isOpen={!!alertMessage} 
-      onRequestClose={() => setAlertMessage(null)}
-      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-haldi-orange text-white p-8 rounded-lg flex flex-col items-center gap-2 mdmax:w-4/5 mdmax:p-3"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-    >
-      <p className='text-lg font-semibold'>{alertMessage}</p>
-        <button 
-          onClick={() => setAlertMessage(null)} 
-          className="py-2 px-4 text-white rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 "
-        >
-          Close
-        </button>
-    </Modal>
+     <Modal isOpen={!!alertMessage} onRequestClose={() => setAlertMessage(null)}
+       className={`
+       absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-haldi-orange text-white p-8 rounded-lg flex flex-col items-center gap-2 mdmax:w-4/5 mdmax:p-3` }
+      >
+        <p className=''>{alertMessage}</p>
+        <p>🎉 You can now participate in the events.🎉 </p>
+      <Link to ={'/categories'}>
+      <button className='bg-white text-black p-2 rounded-lg mt-4 w-40 '
+         onClick={() => {
+          setAlertMessage(null)}}>Events</button>
+      </Link>
+      </Modal>
 
      {width < breakpoint ? <MobileNav /> : <DesktopNav />}
           

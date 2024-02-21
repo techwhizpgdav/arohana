@@ -26,7 +26,6 @@ const UserEventDetails = ({user}) => {
     setStep(4);
       fetchApi('get', `api/participations`).then((data) => {
         setParticipatedEvents(data?.data?.data[0]?.competitions);
-        console.log(data);
       setIsLoading(false);
     });
   }
@@ -90,9 +89,9 @@ return (
     <>
       <h1 className="text-center text-xl font-bold pt-10 ">Here are the details of the events you have participated in:</h1>
 
-      <div className="grid gap-20 w-screen mt-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-20 w-screen mdmax:w-full mt-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {participatedEvents.map((event, index) => (
-          <div key={index} className="border p-8 rounded-lg flex flex-col md:flex-row justify-around items-center bg-slate-300  w-full  " >
+          <div key={index} className="border p-8 rounded-lg flex flex-col md:flex-row justify-around items-center bg-slate-300  w-full   mdmax:w-96" >
             <h2 className="text-xl font-bold absolute -translate-y-16 -translate-x-24 ">{index + 1}</h2>
 
             <div className='flex flex-col justify-center gap-10 '>

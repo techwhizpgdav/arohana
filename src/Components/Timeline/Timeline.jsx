@@ -9,7 +9,7 @@ import './timeline.css';
 const Timeline = () => {
   const { fetchApi, isLoading } = Api();
   const [eventsData, setEventsData] = useState([]);
-  const [length, setLength] = useState(0);
+  const [loading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (tabIndex) => {
@@ -20,9 +20,10 @@ const Timeline = () => {
     const fetchData = async () => {
       try {
         const response = await fetchApi('GET', 'api/timeline', 'timeline');
-        if (response?.status === 200) {
+        if (response?.status == 200) {
+          console.log(response?.data);
           setEventsData(response?.data);
-          setLength(response?.data.length);
+          setIsLoading(false);
         }
       } catch (error) {
         console.error('Error fetching timeline data:', error);
@@ -31,7 +32,7 @@ const Timeline = () => {
     fetchData();
   }, []);
 
-  if (length==0) {
+  if (loading) {
     return (
       <div className='w-screen h-screen flex justify-center items-center'>
         <Spinner2 />

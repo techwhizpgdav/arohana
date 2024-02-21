@@ -12,8 +12,6 @@ const DesktopHome = () => {
       <div className=' -z-10'>
       <BottomPage />
       </div>
-
-
     </div>
   );
 };
