@@ -92,7 +92,7 @@ const DesktopNav = () => {
               </Link>
               <Link data-aos="fade-up" to="/categories" >
               <p className= {navbarStyle('/categories')}>
-                  Categories
+              Events
                 </p>
               </Link>
               <Link data-aos="fade-down" to="/timeline" >
