@@ -23,7 +23,6 @@ const Signup = () => {
     pgdav: pgdav,
   };
 
-
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -36,7 +35,13 @@ const Signup = () => {
     password_confirmation: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Required"),
-    screenshot: Yup.mixed().required("A screenshot is required"),
+    pgdavBool: Yup.boolean(pgdav),
+    screenshot: Yup.string().when("pgdavBool", {
+      is: true,
+      then: Yup.string(null).required("Sponsor Screenshot Required"),
+    }),
+
+    // required("A screenshot is required")
     college: Yup.string().required("Required"),
     phone: Yup.string()
       .required("Required")
@@ -97,7 +102,7 @@ const Signup = () => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     const password_confirmation = e.target.elements.password_confirmation.value;
-    const screenshotFile = e.target.elements.screenshot.files[0]; // Get the uploaded file
+    const screenshotFile = pgdav ? e.target.elements.screenshot.files[0] : null; // Get the uploaded file
     const college = e.target.elements.college.value;
     const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
     const values = {
@@ -318,12 +323,10 @@ const Signup = () => {
                 <div className="container-login100-form-btn">
                   <button
                     type="submit"
-                    className={`login100-form-btn mt-4 ${
-                      Object.keys(errors).length
-                        ? "opacity-40 cursor-not-allowed"
-                        : "cursor-pointer opacity-100"
-                    }`}
-                    disabled={!!Object.keys(errors).length}
+                    className={`login100-form-btn mt-4
+
+                     `}
+                    // disabled={!!Object.keys(errors).length}
                   >
                     Signup
                   </button>
@@ -336,5 +339,11 @@ const Signup = () => {
     </div>
   );
 };
+
+// #{
+//   Object.keys(errors).length
+//     ? "opacity-40 cursor-not-allowed"
+//     : "cursor-pointer opacity-100"
+// }
 
 export default Signup;
