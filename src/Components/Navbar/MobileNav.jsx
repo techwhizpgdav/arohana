@@ -126,7 +126,7 @@ useEffect(() => {
           <Link to="/" className={navbarStyle} onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/categories" className={navbarStyle} onClick={() => setIsOpen(false)}>Events</Link>
           <Link to="/timeline" className={navbarStyle} onClick={() => setIsOpen(false)}>Timeline</Link>
-          <Link to="/contact" className={navbarStyle} onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link to="/teams" className={navbarStyle} onClick={() => setIsOpen(false)}>Teams</Link>
           {isLoggedIn ? 
           <button  onClick={logout} className={` py-2 px-2 font-medium rounded ${isOnDashboard?'text-white':'text-white' } hover:text-rose-200 duration-500 transition-all`}>Logout</button>
             : null
