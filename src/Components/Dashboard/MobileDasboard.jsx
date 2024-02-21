@@ -25,7 +25,6 @@ const MobileDasboard = () => {
          const token = localStorage.getItem('token');
          if (token) {
           await authUser().then((data) => {
-            console.log(data.name);
              setUser(data);
               setIsLoading(false);
            })

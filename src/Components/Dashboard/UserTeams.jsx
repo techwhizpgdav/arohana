@@ -26,7 +26,6 @@ useEffect(() => {
     setIsLoading(true);
     setStep(4);
     fetchApi('get', `api/my-team`).then((data) => {
-      console.log(data?.data?.data);
       setParticipatedEvents(data?.data.data);
       setIsLoading(false);
     });
@@ -34,7 +33,6 @@ useEffect(() => {
   }
   , [user]);
 
-  console.log(user)
 
 if(isLoading){
   return <div className= 'absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
@@ -105,9 +103,6 @@ if(participatedEvents?.length  == 0){
                           </h3>
                         </div>
                         <div >
-                          {
-                            console.log("Events is "+ event)
-                          }
                           <PopOver details={event} />
                         </div>
                         <div>

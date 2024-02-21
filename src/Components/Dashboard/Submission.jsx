@@ -39,7 +39,6 @@ const Submission = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         alert("Submission Successful");
         fetchApi("get", "api/submissions").then((data) => {
           setSubmissions(data?.data?.data[0]?.competition_submissions);
@@ -77,7 +76,6 @@ const Submission = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
           setSubmitting(false);
           onSubmitForm(values, { setSubmitting });
         }}

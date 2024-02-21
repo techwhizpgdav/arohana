@@ -73,7 +73,6 @@ const CompetitionDetailsPage = () => {
             authUser().then((data) => {
               setUser(data);
               if(data?.email_verified_at == null){
-                console.log("user is " + data?.name);
                 setStep(2);
               } else if(data?.email_verified_at!= null){
                 setStep(4);
