@@ -1,0 +1,158 @@
+{
+    "principal": [
+        {
+            "name": "Prof. Krishna Sharma",
+            "photo": "https://arohana.b-cdn.net/Faculty/Principal%20mam.png",
+            "position": "Principal"
+        }
+    ],
+    "incharge": [
+        {
+            "name": "Dr. Aparna Datt",
+            "photo": "https://arohana.b-cdn.net/Faculty/APARNA%20MAM.jpg",
+            "position": "Convenor"
+        },
+        {
+            "name": "Mr. Jagannath Kashyap",
+            "photo": "https://arohana.b-cdn.net/Faculty/Jagannath%20Kashyap%20sir.jpg",
+            "position": "Co-Convener"
+        }
+    ],
+    "core_team": [
+        {
+            "name": "Vaibhav Jaiswal",
+            "position": "President",
+            "mobile": "8448687334",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/vaibhav.jpg",
+            "instagram": "https://www.instagram.com/vaibhavvv007/",
+            "linkedin": "https://www.linkedin.com/in/vaibhavjaiswall/"
+        },
+        {
+            "name": "Rajat Jaiswal",
+            "position": "Vice President",
+            "mobile": "7428763444",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/Polish_20230807_172849374.jpg",
+            "instagram": "https://www.instagram.com/rajat_7428/",
+            "linkedin": "https://www.linkedin.com/in/rajat-jaiswal-1b11b7229/"
+        },
+        {
+            "name": "Devashish Mishra",
+            "position": "Treasurer",
+            "mobile": "7307942820",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/devashish.jpg",
+            "instagram": "https://www.instagram.com/devashish._.mishra/",
+            "linkedin": "https://www.linkedin.com/in/devashish-mishra-b39a6622a/"
+        },
+        {
+            "name": "Soubhagya Kukreja",
+            "position": "General Secretary",
+            "mobile": "9210272900",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/IMG_20230217_183753_267.jpg",
+            "instagram": "https://www.instagram.com/soubhagyaa/",
+            "linkedin": "https://www.linkedin.com/in/soubhagya-kukreja-918459263/"
+        },
+        {
+            "name": "Yesshasvi Pandita",
+            "position": "Technical Head",
+            "mobile": "8209857354",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/WhatsApp%20Image%202023-08-15%20at%2012.50.30%20PM.jpeg.jpg",
+            "instagram": "https://www.instagram.com/yeshassavi_pandita/",
+            "linkedin": "https://www.linkedin.com/in/yeshassavi-pandita-b632741b3/"
+        },
+        {
+            "name": "Prateek Pandita",
+            "position": "Media Head",
+            "mobile": "9650376305",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/prateek.jpg",
+            "instagram": "https://www.instagram.com/mr.prateek666/",
+            "linkedin": "https://www.linkedin.com/in/prateek-pandita-77464724a/"
+        },
+        {
+            "name": "Atharv Mishra",
+            "position": "Core Trainee",
+            "mobile": "8587914667",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/IMG_20230809_121913.jpg",
+            "instagram": "https://www.instagram.com/atharv.mishraa/",
+            "linkedin": "https://www.linkedin.com/in/atharvmishra/"
+        },
+        {
+            "name": "Ayush Tripathi",
+            "position": "Core Trainee",
+            "mobile": "9580242440",
+            "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/ayush.jpg",
+            "instagram": "https://www.instagram.com/ayush_tripathi_1501/"
+        }
+    ],
+    "web_developer": [
+        {
+            "name": "Anubhav Shukla",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Anubhav.jpeg.jpg",
+            "position": "Member",
+            "role": "Full Stack Developer",
+            "instagram": "https://www.instagram.com/anubhav_s_369/",
+            "github": "https://github.com/mr-robot369",
+            "linkedin": "https://www.linkedin.com/in/anubhav--shukla/"
+        },
+        {
+            "name": "Rishi Kumar",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/rishi.jpg",
+            "position": "Coordinator",
+            "role": "Full Stack Developer",
+            "instagram": "https://www.instagram.com/iamrishi.7/",
+            "github": "https://github.com/iamrishi7",
+            "linkedin": "https://www.linkedin.com/in/rishi-kumar-dezynation/"
+        },
+        {
+            "name": "Nishant Kumar Singh",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Nishant.jpg",
+            "position": "Member",
+            "role": "Full Stack Developer",
+            "instagram": "https://www.instagram.com/nishant_singh377",
+            "github": "https://github.com/Nishant5565",
+            "linkedin": "https://www.linkedin.com/in/nishant-kumar-singh-057730228/"
+        },
+        {
+            "name": "Sarthak Sharma",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/WhatsApp%20Image%202024-02-21%20at%2020.36.34_c88e63e1.jpg",
+            "position": "Member",
+            "role": "Full Stack Developer"
+        },
+        {
+            "name": "Mehak Jha",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Mehak%20jha.jpg",
+            "position": "Coordinator",
+            "role": "UI/UX"
+        },
+        {
+            "name": "Jyoti Aswal",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Jyoti%20Aswal.jpg",
+            "position": "Member",
+            "role": "UI/UX",
+            "instagram": "https://www.instagram.com/.jyotiiiii?igsh=ZzJ4bjd5enZ4czJ6"
+        },
+        {
+            "name": "Suraj Yadav",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Suraj.jpg",
+            "position": "Member",
+            "role": "Backened Developer",
+            "instagram": "https://www.instagram.com/suraj.yadav.7/?next=%2F",
+            "github": "https://github.com/Suraj-14911",
+            "linkedin": "https://www.linkedin.com/in/suraj-yadav-00b715273/"
+        },
+        {
+            "name": "Harsh Kumar",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/hk.jpg",
+            "position": "Member",
+            "role": "Frontend Developer"
+        },
+        {
+            "name": "pratyush jha",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Pratyush%20Jha.jpg",
+            "position": "Member",
+            "role": "Frontend Developer",
+            "instagram": "https://www.instagram.com/pratyush_jh?igsh=MWwyZzNzOHFqZjQwYw==",
+            "github": "https://github.com/PratyushJha19",
+            "linkedin": "https://www.linkedin.com/in/pratyush-jha-1348b8263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        }
+    ]
+}

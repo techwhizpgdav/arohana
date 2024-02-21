@@ -14,7 +14,7 @@ const TimelineBody = ({ eventsData }) => {
     return (
         <>
             <div className="text-white mt-2 font-semibold text-lg rounded-md">
-                {eventsData[0].date}
+                {eventsData[0].day}
             </div>
             <VerticalTimeline>
                 {eventsData.map((event, index) => (
@@ -41,7 +41,7 @@ const TimelineBody = ({ eventsData }) => {
                         </div>
                         <div className="flex flex-col items-center justify-between">
                             <p className="text-sm text-white mb-2">Organizer: {event.name}</p>
-                            <p className="text-sm text-white mb-4">Timings: {event.start_at} - {event.ends_at}</p>
+                            <p className="text-sm text-white mb-4">Timings: {event.event_start} - {event.event_end}</p>
                             <button
                                 className="bg-gradient-to-r from-blue-400 to-indigo-600 text-white px-6 py-2 rounded-full hover:from-blue-500 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                                 onClick={() => handleButtonClick(event.id)}
