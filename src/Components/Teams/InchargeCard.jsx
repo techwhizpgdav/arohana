@@ -3,12 +3,12 @@ import React from 'react';
 const InchargeCard = ({ data }) => {
     return (
         <div className="relative rounded-lg p-5 hover:shadow-xl transform hover:scale-105 transition-transform backdrop-filter backdrop-blur-md bg-opacity-30">
-            <div className="mx-auto overflow-hidden rounded-full w-32 h-32">
+            <div className="mx-auto overflow-hidden rounded-full" style={{ width: '150px', height: '150px', filter: 'drop-shadow(0 0 15px rgba(0, 0, 255, 0.5))', clipPath: 'circle(50%)' }}>
                 <img
-                    // src={data.photo}
-                    src="https://www.pgdavcollege.in/assets/front/images/principaldesk.jpg"
+                    src={data.photo}
                     alt={data.name}
-                    className="object-cover rounded-full"
+                    className="object-cover hover:scale-105 transition-transform rounded-full"
+                    style={{ width: '100%', height: '100%', clipPath: 'circle(50%)' }}
                 />
             </div>
             <div className="flex flex-col items-center mt-4">
