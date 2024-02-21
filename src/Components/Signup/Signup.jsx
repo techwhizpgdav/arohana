@@ -20,7 +20,7 @@ const Signup = () => {
     college: "",
     college_id: null,
     instagram_id: "",
-    pgdav: pgdav,
+    pgdav: pgdav ? 1 : 0,
   };
 
   const validationSchema = Yup.object({
@@ -41,7 +41,6 @@ const Signup = () => {
       then: Yup.string(null).required("Sponsor Screenshot Required"),
     }),
 
-    // required("A screenshot is required")
     college: Yup.string().required("Required"),
     phone: Yup.string()
       .required("Required")
@@ -80,10 +79,7 @@ const Signup = () => {
       }
     } catch (error) {
       setIsLoading(false);
-      if (error?.response.status === 422) {
-        alert("Email already exists.");
-      }
-      console.error("Error:", error.response.data.ErrorMessage);
+        alert(error?.response?.data?.message);
     }
   };
 
@@ -115,7 +111,7 @@ const Signup = () => {
       phone: e.target.elements.phone.value,
       college_id: college_idFile,
       instagram_id: e.target.elements.instagram_id.value,
-      pgdav: pgdav,
+      pgdav: pgdav ? 1 : 0,
     };
     onSubmit(values);
   };
@@ -217,7 +213,7 @@ const Signup = () => {
                     }}
                   />
                   <p className="ml-3 mt-2">
-                    I am a student of P.G.D.A.V. College(M)
+                    Student of P.G.D.A.V. College(M)
                   </p>
                 </div>
                 <div
@@ -326,7 +322,7 @@ const Signup = () => {
                     className={`login100-form-btn mt-4
 
                      `}
-                    // disabled={!!Object.keys(errors).length}
+                  // disabled={!!Object.keys(errors).length}
                   >
                     Signup
                   </button>
