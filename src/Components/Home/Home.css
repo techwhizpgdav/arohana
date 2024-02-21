@@ -44,7 +44,7 @@
    
    @media (min-height: 500px) and (max-height: 679px) {
      #hero {
-       background-position: center -250px;
+       background-position: center 250px;
      }
    }
    
