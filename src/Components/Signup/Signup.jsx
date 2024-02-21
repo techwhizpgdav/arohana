@@ -246,7 +246,7 @@ const Signup = () => {
                     type="text"
                     name="instagram_id"
                     className="input100 placeholder:text-white"
-                    placeholder="Instagram ID"
+                    placeholder="Instagram ID (Optional)"
                   />
                   <span className="focus-input100" data="&#xf16d;"></span>
                 </div>
