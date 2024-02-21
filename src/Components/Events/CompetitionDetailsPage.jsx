@@ -479,7 +479,7 @@ const CompetitionDetailsPage = () => {
               
                     </div>
                     <div>
-                      The steps for sponsor tasks are given in the rules section at the bottom of the page, complete the task and you are good to go.
+                      The steps for sponsor tasks are given in the rules section at the bottom of the page  , complete the task and you are good to go.
                     </div>
                     <button
                       onClick={() => setSponsorStep(0)}
