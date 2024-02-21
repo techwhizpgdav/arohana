@@ -5,10 +5,15 @@ import Profile from "../../assets/userProfile.png";
 import * as Yup from "yup";
 import axios from "axios";
 import { API_URL } from "../../Functions/Constants";
+import { IoEye } from "react-icons/io5";
+import { IoMdEyeOff } from "react-icons/io";
+
 
 const Signup = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [showNormalPassword, setShowNormalPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const initialValues = {
     name: "",
     email: "",
@@ -19,13 +24,12 @@ const Signup = () => {
     college_id: "",
     instagram_id: "",
   };
-
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{8,}$/,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[a-zA-Z\d@$!%*?&#]{8,}$/,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
       )
       .required("Required"),
@@ -160,18 +164,19 @@ const Signup = () => {
                   component="div"
                   className="error-message"
                 />
-                <div
-                  className="wrap-input100 validate-input"
-                  data-validate="Enter password"
-                >
-                  <Field
-                    type="password"
-                    name="password"
-                    className="input100 placeholder:text-white"
-                    placeholder="Password"
-                  />
-                  <span className="focus-input100" data="&#xf191;"></span>
-                </div>
+              <div className="wrap-input100 validate-input" data-validate="Enter password">
+                <Field
+                  type={showNormalPassword ? "text" : "password"}
+                  name="password"
+                  className="input100 placeholder:text-white"
+                  placeholder="Password"
+                />
+
+                <span className="focus-input100" data="&#xf191;"></span>
+              </div>
+                <button type="button" onClick={() => setShowNormalPassword(!showNormalPassword)} className=" text-lg text-white hover:cursor-pointer relative -top-16 left-56">
+                  {showNormalPassword ? <IoMdEyeOff /> : <IoEye />}
+                </button>
                 <ErrorMessage
                   name="password"
                   component="div"
@@ -182,13 +187,16 @@ const Signup = () => {
                   data-validate="Confirm password"
                 >
                   <Field
-                    type="password"
+                    type= {showConfirmPassword ? "text" : "password"}
                     name="password_confirmation"
                     className="input100 placeholder:text-white"
                     placeholder="Confirm Password"
                   />
                   <span className="focus-input100" data="&#xf191;"></span>
                 </div>
+                <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className=" text-lg text-white hover:cursor-pointer relative -top-16 left-56">
+                  {showConfirmPassword ? <IoMdEyeOff /> : <IoEye />}
+                </button>
                 <ErrorMessage
                   name="password_confirmation"
                   component="div"
