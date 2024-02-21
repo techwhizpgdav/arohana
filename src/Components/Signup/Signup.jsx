@@ -9,7 +9,7 @@ import { API_URL } from "../../Functions/Constants";
 const Signup = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-//   const [pgdav, setPgdav] = useState(false);
+  const [pgdav, setPgdav] = useState(false);
   const initialValues = {
     name: "",
     email: "",
@@ -20,7 +20,7 @@ const Signup = () => {
     college: "",
     college_id: null,
     instagram_id: "",
-    // pgdav: pgdav,
+    pgdav: pgdav,
   };
 
   const validationSchema = Yup.object({
@@ -35,8 +35,13 @@ const Signup = () => {
     password_confirmation: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Required"),
-    // pgdavBool: Yup.boolean(pgdav),
-    screenshot: Yup.string().required("A screenshot is required"),
+    pgdavBool: Yup.boolean(pgdav),
+    screenshot: Yup.string().when("pgdavBool", {
+      is: true,
+      then: Yup.string(null).required("Sponsor Screenshot Required"),
+    }),
+
+    // required("A screenshot is required")
     college: Yup.string().required("Required"),
     phone: Yup.string()
       .required("Required")
@@ -97,7 +102,7 @@ const Signup = () => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     const password_confirmation = e.target.elements.password_confirmation.value;
-    const screenshotFile = e.target.elements.screenshot.files[0]; // Get the uploaded file
+    const screenshotFile = pgdav ? e.target.elements.screenshot.files[0] : null; // Get the uploaded file
     const college = e.target.elements.college.value;
     const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
     const values = {
@@ -110,7 +115,7 @@ const Signup = () => {
       phone: e.target.elements.phone.value,
       college_id: college_idFile,
       instagram_id: e.target.elements.instagram_id.value,
-    //   pgdav: pgdav,
+      pgdav: pgdav,
     };
     onSubmit(values);
   };
@@ -200,7 +205,7 @@ const Signup = () => {
                   component="div"
                   className="error-message"
                 />
-                {/* <div className="flex flex-row my-3 text-white">
+                <div className="flex flex-row my-3 text-white">
                   <input
                     type="checkbox"
                     className="h-4 w-4 mt-3"
@@ -214,7 +219,7 @@ const Signup = () => {
                   <p className="ml-3 mt-2">
                     I am a student of P.G.D.A.V. College(M)
                   </p>
-                </div> */}
+                </div>
                 <div
                   className="wrap-input100 validate-input"
                   data-validate="Enter college"
@@ -222,7 +227,7 @@ const Signup = () => {
                   <Field
                     type="text"
                     name="college"
-                    // disabled={pgdav}
+                    disabled={pgdav}
                     className="input100 placeholder:text-white"
                     placeholder="College"
                   />
@@ -286,7 +291,7 @@ const Signup = () => {
                   component="div"
                   className="error-message"
                 />
-                {/* {pgdav ? ( */}
+                {pgdav ? (
                   <>
                     <div className="validate-input">
                       <Field
@@ -314,16 +319,14 @@ const Signup = () => {
                       </Link>
                     </div>
                   </>
-                {/* ) : null} */}
+                ) : null}
                 <div className="container-login100-form-btn">
                   <button
                     type="submit"
-                    className={`login100-form-btn mt-4 ${
-                      Object.keys(errors).length
-                        ? "opacity-40 cursor-not-allowed"
-                        : "cursor-pointer opacity-100"
-                    }`}
-                    disabled={!!Object.keys(errors).length}
+                    className={`login100-form-btn mt-4
+
+                     `}
+                    // disabled={!!Object.keys(errors).length}
                   >
                     Signup
                   </button>
@@ -336,5 +339,11 @@ const Signup = () => {
     </div>
   );
 };
+
+// #{
+//   Object.keys(errors).length
+//     ? "opacity-40 cursor-not-allowed"
+//     : "cursor-pointer opacity-100"
+// }
 
 export default Signup;
