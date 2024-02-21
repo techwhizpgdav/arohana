@@ -8,7 +8,7 @@ const formatDate = (dateString) => {
 };
 
 const DayTabs = ({ eventsData, activeTab, onTabClick }) => {
-  console.log(eventsData);
+
   return (
     <div className="flex items-center justify-center gap-4 mt-8 mb-4">
       {Object.keys(eventsData).map((date, index) => (
