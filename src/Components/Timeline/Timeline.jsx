@@ -21,8 +21,8 @@ const Timeline = () => {
       try {
         const response = await fetchApi('GET', 'api/timeline', 'timeline');
         if (response?.status === 200) {
-          setEventsData(response?.data?.data);
-          setLength(response?.data?.data.length);
+          setEventsData(response?.data);
+          setLength(response?.data.length);
         }
       } catch (error) {
         console.error('Error fetching timeline data:', error);
@@ -31,7 +31,7 @@ const Timeline = () => {
     fetchData();
   }, []);
 
-  if (length === 0) {
+  if (length==0) {
     return (
       <div className='w-screen h-screen flex justify-center items-center'>
         <Spinner2 />

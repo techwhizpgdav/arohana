@@ -14,7 +14,7 @@ const TimelineBody = ({ eventsData }) => {
     return (
         <>
             <div className="text-white mt-2 font-semibold text-lg rounded-md">
-                {eventsData[0].date}
+                {eventsData[0].day}
             </div>
             <VerticalTimeline>
                 {eventsData.map((event, index) => (
