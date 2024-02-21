@@ -476,6 +476,10 @@ const CompetitionDetailsPage = () => {
                   <div className=" flex flex-col justify-center items-center gap-10 mt-5">
                     <div className="">
                       Complete the sponsor task to participate in the event.
+              
+                    </div>
+                    <div>
+                      The steps for sponsor tasks are given in the rules section at the bottom of the page, complete the task and you are good to go.
                     </div>
                     <button
                       onClick={() => setSponsorStep(0)}
