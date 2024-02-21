@@ -65,7 +65,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className='landingPage' >
+    <div className='landingPage' data-aos="fade-up" >
         <section id="hero" className="text-white tm-font-big tm-parallax">    
         <div className="dark-div"></div> 
         <div className="row" style={{opacity: opacity , transition: 'opacity 0.5s'}}>
