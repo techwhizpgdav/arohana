@@ -9,7 +9,7 @@ const Rules = ({ rounds }) => {
 
   return (
     <div className="mb-20">
-      <div className="flex justify-around items-center mt-8">
+      <div className="flex justify-around items-center flex-wrap mt-8">
         {rounds.map((round) => (
           <button
             key={round.id}

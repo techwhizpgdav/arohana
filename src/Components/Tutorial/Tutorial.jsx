@@ -37,7 +37,7 @@ const Tutorial = () => {
      return (
           <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 ">
                <h1 data-aos="fade-up" className="text-4xl font-bold mb-5 ">Registration Tutorial</h1>
-               <p data-aos="fade-up" className="text-lg mb-2 p-2 w-4/5">Please follow these instructions, to complete your registration. </p>
+               <p data-aos="fade-up" className="text-lg mb-2 p-2 ">Please follow these instructions, to complete your registration. </p>
                <div className=' p-2'> 
                <p data-aos="fade-up" className="text-lg mb-5">Go to the signup page.</p>
                <p data-aos="fade-up" className="text-lg mb-5">Fill in the details and submit the form.</p>
@@ -58,7 +58,7 @@ const Tutorial = () => {
                </div>
 
                {showButton && (
-                    <button data-aos="fade-up" className="bg-haldi hover:bg-haldi-red text-white font-bold py-2 px-4 rounded transition-all duration-500 ease-in-out signup-button  ">
+                    <button data-aos="fade-up" className="bg-haldi hover:bg-haldi-red text-white font-bold py-2 px-4 mt-20 rounded transition-all duration-500 ease-in-out signup-button  ">
                          <Link to={'/signup'}>
                               Signup
                          </Link>
