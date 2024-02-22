@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,6 +23,7 @@ const Footer = () => {
     const handleTeamClick = (tab) => {
         navigate(`/teams`, { state: { tab } });
     }
+
     const footerClass = isOnDashboard ? 'bg-gradient-to-r to-linear-lightBlue from-linear-darkBlue' : (isLoggedIn ? 'bg-gradient-to-r from-haldi-orange to-haldi-red' : 'bg-gradient-to-r from-haldi-yellow to-haldi');
     const textColor = 'white';
 
@@ -36,25 +38,34 @@ const Footer = () => {
                             </Link>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6">
-                        <div>
-                                <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>Resources</h2>
+                            <div>
+                                <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>Hyperion</h2>
                                 <ul className={`text-${textColor} dark:text-${textColor} font-medium`}>
                                     <li className="mb-4">
-                                        <a href="https://pgdavhyperion.in/" className="hover:underline">Hyperion</a>
+                                        <a href="https://pgdavhyperion.in/" target="_blank" rel="noopener noreferrer" className="hover:underline">Official Website</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.pgdavcollege.in//" className="hover:underline">PGDAV College</a>
+                                        <a href="https://www.instagram.com/hyperion_pgdav/" target="_blank" rel="noopener noreferrer" className="hover:underline ">Instagram <FaInstagram style={{ display: 'inline-block' }} /></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://m.facebook.com/PGDAVhyperion?_rdr" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook <FaFacebook style={{ display: 'inline-block' }} /></a>
                                     </li>
                                 </ul>
                             </div>
                             <div>
-                                <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>Follow us</h2>
+                                <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>PGDAV College</h2>
                                 <ul className={`text-${textColor} dark:text-${textColor} font-medium`}>
                                     <li className="mb-4">
-                                        <a href="https://www.instagram.com/hyperion_pgdav/" className="hover:underline ">Instagram</a>
+                                        <a href="https://www.pgdavcollege.in/" target="_blank" rel="noopener noreferrer" className="hover:underline">Official Website</a>
                                     </li>
                                     <li>
-                                        <a href="https://m.facebook.com/PGDAVhyperion?_rdr" className="hover:underline">Facebook</a>
+                                        <a href="https://instagram.com/pgdav_official?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" className="hover:underline ">Instagram <FaInstagram style={{ display: 'inline-block' }} /></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/profile.php?id=61552210954443" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook <FaFacebook style={{ display: 'inline-block' }} /></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/pgdav_du?t=QoxPFIejTy2cu_L10Fxygg&s=08" target="_blank" rel="noopener noreferrer" className="hover:underline">Twitter <FaTwitter style={{ display: 'inline-block' }} /></a>
                                     </li>
                                 </ul>
                             </div>
