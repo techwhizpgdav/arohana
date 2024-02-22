@@ -41,15 +41,16 @@ const MobileHome = () => {
           <div className="text-center">
             <div className="max-w-md mx-auto mb-8 bg-white bg-opacity-70 p-6 rounded-lg shadow-lg">
               <h1 className="text-3xl font-bold mb-4 font-serif">ABOUT US</h1>
-              <p className="text-lg font-serif">
+              <p className="text-lg mb-10">
                 {MobilePara}  
               </p>
             </div>
           </div>
         </div>
         </div>
+        <div className=' mt-20'>
         <Faq color = {false} />
-
+        </div>
     </>
   )
 }
