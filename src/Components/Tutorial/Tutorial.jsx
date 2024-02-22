@@ -37,23 +37,24 @@ const Tutorial = () => {
      return (
      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 ">
 
-          <h1 data-aos="fade-up" className="text-4xl font-bold mb-5 ">Registration Tutorial</h1>
+          <h1 data-aos="fade-up" className="text-3xl font-bold mb-5 ">Important Instructions !!</h1>
           <p data-aos="fade-up" className="text-lg mb-2 p-2 ">Kindly adhere to the following instructions to successfully complete your registration.</p>
-          <div className=' p-2'> 
-               <p data-aos="fade-up" className="text-lg mb-5">Proceed to the signup page.</p>
-               <p data-aos="fade-up" className="text-lg mb-5">Enter the required details and submit the form.</p>
-               <p data-aos="fade-up" className="text-lg mb-5">Ensure that you provide a valid college ID.</p>
-               <p data-aos="fade-up" className="text-lg mb-5">Upon successful signup, you will receive an email containing a verification link.</p>
+          <div className=' mdmax:pl-8'>
+          <ul className=' list-disc' > 
+               <li data-aos="fade-up" className="text-lg mb-5">Proceed to the signup page.</li>
+               <li data-aos="fade-up" className="text-lg mb-5">Enter the required details and submit the form.</li>
+               <li data-aos="fade-up" className="text-lg mb-5">Ensure that you provide a valid college ID.</li>
+               <li data-aos="fade-up" className="text-lg mb-5">Upon successful signup, you will receive an email containing a verification link.</li>
+          </ul>
           </div>
 
-          <div data-aos="fade-up" className="flex flex-col items-start mb-5">
-               <label className="flex ">
-                    <input type="checkbox" name="tutorial" className="form-checkbox h-5 w-5 text-haldi" onChange={handleCheckboxChange} />
-                    <span className="ml-2 text-gray-700">I confirm that I have read the tutorial.</span>
+          <div data-aos="fade-up" className="flex flex-col items-start mt-5 gap-4 p-2">
+               <label className="">
+                    <input type="checkbox" name="tutorial" className="form-checkbox text-haldi w-4 h-4" onChange={handleCheckboxChange} /> I confirm that I have read the tutorial
+                    
                </label>
-               <label className="flex items-center">
-                    <input type="checkbox" name="terms" className="form-checkbox h-5 w-5 text-haldi  " onChange={handleCheckboxChange} />
-                    <span className="ml-2 text-gray-700">I agree to abide by the rules and not cause any disruptions during the event.</span>
+               <label className="">
+                    <input type="checkbox" name="terms" className="form-checkbox text-haldi w-4 h-4 " onChange={handleCheckboxChange} /> I agree to abide by the rules and not cause any disruptions during the event
                </label>
           </div>
 

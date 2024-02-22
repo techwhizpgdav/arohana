@@ -77,6 +77,11 @@ const Login = ({path}) => {
                                              Don't Have an account? <p className=' text-white font-medium'> Sign Up</p> 
                                         </Link>
                                    </div>
+                                   <div className="text-center pt-6">
+                                        <Link to="/forget-password" className="txt1">
+                                             Forgot Password?
+                                        </Link>
+                                   </div>
                               </Form>
                               )}
                          </Formik>

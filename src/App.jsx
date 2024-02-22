@@ -17,7 +17,7 @@ import Verify from './Components/Verify/Verify';
 import Dashboard from '../src/Pages/DashBoardPage';
 import RegistrationForm from './Components/RegisterEvents/RegisterForm';
 import Categories from './Components/Events/Categories';
-
+import Email from './Components/ForgetPass/Email';
 
 const AppLayout = () => (
   <div>
@@ -34,6 +34,7 @@ const appRouters = () => (
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
+        <Route path="forget-password" element={<Email />} />
         <Route path="teams" element={<Teams />} />
         <Route path="sponsors" element={<Sponsors />} />
         <Route path="timeline" element={<Timeline />} />
@@ -49,7 +50,6 @@ const appRouters = () => (
         <Route path="categories/:id/:name" element={<EventByCategories />} />
         <Route path="competition/:id" element={<CompetitionDetailsPage />} />
         <Route path="*" element={<Home />} />
-
       </Route>
     </Routes>
   </Router>
