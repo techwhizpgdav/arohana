@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import Api from '../../Functions/api';
 import './Login.css'
 import Profile from '../../assets/userProfile.png'
+import { IoEye } from "react-icons/io5";
+import { IoMdEyeOff } from "react-icons/io";
 const Login = ({path}) => {
 
      const navigate = useNavigate();
      const {login , isLoading} = Api();
-
+     const [showPassword, setShowPassword] = useState(false);
      useEffect(() => {
           const checkAndNavigate = async () => {
                const token = localStorage.getItem('token');
@@ -63,9 +65,15 @@ const Login = ({path}) => {
                                    </div>
                                    <ErrorMessage name="email" component="div" className="error-message" />
                                    <div className="wrap-input100 validate-input" data-validate="Enter password">
-                                        <Field type="password" name="password" className="input100 placeholder:text-white" placeholder="Password" />
+                                        <Field type= {
+                                             showPassword ? "text" : "password"
+                                        } name="password" className="input100 placeholder:text-white" placeholder="Password" />
+                                        
                                         <span className="focus-input100" data="&#xf191;"></span>
                                    </div>
+                                   <button type="button" onClick={() => setShowPassword(!showPassword)} className=" text-lg text-white hover:cursor-pointer relative -top-16 left-56">
+                                        {showPassword ? <IoMdEyeOff /> : <IoEye />}
+                                        </button>
                                    <ErrorMessage name="password" component="div" className="error-message" />
                                    <div className={`container-login100-form-btn`}>
                                         <button type="submit" className={`login100-form-btn ${!isValid && 'opacity-45 cursor-not-allowed'} cursor-pointer`} disabled={!isValid} >
