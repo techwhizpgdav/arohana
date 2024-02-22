@@ -113,8 +113,8 @@ const Signup = () => {
     onSubmit(values);
   };
   return (
-    <div className={`${isLoading ? "opacity-40" : "opacity-100"} `}>
-      <div className="container-login100 min-h-screen mt-2 ">
+    <div className={`${isLoading ? "opacity-40" : "opacity-100"} w-full`}>
+      <div className="container-login100 min-h-screen mt-2">
         <div className="wrap-login100 ">
           <Formik
             initialValues={initialValues}
@@ -239,7 +239,7 @@ const Signup = () => {
                 />
 
                 <div
-                  className="wrap-input100 validate-input"
+                  className=" mb-2 wrap-input100 validate-input"
                   data-validate="Enter college"
                 >
                   <Field
@@ -250,7 +250,7 @@ const Signup = () => {
                   />
                   <span className="focus-input100" data="&#xf16d;"></span>
                 </div>
-                <div className=" max-w-60 text-white mb-4">
+                <div className=" max-w-60 text-white mb-8">
                   Do you have public account with 1000+ followers on Instagram?
                   If Yes we have a 🎁 for you.
                 </div>
