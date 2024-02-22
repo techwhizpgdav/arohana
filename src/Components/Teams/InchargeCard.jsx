@@ -1,12 +1,11 @@
 import React from 'react';
-import PrincipalImp from '../../assets/Image/principal.jpg';
 
 const InchargeCard = ({ data }) => {
     return (
         <div className="relative rounded-lg p-5 hover:shadow-xl transform hover:scale-105 transition-transform backdrop-filter backdrop-blur-md bg-opacity-30">
             <div className="mx-auto overflow-hidden rounded-full" style={{ width: '150px', height: '150px', filter: 'drop-shadow(0 0 15px rgba(0, 0, 255, 0.5))', clipPath: 'circle(50%)' }}>
                 <img
-                    src={data.position == "Principal" ? PrincipalImp : data.photo}
+                    src={data.photo}
                     alt={data.name}
                     className="object-cover hover:scale-105 transition-transform rounded-full"
                     style={{ width: '100%', height: '100%', clipPath: 'circle(50%)' }}
