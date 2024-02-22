@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import { API_URL } from "../../Functions/Constants";
 import axios from "axios";
 const Email = () => {
-  const { forgotPassword, isLoading } = Api();
+  const { forgotPassword } = Api();
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const {fetchApi} = Api();
   const initialValues = {
     email: "",
@@ -21,17 +22,21 @@ const Email = () => {
 
   const onSubmit = async (values) => {
     setEmail(values.email);
+    setIsLoading(true);
     try {
       const result = await axios.post(`${API_URL}/forgot-password`, {
         email: values.email,
       });
       if (result.status === 200) {
         setStep(2);
+        setIsLoading(false);
       } else {
         alert("Something went wrong. Please try again.");
         setStep(1);
+        setIsLoading(false);
       }
     } catch (error) {
+      setIsLoading(false);
       if (error.response.status === 500) {
         alert("This email is not valid.");
       }

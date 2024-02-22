@@ -18,7 +18,7 @@ import Dashboard from '../src/Pages/DashBoardPage';
 import RegistrationForm from './Components/RegisterEvents/RegisterForm';
 import Categories from './Components/Events/Categories';
 import Email from './Components/ForgetPass/Email';
-
+import ResetPass from './Components/ForgetPass/ResetPass';
 const AppLayout = () => (
   <div>
     <Navbar />
@@ -35,6 +35,7 @@ const appRouters = () => (
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="forget-password" element={<Email />} />
+        <Route path="password-reset/:token" element={<ResetPass />} />
         <Route path="teams" element={<Teams />} />
         <Route path="sponsors" element={<Sponsors />} />
         <Route path="timeline" element={<Timeline />} />
@@ -49,6 +50,7 @@ const appRouters = () => (
         <Route path='categories' element={<Categories />} />
         <Route path="categories/:id/:name" element={<EventByCategories />} />
         <Route path="competition/:id" element={<CompetitionDetailsPage />} />
+
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>
