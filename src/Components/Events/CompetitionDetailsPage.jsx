@@ -305,7 +305,7 @@ const CompetitionDetailsPage = () => {
                             className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
                             onClick={() => navigate("/dashboard")}
                           >
-                            Dashboard
+                            Submit Entry
                           </p>
                         )}
                       </>
