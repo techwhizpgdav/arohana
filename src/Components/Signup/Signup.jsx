@@ -51,15 +51,15 @@ const Signup = () => {
     setIsLoading(true);
     const formData = new FormData();
     for (const key in values) {
-      if (!values[key]) continue;
-      if (key == "college_id" && values[key].name) {
-        formData.append(key, values[key], values[key].name);
-      } else if (key === "instagram_id" && values[key] !== "") {
-        formData.append(key, values[key]);
-      } else if (key !== "instagram_id") {
-        formData.append(key, values[key]);
+        if (!values[key]) continue;
+        if ((key === "college_id" || key === "sponsor_task") && values[key].name) {
+          formData.append(key, values[key], values[key].name);
+        } else if (key === "instagram_id" && values[key] !== "") {
+          formData.append(key, values[key]);
+        } else if (key !== "instagram_id") {
+          formData.append(key, values[key]);
+        }
       }
-    }
     try {
       const response = await axios.post(`${API_URL}/register`, formData, {
         headers: {
@@ -96,7 +96,7 @@ const Signup = () => {
     };
     checkAndNavigate();
   }, [navigate]);
-  const handleAutofill = (e) => {
+const handleAutofill = (e) => {
     e.preventDefault();
     const name = e.target.elements.name.value;
     const email = e.target.elements.email.value;
@@ -104,20 +104,20 @@ const Signup = () => {
     const password_confirmation = e.target.elements.password_confirmation.value;
     const college = e.target.elements.college.value;
     const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
+    const sponsor_taskFile = e.target.elements.sponsor_task.files[0]; // Get the uploaded file
     const values = {
-      name,
-      email,
-      password,
-      password_confirmation,
-      college,
-      phone: e.target.elements.phone.value,
-      college_id: college_idFile,
-      instagram_id: e.target.elements.instagram_id.value,
-    sponsor_task: e.target.elements.sponsor_task.value,
+        name,
+        email,
+        password,
+        password_confirmation,
+        college,
+        phone: e.target.elements.phone.value,
+        college_id: college_idFile,
+        instagram_id: e.target.elements.instagram_id.value,
+        sponsor_task: sponsor_taskFile,
     };
     onSubmit(values);
-
-  };
+};
     function closeModal() {
         setIsOpen(false)
     }
