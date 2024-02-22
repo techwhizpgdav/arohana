@@ -25,6 +25,7 @@ import Slide6 from "../../assets/Participation/Img6.jpg";
 import Slide7 from "../../assets/Participation/Img7.jpg";
 import { useNavigate, Link } from "react-router-dom";
 import Rules from "./Rules";
+import { FaWhatsapp } from "react-icons/fa";
 
 const CompetitionDetailsPage = () => {
   const navigate = useNavigate();
@@ -99,6 +100,7 @@ const CompetitionDetailsPage = () => {
     venue,
     image_url,
     sponsor_task,
+    whatsapp_group
   } = event;
   function closeModal() {
     setIsOpen(false);
@@ -265,6 +267,14 @@ const CompetitionDetailsPage = () => {
                     Please wait for the admin to verify your account.
                   </p>
                 )}
+                {
+                    (alreadyParticipated || isChildParticipated ) && whatsapp_group !=null? (
+                      <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
+                        <FaWhatsapp color="white" size={20} />
+                        Join Group
+                      </a>
+                    ) : null
+                  }
                 {step === 4 && (
                   <>
                     {alreadyParticipated ? (
@@ -398,6 +408,14 @@ const CompetitionDetailsPage = () => {
                       </Link>
                     </button>
                   )}
+                  {
+                    (alreadyParticipated || isChildParticipated ) && whatsapp_group !=null? (
+                      <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
+                        <FaWhatsapp color="white" size={20} />
+                        Join Group
+                      </a>
+                    ) : null
+                  }
                   {step == 4 && (
                     <>
                       {alreadyParticipated ? (
