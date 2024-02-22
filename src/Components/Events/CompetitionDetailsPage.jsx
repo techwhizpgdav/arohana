@@ -241,7 +241,7 @@ const CompetitionDetailsPage = () => {
               </div>
 
               {/* Participant Actions */}
-              <div className="flex justify-center mt-4 md:mt-8">
+              <div className="flex flex-col items-center gap-4 justify-center mt-4 md:mt-8">
                 {step === 1 && (
                   <button>
                     <Link
@@ -267,6 +267,7 @@ const CompetitionDetailsPage = () => {
                     Please wait for the admin to verify your account.
                   </p>
                 )}
+                <div>
                 {
                     (alreadyParticipated || isChildParticipated ) && whatsapp_group !=null? (
                       <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
@@ -275,6 +276,7 @@ const CompetitionDetailsPage = () => {
                       </a>
                     ) : null
                   }
+                </div>
                 {step === 4 && (
                   <>
                     {alreadyParticipated ? (
@@ -282,8 +284,8 @@ const CompetitionDetailsPage = () => {
                         <Link
                           to="/dashboard"
                           className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                        >
-                          Dashboard
+                        > 
+                          Submit Entry
                         </Link>
                       </button>
                     ) : (
@@ -424,7 +426,7 @@ const CompetitionDetailsPage = () => {
                             to="/dashboard"
                             className=" bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
                           >
-                            Dashboard
+                            Submit Entry
                           </Link>
                         </button>
                       ) : (
@@ -447,7 +449,7 @@ const CompetitionDetailsPage = () => {
                               className=" bg-haldi text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
                               onClick={() => navigate("/dashboard")}
                             >
-                              Dashboard
+                              Submit Entry
                             </p>
                           )}
                         </>
@@ -539,7 +541,7 @@ const CompetitionDetailsPage = () => {
                       className="text-rose-700"
                       onClick={() => navigate("/dashboard")}
                     >
-                      Dashboard
+                      Submit
                     </button>
                   ) : (
                     <button
