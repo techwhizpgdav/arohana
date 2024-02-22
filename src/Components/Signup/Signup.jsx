@@ -182,6 +182,7 @@ const Signup = () => {
                   component="div"
                   className="error-message max-w-60"
                 />
+                
                 <div
                   className="wrap-input100 validate-input"
                   data-validate="Confirm password"
