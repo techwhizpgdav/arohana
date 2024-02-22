@@ -48,6 +48,8 @@ const UserProfile = ({ user }) => {
           <p className="font-bold">Account Verification Status:</p>
           <p>{is_verified == 0 ? 'Pending' : 'Verified'
            }</p>
+           <br />
+           <b>You can participate in events and submit drive links without account verification.</b>
           </div>
         </div>
         <div className='flex gap-8 items-center justify-center flex-col  '>
