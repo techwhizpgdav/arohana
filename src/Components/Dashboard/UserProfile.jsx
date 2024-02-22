@@ -56,8 +56,8 @@ const UserProfile = ({ user }) => {
             <p>+91 {phone_number}</p>
           </div>
           <div className="flex gap-2 mb-4">
-            <p className="font-bold">Account Verification Status:</p>
-            <p>{is_verified == 0 ? "Pending" : "Verified"}</p>
+            <p className="font-bold">Fest Pass:</p>
+            <p>{is_verified == 0 ? "Pending⌛" : "Verified✅"}</p>
           </div>
           <div className="flex gap-2 mb-4">
             <b>
