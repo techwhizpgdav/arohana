@@ -118,9 +118,9 @@ const Email = () => {
         <div className="container-login100 ">
           <div className="wrap-login100 flex items-center">
             <div className="login100-form validate-form text-white text-center ">
-               Email sent to {email}
+               Email sent to {email} Successfully !!!
                <p className=" pt-2 max-w-80">
-                  Right now the Reset password page is under construction, please have patience, we will reach out to you soon.
+                Please check your email to reset your password.
                </p>
             </div>
           </div>

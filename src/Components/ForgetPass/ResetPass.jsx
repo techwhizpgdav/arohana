@@ -37,8 +37,6 @@ const ResetPass = () => {
     setSubmitting(true);
     try {
       const response = await axios.post(`${API_URL}/reset-password`, values);
-      alert('Password reset successfully');
-      console.log(response);
       if (response.status == 200) {
         alert('Password reset successfully');
         navigate('/login');
