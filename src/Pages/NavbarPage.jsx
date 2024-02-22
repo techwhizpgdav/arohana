@@ -2,11 +2,12 @@ import React from 'react'
 import DesktopNav from '../Components/Navbar/DesktopNav'
 import MobileNav from '../Components/Navbar/MobileNav'
 import { useEffect , useState} from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link,useLocation } from 'react-router-dom'
 import Modal from 'react-modal'
 import { API_URL } from '../Functions/Constants'
 import axios from 'axios'
 import Api from '../Functions/api'
+import Eventbg from '../assets/eventbg1.jpg'
 
 const NavbarPage = () => {
       const navigate = useNavigate();
@@ -16,6 +17,21 @@ const NavbarPage = () => {
       const [password, setPassword] = useState('');
       const [isloading, setIsloading] = useState(false);
       const {fetchApi} = Api();
+      const location = useLocation();
+
+      
+  useEffect(() => {
+    if (location.pathname.includes('categories/')) {
+      window.document.body.style.background =   `url(${Eventbg}) no-repeat fixed` ;
+      window.document.body.style.backgroundSize = 'cover';
+    }
+    else {
+      window.document.body.style.background = 'none';
+    }
+  }
+  , [location]);
+
+
      const breakpoint = 764;
     //* Function to switch between mobile and desktop view
       useEffect(() => {
