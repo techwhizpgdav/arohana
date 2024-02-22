@@ -19,6 +19,9 @@ const Footer = () => {
         setIsOnDashboard(location.pathname === '/dashboard');
     }, [location]);
 
+    const handleTeamClick = (tab) => {
+        navigate(`/teams`, { state: { tab } });
+    }
     const footerClass = isOnDashboard ? 'bg-gradient-to-r to-linear-lightBlue from-linear-darkBlue' : (isLoggedIn ? 'bg-gradient-to-r from-haldi-orange to-haldi-red' : 'bg-gradient-to-r from-haldi-yellow to-haldi');
     const textColor = 'white';
 
@@ -59,10 +62,10 @@ const Footer = () => {
                                 <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>Team</h2>
                                 <ul className={`text-${textColor} dark:text-${textColor} font-medium`}>
                                     <li className="mb-4">
-                                        <p>Hyperion - PGDAV</p>
+                                        <p onClick={() => handleTeamClick("core_team")} className="cursor-pointer">Hyperion - PGDAV</p>
                                     </li>
                                     <li>
-                                        <p>Website Development Team <br />
+                                        <p onClick={() => handleTeamClick("web_developer")} className="cursor-pointer">Website Development Team <br />
                                         Techwhiz - IT Society</p>
                                     </li>
                                 </ul>
