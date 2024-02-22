@@ -45,7 +45,7 @@ const EventByCategories = () => {
 <div className=' w-screen min-h-screen eventCategories ' >
       <h1 className="text-5xl font-bold mb-5 text-center text-white mt-5" data-aos="fade-up"
       > {name}</h1>
-      <div className='flex flex-wrap gap-40 justify-between p-20 m-auto mdmax:p-5 mdmax:justify-center' >
+      <div className='flex flex-wrap gap-40 justify-around p-20 m-auto mdmax:p-5 mdmax:justify-center' >
         {
           events.map((category)=>{
             return <EventCards eventname={category} key={category.id} />
