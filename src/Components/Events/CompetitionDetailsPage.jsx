@@ -282,7 +282,7 @@ const CompetitionDetailsPage = () => {
                     {alreadyParticipated ? (
                       <button>
                         <Link
-                          to="/dashboard"
+                          to="/dashboard/userSubmission"
                           className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
                         > 
                           Submit Entry
@@ -305,7 +305,7 @@ const CompetitionDetailsPage = () => {
                         ) : (
                           <p
                             className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                            onClick={() => navigate("/dashboard")}
+                            onClick={() => navigate("/dashboard/userSubmission")}
                           >
                             Submit Entry
                           </p>
@@ -423,7 +423,7 @@ const CompetitionDetailsPage = () => {
                       {alreadyParticipated ? (
                         <button>
                           <Link
-                            to="/dashboard"
+                            to="/dashboard/userSubmission"
                             className=" bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
                           >
                             Submit Entry
@@ -447,7 +447,7 @@ const CompetitionDetailsPage = () => {
                           ) : (
                             <p
                               className=" bg-haldi text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
-                              onClick={() => navigate("/dashboard")}
+                              onClick={() => navigate("/dashboard/userSubmission")}
                             >
                               Submit Entry
                             </p>
@@ -539,9 +539,9 @@ const CompetitionDetailsPage = () => {
                     <button
                       type="button"
                       className="text-rose-700"
-                      onClick={() => navigate("/dashboard")}
+                      onClick={() => navigate("/dashboard/userTeams")}
                     >
-                      Submit
+                      See Team
                     </button>
                   ) : (
                     <button

@@ -45,7 +45,7 @@ const appRouters = () => (
         <Route path="tutorial" element={<Tutorial2 />} />
         <Route path="thanks" element={< Thanks />} />
         <Route path="verify" element={<  Verify />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="dashboard/:id" element={<Dashboard />} />
         <Route path="event-registration" element={<RegistrationForm />} />
         <Route path='categories' element={<Categories />} />
         <Route path="categories/:id/:name" element={<EventByCategories />} />
