@@ -1,0 +1,109 @@
+{
+    "gifting_sponsors": [
+        {
+            "id": 5,
+            "logo": "https://arohana.b-cdn.net/Web%20Development%20Team/Mehak%20jha.jpg",
+            "title": "Joany Thompson",
+            "company_name": "Finn Anderson",
+            "web_url": "http://www.schoen.net/",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 1
+        }
+    ],
+    "media_sponsors": [
+        {
+            "id": 1,
+            "logo": "https://arohana24.b-cdn.net/principal.jpg",
+            "title": "Carleton Parisian DVM",
+            "company_name": "Joesph Johnson",
+            "web_url": "http://bosco.net/occaecati-quis-aut-aspernatur-et",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 10
+        },
+        {
+            "id": 2,
+            "logo": "https://arohana.b-cdn.net/Faculty/APARNA%20MAM.jpg",
+            "title": "Ana Schimmel",
+            "company_name": "Ms. Thelma Doyle Sr.",
+            "web_url": "http://www.pacocha.org/et-reprehenderit-aut-id-sequi",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 9
+        },
+        {
+            "id": 3,
+            "logo": "https://arohana.b-cdn.net/Web%20Development%20Team/president.jpg",
+            "title": "Maxie Fisher",
+            "company_name": "Prof. Alphonso Batz DDS",
+            "web_url": "http://kuhlman.com/accusantium-dolores-ad-eaque-qui",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 6
+        },
+        {
+            "id": 6,
+            "logo": "https://arohana.b-cdn.net/Web%20Development%20Team/president.jpg",
+            "title": "Vaughn Schmitt",
+            "company_name": "Mikayla Kovacek Jr.",
+            "web_url": "https://www.collier.info/perferendis-deleniti-magni-adipisci-consequatur",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 10
+        },
+        {
+            "id": 7,
+            "logo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/IMG_20230217_183753_267.jpg",
+            "title": "Leonora Rath",
+            "company_name": "Mr. Angus Rutherford Jr.",
+            "web_url": "http://www.murazik.com/sunt-nobis-maxime-molestiae-sed-hic",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 6
+        }
+    ],
+    
+    "title_sponsors": [
+        {
+            "id": 4,
+            "logo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/devashish.jpg",
+            "title": "Rosemarie Klocko",
+            "company_name": "Mr. Elliott Stark",
+            "web_url": "http://auer.biz/qui-qui-et-cum",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 2
+        },
+        {
+            "id": 8,
+            "logo": "https://arohana.b-cdn.net/Web%20Development%20Team/Suraj.jpg",
+            "title": "Ottilie Hauck",
+            "company_name": "Filomena Macejkovic",
+            "web_url": "http://www.fadel.com/",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 8
+        },
+        {
+            "id": 9,
+            "logo": "https://arohana.b-cdn.net/Web%20Development%20Team/Susheel.PNG",
+            "title": "Cedrick Ullrich",
+            "company_name": "Cordie Barton",
+            "web_url": "http://shanahan.com/vel-sint-reprehenderit-accusamus-qui",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 10
+        },
+        {
+            "id": 10,
+            "logo": "https://arohana.b-cdn.net/Web%20Development%20Team/Pratyush%20Jha.jpg",
+            "title": "Declan Murazik",
+            "company_name": "Althea Franecki MD",
+            "web_url": "http://www.wintheiser.com/occaecati-autem-iste-tenetur-tempore-voluptatem-qui-sapiente",
+            "created_at": "2024-02-22T13:12:35.000000Z",
+            "updated_at": "2024-02-22T13:12:35.000000Z",
+            "society_id": 6
+        }
+    ]
+}
