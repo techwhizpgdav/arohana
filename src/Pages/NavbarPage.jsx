@@ -18,6 +18,7 @@ const NavbarPage = () => {
       const [isloading, setIsloading] = useState(false);
       const {fetchApi} = Api();
       const location = useLocation();
+      const  [sponsor, setSponsor] = useState(false);
 
       
   useEffect(() => {
@@ -49,6 +50,9 @@ const NavbarPage = () => {
         result.then (response => {
             if (response?.status === 200){
             setUser(response?.data?.data?.user);
+              if(response?.data?.data?.user?.sponsor_task == null){
+                setSponsor(true);
+              }
           }
         })
       }
