@@ -25,7 +25,7 @@ const Signup = () => {
     college: "",
     college_id: "",
     instagram_id: "",
-    sponsor_task: "",
+    // sponsor_task: "",
   };
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
@@ -44,7 +44,7 @@ const Signup = () => {
       .required("Required")
       .matches(/^[6-9]\d{9}$/, "Invalid phone number"),
     college_id: Yup.string().required("Photo ID is required"),
-    sponsor_task: Yup.string().required("Sponsor Task Screen Shot is required"),
+    // sponsor_task: Yup.string().required("Sponsor Task Screen Shot is required"),
   });
 
   const onSubmit = async (values) => {
@@ -104,7 +104,7 @@ const handleAutofill = (e) => {
     const password_confirmation = e.target.elements.password_confirmation.value;
     const college = e.target.elements.college.value;
     const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
-    const sponsor_taskFile = e.target.elements.sponsor_task.files[0]; // Get the uploaded file
+    // const sponsor_taskFile = e.target.elements.sponsor_task.files[0]; // Get the uploaded file
     const values = {
         name,
         email,
@@ -114,7 +114,7 @@ const handleAutofill = (e) => {
         phone: e.target.elements.phone.value,
         college_id: college_idFile,
         instagram_id: e.target.elements.instagram_id.value,
-        sponsor_task: sponsor_taskFile,
+        // sponsor_task: sponsor_taskFile,
     };
     onSubmit(values);
 };
@@ -293,7 +293,7 @@ const handleAutofill = (e) => {
                   component="div"
                   className="error-message"
                 />
-                <div className="validate-input mb-4">
+                {/* <div className="validate-input mb-4">
                   <Field
                     name="sponsor_task"
                     type="file"
@@ -311,7 +311,7 @@ const handleAutofill = (e) => {
                   name="sponsor_task"
                   component="div"
                   className="error-message"
-                />
+                /> */}
 
                 <div>
                 <div className="inset-0 flex items-center justify-center">
