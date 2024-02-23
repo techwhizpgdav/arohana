@@ -352,7 +352,7 @@ const CompetitionDetailsPage = () => {
             <h1 className="text-4xl font-semibold text-slate-600">{title}</h1>
             <div className="poster flex flex-row my-6">
               <img
-                className="rounded-xl w-1/3 object-cover "
+                className="rounded-xl w-1/3 object-contain"
                 src={image_url}
                 alt=""
               />
