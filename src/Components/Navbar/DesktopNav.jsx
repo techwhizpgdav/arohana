@@ -24,8 +24,8 @@ const DesktopNav = () => {
     };
 
     useEffect(() => {
-      setIsOnDashboard(location.pathname === '/dashboard');
-      if (location.pathname !== '/dashboard' && previousPath === '/dashboard') {
+      setIsOnDashboard(location.pathname.includes('/dashboard'));
+      if (!location.pathname.includes('/dashboard') && previousPath.includes('/dashboard')) {
         window.scrollTo(0, 84); 
       }
       setPreviousPath(location.pathname);
@@ -111,7 +111,7 @@ const DesktopNav = () => {
             {isLoggedIn ? 
               <div className=' flex justify-center items-center gap-10'>
                 
-                <Link to={'/dashboard'} >
+                <Link to={'/dashboard/userProfile'} >
                   <div data-aos="fade-left" className={`py-2 px-2 font-medium rounded ${isOnDashboard ? ' text-white hover:text-shade-darkBlue':' text-white hover:text-rose-200'} duration-500 transition-all flex flex-col items-center`}>
                     <img src={UserProfile} alt="UserProfile" className={`h-8 w-8  logoWhite rounded-ful `} />
                     <div className=' text-sm'>

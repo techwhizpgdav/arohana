@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect , useState } from 'react';
 import EventsCards from './CategoryCards'
-import { useNavigate, useParams,Link } from 'react-router-dom';
+import { useNavigate, useParams,Link , useLocation} from 'react-router-dom';
 import Api from '../../Functions/api';
 import EventCards from './EventByCatCards';
 import Spinner2 from '../ShimmerAndSpinner/Spinner2';
@@ -13,6 +13,7 @@ const EventByCategories = () => {
   const { id , name} = useParams();
   const { fetchApi } = Api();
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
   useEffect(() => {
     const result = fetchApi('GET', `api/category-competitions/${id}` , 'events');
     result.then(response => {
@@ -40,11 +41,11 @@ const EventByCategories = () => {
 
   return (
       <>
-      <div className=' w-screen min-h-screen eventCategories mb-20'
-      >
-      <h1 className="text-4xl font-bold mb-5 text-center" data-aos="fade-up"
+
+<div className=' w-screen min-h-screen eventCategories ' >
+      <h1 className="text-5xl font-bold mb-5 text-center text-white mt-5" data-aos="fade-up"
       > {name}</h1>
-      <div className='flex flex-wrap gap-40 justify-between p-20 m-auto mdmax:p-5 mdmax:justify-center' >
+      <div className='flex flex-wrap gap-40 justify-around p-20 m-auto mdmax:p-5 mdmax:justify-center' >
         {
           events.map((category)=>{
             return <EventCards eventname={category} key={category.id} />

@@ -8,12 +8,7 @@ function CategoryCards({ category, length }) {
   const numCards = length;
   for (let i = 0; i < numCards; i++) {
     cards.push(
-      <div className="col" onTouchStart= {
-        () => {
-          this.classList.toggle('hover');
-        }
-        
-      } key={i} >
+      <div className="col" key={i} >
         <div className="container" onClick={() => {navigate('/categories/'+ category[i].id +'/' + category[i].name)}}>
           <div className="front" style={{ backgroundImage: `url(${category[i].background_image})` }}>
             <div className="inner">

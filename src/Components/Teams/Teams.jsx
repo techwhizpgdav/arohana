@@ -4,9 +4,15 @@ import teamData from './teamData.json';
 import TeamCard from './TeamCard';
 import './Team.css';
 import InchargeCard from './InchargeCard';
+import { useLocation } from 'react-router-dom';
 
 const Teams = () => {
-    const [activeTab, setActiveTab] = useState('core_team');
+    const { state } = useLocation();
+
+    // Set default value for tab based on state
+    const { tab } = state || { tab: 'core_team' };
+
+    const [activeTab, setActiveTab] = useState(tab);
     const teams = {
         core_team: teamData.core_team,
         web_developer: teamData.web_developer,

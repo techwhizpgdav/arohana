@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import parse from "html-react-parser";
 
 const Rules = ({ rounds }) => {
   const [selectedRound, setSelectedRound] = useState(rounds[0]?.id);
@@ -31,16 +32,10 @@ const Rules = ({ rounds }) => {
             <h2 className="text-xl mt-4 uppercase"> Mode: {round?.mode}</h2>
             <ul className="mt-2 list-disc mdmax:pl-4">
               {round?.rules.map((rule, index) =>
-                rule?.statement?.includes("https") ? (
-                  <li className=" max-w-96 font-semibold mt-4 mb-2 overflow-hidden">
-
-                   <a href={rule?.statement}  target="blanc" className=""> {rule?.statement}</a>
-                  </li>
-                ) : (
                   <li className="mt-2 " key={index}>
-                    {rule?.statement}
+                    {parse(rule?.statement) || parse("<p></p>")}
                   </li>
-                )
+
               )}
             </ul>
           </div>

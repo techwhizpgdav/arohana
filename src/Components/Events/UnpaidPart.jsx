@@ -6,6 +6,7 @@ import Api from "../../Functions/api";
 import axios from "axios";
 import { API_URL } from "../../Functions/Constants";
 import { useNavigate } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 const UnpaidPart = ({ event, closeModal, onParticipation }) => {
   const {
     date,
@@ -27,6 +28,7 @@ const UnpaidPart = ({ event, closeModal, onParticipation }) => {
     id,
     sponsor_task,
     remarks,
+    whatsapp_group,
   } = event;
   const navigate = useNavigate();
   const [buttonSelected, setButtonSelected] = useState("Solo");
@@ -155,6 +157,16 @@ const UnpaidPart = ({ event, closeModal, onParticipation }) => {
                   <p className=" font-semibold">{teamCode}.</p>
                 </p>
                 <p>Share this code with your team members to join the team.</p>
+                {
+                  whatsapp_group != null && (
+                  <div>
+                    <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
+                    <FaWhatsapp color="white" size={20} />
+                    Join Group
+                  </a>
+                  </div> 
+                  )
+                }
               </div>
             ) : null}
           </p>

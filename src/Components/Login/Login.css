@@ -114,6 +114,7 @@
    .wrap-login100 {
      border-radius: 10px;
      padding: 55px 55px 37px 55px;
+      min-height: 50vh;
       max-height: 85vh;
       overflow: scroll;
      background: #093637;
@@ -125,7 +126,17 @@
 
    }
    
-
+   .wrap-forget{
+    border-radius: 10px;
+    padding: 55px 55px 37px 55px;
+     height: 50vh;
+    background: #093637;
+    background: -webkit-linear-gradient(to top, #44A08D, #093637);
+    background: -o-linear-gradient(to top, #44A08D, #093637);
+    background: -moz-linear-gradient(to top, #44A08D, #093637);
+    background: linear-gradient(to bottom, #44A08D, #093637);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+   }
    
    /*------------------------------------------------------------------
    [ Form ]*/
@@ -395,7 +406,7 @@
    [ Responsive ]*/
    
    @media (max-width: 576px) {
-     .wrap-login100 {
+     .wrap-login100 , .wrap-forget{
        padding: 55px 15px 37px 15px;
      }
    }
@@ -526,3 +537,8 @@
   background-color: #fff;
   color: #000;
 }
+
+
+/* * forget password */
+
+

@@ -38,12 +38,12 @@ useEffect(() => {
 }, [isOpen]);
 
 useEffect(() => {
-  setIsOnDashboard(location.pathname === '/dashboard');
+  setIsOnDashboard(location.pathname.includes('/dashboard'));
 }, [navigate, location]);
   
 useEffect(() => {
 
-  if (location.pathname === '/dashboard') {
+  if (location.pathname.includes('/dashboard')) {
     setIsOnDashboard(true);
   }
   else {
@@ -105,7 +105,7 @@ useEffect(() => {
         <div className="flex flex-col items-center justify-center h-full -mt-10 gap-10 ">
         {isLoggedIn ? 
               <div className=' flex flex-col justify-center items-center gap-10'>
-                <Link to={'/dashboard'} onClick={() => setIsOpen(false)}>
+                <Link to={'/dashboard/userProfile'} onClick={() => setIsOpen(false)}>
                   <div className=" py-2 px-2 font-medium rounded text-white flex flex-col items-center gap-2 duration-500 transition-all">
                     <img src={UserProfile} alt="Dash Board" className={`h-8 w-8 rounded-full ${isOnDashboard?"logoWhite":"logoWhite"}`} />
                     <p>

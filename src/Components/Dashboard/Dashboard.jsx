@@ -14,19 +14,21 @@ import '../../Button.css';
 import { FaUser, FaCalendar, FaUsers, FaRegFilePdf } from 'react-icons/fa';
 import Spinner2 from '../ShimmerAndSpinner/Spinner2';
 import Submission from './Submission';
+import { useParams} from 'react-router-dom';
 
 
 const Dashboard = () => {
   const { authUser } = Api();
   const [user, setUser] = useState('');
-
+  const {id } = useParams();
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState('userProfile');
+  const [activeComponent, setActiveComponent] = useState('');
   const [hamOpen, setHamOpen] = useState(false);
 
   useEffect(() => {
+    setActiveComponent(id);
     const checkAndNavigate = async () => {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -41,6 +43,7 @@ const Dashboard = () => {
       }
     };
     checkAndNavigate();
+
   }, [navigate]);
   useEffect(() => {
     document.querySelectorAll('button').forEach(button => {
@@ -50,7 +53,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     AOS.init({duration: 1000});
-    AOS.refresh(); // This line will refresh AOS and cause animations to trigger again
+    AOS.refresh(); 
   }, []);
 
   if (user?.length === 0 || isLoading) {
