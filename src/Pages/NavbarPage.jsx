@@ -27,33 +27,34 @@ const NavbarPage = () => {
   const initialValues = {
     sponsor_task:''
   }
-  const validationSchema = {
+  const validationSchema = Yup.object({
     sponsor_task: Yup.string().required("Sponsor Task Screen Shot is required"),
-  }
+  });
   const onSubmit = async (values) => {
     setIsloading(true);
+    console.log(values);
     const formData = new FormData();
-    for (const key in values) {
-        if ((key === "sponsor_task") && values[key].name) {
-          formData.append(key, values[key], values[key].name);
-        }
-      }
+    formData.append("sponsor_task", values.sponsor_task);
     try {
-      const response = await axios.post(`${API_URL}/sponsor`, formData, {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(`${API_URL}/api/user/upload-sponsor`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          'Authorization': `Bearer ${token}`,
           Accept: "application/json",
         },
       });
       const data = response.data;
       if (response.status === 200) {
         setIsloading(false);
+        setIsOpen(false);
         navigate(`/`);
       } else {
         setIsloading(false);
         alert("Signup failed! Please try again.");
       }
     } catch (error) {
+      alert(error?.message);
     }
   };
   useEffect(() => {
@@ -83,7 +84,7 @@ const NavbarPage = () => {
         if (response?.status === 200) {
           setUser(response?.data?.data?.user);
           if (response?.data?.data?.user?.sponsor_task == null) {
-            setIsOpen(true);
+            // setIsOpen(true);
           }
         }
       });
@@ -117,6 +118,15 @@ const NavbarPage = () => {
   function openModal() {
     setIsOpen(true);
   }
+
+  const handleAutofill = (e) => {
+    e.preventDefault();
+    const sponsor_taskFile = e.target.elements.sponsor_task.files[0]; 
+    const values = {
+        sponsor_task: sponsor_taskFile,
+    };
+    onSubmit(values);
+};
 
   return (
     <>
@@ -208,9 +218,9 @@ const NavbarPage = () => {
                     </div>
 
               <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
               >
               {({ values, errors }) => (
                 <Form>
@@ -218,9 +228,10 @@ const NavbarPage = () => {
                       <Field
                         name="sponsor_task"
                         type="file"
-                        className="  placeholder:text-white file-input"
+                        className="placeholder:text-white file-input"
                         accept="image/*"
                         id="sponsor_task"
+                    
                       />
                       <label htmlFor="sponsor_task" className=" hover:cursor-pointer bg-haldi border-white border-2 text-white rounded-2xl w-48 px-2 py-2 ">
                         {values.sponsor_task
@@ -228,19 +239,24 @@ const NavbarPage = () => {
                           : "Upload Sponsor Task"}
                       </label>
                     </div>
-                </Form>
-              )}
-              </Formik>
-
                     <div className="mt-4 text-center">
                       <button
-                        type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-haldi-orange px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={closeModal}
+                        disabled={!!Object.keys(errors).length}
+                        type="submit"
+                        className={`inline-flex justify-center rounded-md border border-transparent bg-haldi-orange px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+                          Object.keys(errors).length
+                            ? "opacity-40 cursor-not-allowed"
+                            : "cursor-pointer opacity-100"
+                        }`}
                       >
                         Submit
                       </button>
                     </div>
+                </Form>
+              )}
+              </Formik>
+
+
                   </Dialog.Panel>
                 </Transition.Child>
               </div>
