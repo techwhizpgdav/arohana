@@ -314,7 +314,7 @@ const handleAutofill = (e) => {
                 /> */}
 
                 <div>
-                <div className="inset-0 flex items-center justify-center">
+                {/* <div className="inset-0 flex items-center justify-center">
                     <button
                     type="button"
                     onClick={openModal}
@@ -322,7 +322,7 @@ const handleAutofill = (e) => {
                     >
                      How to do Sponsor Task?
                     </button>
-                </div>
+                </div> */}
 
                 <Transition appear show={isOpen} as={Fragment}>
                     <Dialog as="div" className="relative z-10" onClose={closeModal}>
