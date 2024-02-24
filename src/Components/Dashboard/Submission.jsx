@@ -72,6 +72,7 @@ const Submission = () => {
 
   return (
     <div>
+
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -82,7 +83,7 @@ const Submission = () => {
       >
         {({ errors, touched }) => (
           <Form>
-            <div className="flex gap-5 pt-10 mdmax:flex-col p-10 mdmax:items-center ">
+            <div className="flex gap-5 pt-20 mdmax:flex-col p-10 mdmax:items-center ">
               <div className="w-96 mdmax:w-80">
                 <label
                   htmlFor="submission"
@@ -155,6 +156,25 @@ const Submission = () => {
           </Form>
         )}
       </Formik>
+      <div className="p-10">
+        <h2 className=" text-4xl">
+          Important Instructions !!
+        </h2>
+            <ol className=" list-decimal w-4/5 ">
+              <li className=" p-2">
+                Participation in every event does not necessitate a submission. 
+              </li>
+              <li className=" p-2">
+                Only the team leader is authorized to submit the entry.
+              </li>
+              <li className=" p-2">
+              You are only required to submit entries for events in which you receive notification in the respective WhatsApp groups. 
+              </li>
+              <li className=" p-2">
+                Ensure that the submitted URL is accessible to the adjudicators(judges).
+              </li>
+            </ol>
+      </div>
 
       <h1 className="text-4xl mt-10 mdmax:pl-4">Your Submissions</h1>
       <div className="relative overflow-x-auto mt-12">
@@ -197,6 +217,7 @@ const Submission = () => {
           ))
         )}
       </div>
+
     </div>
   );
 };
