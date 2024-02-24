@@ -134,7 +134,7 @@
         {
             "name": "Susheel sahu",
             "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Susheel.PNG",
-            "position":"Member",
+            "position": "Member",
             "role": "Frontend Developer",
             "instagram": "https://www.instagram.com/rohitsahu_xo_",
             "github": "https://github.com/rohitsahu23866",
@@ -154,6 +154,33 @@
             "instagram": "https://www.instagram.com/pratyush_jh?igsh=MWwyZzNzOHFqZjQwYw==",
             "github": "https://github.com/PratyushJha19",
             "linkedin": "https://www.linkedin.com/in/pratyush-jha-1348b8263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        }
+    ],
+    "Student_Council": [
+        {
+            "name": "Kunal Choudhary",
+            "position": "President",
+            "instagram": "https://www.instagram.com/kunalchoudhary05?igsh=M3JtaDF4eGoydHh1"
+        },
+        {
+            "name": "Jatin",
+            "position": "Vice President"
+        },
+        {
+            "name": "Amrit Yadav",
+            "position": "Secretary"
+        },
+        {
+            "name": "Ritika Sagar",
+            "position": "Joint Secretary"
+        },
+        {
+            "name": "Ayush Bidhuri",
+            "position": "1st CC"
+        },
+        {
+            "name": "Harshit Verma",
+            "position": "2nd CC"
         }
     ]
 }

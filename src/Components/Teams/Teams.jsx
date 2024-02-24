@@ -16,6 +16,7 @@ const Teams = () => {
     const teams = {
         core_team: teamData.core_team,
         web_developer: teamData.web_developer,
+        Student_Council: teamData.Student_Council,
     };
 
     const handleTabClick = (tab) => {
@@ -47,7 +48,8 @@ const Teams = () => {
             {/* Tab Buttons */}
             <div className="flex justify-center">
                 <button className={`mr-4 px-6 py-3 font-bold rounded-lg shadow-lg whitespace-normal w-45 ${activeTab === 'core_team' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('core_team')}>Core Team</button>
-                <button className={`px-6 py-3 font-bold rounded-lg shadow-lg whitespace-normal w-45 ${activeTab === 'web_developer' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('web_developer')}>Web Development Team</button>
+                <button className={`px-6 mr-4 py-3 font-bold rounded-lg shadow-lg whitespace-normal w-45 ${activeTab === 'web_developer' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('web_developer')}>Web Development Team</button>
+                <button className={`px-6 py-3 font-bold rounded-lg shadow-lg whitespace-normal w-45 ${activeTab === 'Student_Council' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('Student_Council')}>Student_Council</button>
             </div>
 
 
