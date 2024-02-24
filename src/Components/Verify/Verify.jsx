@@ -39,8 +39,8 @@ const Verify = () => {
     //*  if the user is already verified, redirect to the dashboard else send the verification link
 
      useEffect(() => {
-       if(!user.email_verified_at === null){
-         navigate(`/dashboard`);
+       if(user.email_verified_at != null){
+         navigate(`/dashboard/userProfile`);
        }
        else if (user.email_verified_at === null){
         const sendEmailVerification = async () => {
@@ -66,7 +66,7 @@ const Verify = () => {
         }
         sendEmailVerification();
        }
-     }, [user]);
+     }, []);
      
      if (user.length === 0) {
            return <div className='flex flex-col justify-center items-center h-screen bg-brown text-white gap-10'>Loading...</div>;
