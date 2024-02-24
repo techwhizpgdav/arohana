@@ -26,6 +26,7 @@ const UserEventDetails = ({user}) => {
     setStep(4);
       fetchApi('get', `api/participations`).then((data) => {
         setParticipatedEvents(data?.data?.data[0]?.competitions);
+        console.log(data?.data?.data[0]?.competitions);
       setIsLoading(false);
     });
   }

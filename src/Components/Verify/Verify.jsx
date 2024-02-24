@@ -14,6 +14,17 @@ const Verify = () => {
 
      const [user, setUser] = useState([]);
      const [alertMessage, setAlertMessage] = useState(null);
+     const checkVerified = () => {
+      authUser().then((data) => {
+        if(data?.email_verified_at != null){
+          showAlert('Email verified successfully');
+          navigate(`/dashboard/userProfile`);
+        }
+        else if (data?.email_verified_at == null){
+          showAlert('Email not verified yet'); 
+        }
+      });
+   }
     //* Check if the user is logged in and if not, redirect to the login page
      useEffect(() => {
           const token = localStorage.getItem('token');
@@ -23,13 +34,15 @@ const Verify = () => {
           else{
           authUser().then((data) => {
             setUser(data);
+            console.log(data?.email_verified_at);
+            if (data?.email_verified_at != null) {
+              navigate(`/dashboard/userProfile`);
+            }
           });}
      }
      , [navigate]);
 
-     useEffect(() => {
 
-     }, []);
 
      const showAlert = (message) => {
       setAlertMessage(message);
@@ -39,7 +52,7 @@ const Verify = () => {
     //*  if the user is already verified, redirect to the dashboard else send the verification link
 
      useEffect(() => {
-       if(user.email_verified_at != null){
+       if(user?.email_verified_at != null){
          navigate(`/dashboard/userProfile`);
        }
        else if (user.email_verified_at === null){
@@ -52,7 +65,6 @@ const Verify = () => {
               'Authorization': `Bearer ${token}`
             }
           });
-          const data = await response.json();
           if (response.status === 200) {
             setIsLoading(false);
             showAlert('Email verification link sent successfully');
@@ -66,22 +78,13 @@ const Verify = () => {
         }
         sendEmailVerification();
        }
-     }, []);
+     }, [user]);
      
      if (user.length === 0) {
            return <div className='flex flex-col justify-center items-center h-screen bg-brown text-white gap-10'>Loading...</div>;
       }
-    const checkVerified = () => {
-      authUser().then((data) => {
-        if(data?.data?.email_verified_at != null){
-          showAlert('Email verified successfully');
-          navigate(`/dashboard`);
-        }
-        else if (data?.data?.email_verified_at == null){
-          showAlert('Email not verified yet'); 
-        }
-      });
-   }
+
+
 
   return (
 

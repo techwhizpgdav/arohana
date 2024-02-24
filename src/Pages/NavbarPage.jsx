@@ -137,15 +137,15 @@ const NavbarPage = () => {
        absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-haldi-orange text-white p-8 rounded-lg flex flex-col items-center gap-2 mdmax:w-4/5 mdmax:p-3`}
       >
         <p className="">{alertMessage}</p>
-        <p>🎉 You can now participate in the events.🎉 </p>
-        <Link to={"/categories"}>
+        <p className=" max-w-96">We have generated a unique QR code for you. Please use this to gain entry into the College fest.</p>
+        <Link to={"/dashboard/userProfile"}>
           <button
             className="bg-white text-black p-2 rounded-lg mt-4 w-40 "
             onClick={() => {
               setAlertMessage(null);
             }}
           >
-            Events
+            See QR Code
           </button>
         </Link>
       </Modal>
