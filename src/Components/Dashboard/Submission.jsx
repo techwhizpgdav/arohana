@@ -190,7 +190,7 @@ const Submission = () => {
              mdmax:grid-cols-1 mdmax:pl-4"
             >
               <div>
-                <div className="font-medium text-gray-500 py-2">
+                <div className="font-medium text-black mdmax:text-xl py-2">
                   Competition Name
                 </div>
                 <div className="text-gray-900 py-2">{submission?.title}</div>
