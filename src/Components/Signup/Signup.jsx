@@ -31,11 +31,10 @@ const Signup = () => {
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
-      .matches(
-        // Only 8 characters nothing else 
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        "Minimum 8 characters, at least one letter and one number"
-      )
+    .matches(
+      /^.{8,}$/,
+      "Minimum 8 characters"
+    )
       .required("Required"),
     password_confirmation: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")

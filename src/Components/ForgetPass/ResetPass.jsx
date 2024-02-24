@@ -25,9 +25,8 @@ const ResetPass = () => {
   const validationSchema = Yup.object({
     password: Yup.string()
     .matches(
-      // Only 8 characters nothing else 
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      "Minimum 8 characters, at least one letter and one number"
+      /^.{8,}$/,
+      "Minimum 8 characters"
     )
       .required("Required"),
       password_confirmation: Yup.string()
