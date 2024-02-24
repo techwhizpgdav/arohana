@@ -110,6 +110,15 @@
             "role": "Full Stack Developer"
         },
         {
+            "name": "Susheel sahu",
+            "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Susheel.PNG",
+            "position": "Member",
+            "role": "Front End Developer",
+            "instagram": "https://www.instagram.com/rohitsahu_xo_",
+            "github": "https://github.com/rohitsahu23866",
+            "linkedin": "https://www.linkedin.com/in/susheel-sahu-397315281/p"
+        },
+        {
             "name": "Mehak Jha",
             "photo": "https://arohana.b-cdn.net/Web%20Development%20Team/Mehak%20jha.jpg",
             "position": "Coordinator",
@@ -155,5 +164,7 @@
             "github": "https://github.com/PratyushJha19",
             "linkedin": "https://www.linkedin.com/in/pratyush-jha-1348b8263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
         }
+        
+        
     ]
 }
