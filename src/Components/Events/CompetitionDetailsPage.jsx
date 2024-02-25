@@ -40,6 +40,7 @@ const CompetitionDetailsPage = () => {
   const [alreadyParticipated, setAlreadyParticipated] = useState(false);
   const [isOnMobile, setIsOnMobile] = useState(false);
   const [sponsorStep, setSponsorStep] = useState(0);
+  const [online, setOnline] = useState(1);
 
   useEffect(() => {
     if (window.innerWidth < 764) {
@@ -54,9 +55,9 @@ const CompetitionDetailsPage = () => {
     const result = fetchApi("GET", `api/competitions/${id}`, "events");
     result.then((response) => {
       if (response?.status === 200) {
+        setOnline(response?.data?.data?.online);
         setAlreadyParticipated(response?.data?.data?.participated);
         setEvent(response?.data?.data?.competition);
-        // console.log(response?.data?.data?.competition);
         if (response?.data?.data?.competition?.sponsor_task == 1) {
           setSponsorStep(1);
         }
@@ -282,10 +283,16 @@ const CompetitionDetailsPage = () => {
                     {alreadyParticipated ? (
                       <button>
                         <Link
-                          to="/dashboard/userSubmission"
+                          to={
+                            online
+                              ? "/dashboard/userSubmission"
+                              : "/dashboard/userProfile"
+                          }
                           className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
                         > 
-                          Submit Entry
+                         {
+                            online ? "Submit Entry" : "Dashboard"
+                         }
                         </Link>
                       </button>
                     ) : (
@@ -305,9 +312,15 @@ const CompetitionDetailsPage = () => {
                         ) : (
                           <p
                             className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                            onClick={() => navigate("/dashboard/userSubmission")}
+                            onClick={() =>{
+                              {
+                                online ? navigate("/dashboard/userSubmission") : navigate("/dashboard/userProfile")
+                              }
+                            }}
                           >
-                            Submit Entry
+                            {
+                              online ? "Submit Entry" : "Dashboard"
+                            }
                           </p>
                         )}
                       </>
@@ -423,10 +436,16 @@ const CompetitionDetailsPage = () => {
                       {alreadyParticipated ? (
                         <button>
                           <Link
-                            to="/dashboard/userSubmission"
+                           to ={
+                            online
+                            ? "/dashboard/userSubmission"
+                            : "/dashboard/userProfile"
+                           }
                             className=" bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
                           >
-                            Submit Entry
+                            {
+                              online ? "Submit Entry" : "Dashboard"
+                            }
                           </Link>
                         </button>
                       ) : (
@@ -447,9 +466,15 @@ const CompetitionDetailsPage = () => {
                           ) : (
                             <p
                               className=" bg-haldi text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
-                              onClick={() => navigate("/dashboard/userSubmission")}
+                              onClick={() =>
+                                {
+                                  online ? navigate("/dashboard/userSubmission") : navigate("/dashboard/userProfile")
+                                }
+                              }
                             >
-                              Submit Entry
+                              {
+                                online ? "Submit Entry" : "Dashboard"
+                              }
                             </p>
                           )}
                         </>
@@ -539,9 +564,9 @@ const CompetitionDetailsPage = () => {
                     <button
                       type="button"
                       className="text-rose-700"
-                      onClick={() => navigate("/dashboard/userTeams")}
+                      onClick={() => navigate("/dashboard/userProfile")}
                     >
-                      See Team
+                      Go to Dashboard 
                     </button>
                   ) : (
                     <button
