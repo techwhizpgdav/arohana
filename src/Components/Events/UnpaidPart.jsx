@@ -111,7 +111,7 @@ const UnpaidPart = ({ event, closeModal, onParticipation }) => {
         alert(response?.data?.message || "Participation failed! Please try again.");
       }
     } catch (error) {
-      alert(error.message);
+      alert( error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
@@ -140,7 +140,7 @@ const UnpaidPart = ({ event, closeModal, onParticipation }) => {
         alert(response?.data?.message || "Participation failed! Please try again.");
       }
     } catch (error) {
-      alert(error.message);
+      alert( error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 

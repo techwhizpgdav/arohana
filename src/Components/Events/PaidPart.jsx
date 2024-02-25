@@ -114,10 +114,10 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
           setTeamCode(response?.data?.data?.team_code);
         }
       } else {
-        alert("Participation failed! Please try again.");
+        alert( response?.data?.message || "Participation failed! Please try again.");
       }
     } catch (error) {
-      alert(  error?.message  || error?.response?.data?.message || "Participation failed! Please try again.");
+      alert( error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
@@ -146,7 +146,7 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
         alert(response?.data?.message || "Participation failed! Please try again");
       }
     } catch (error) {
-      alert(  error?.message  || error?.response?.data?.message || "Participation failed! Please try again.");
+      alert(  error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
