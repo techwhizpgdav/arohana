@@ -117,7 +117,7 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
         alert("Participation failed! Please try again.");
       }
     } catch (error) {
-      alert("Participation failed! Please try again.");
+      alert(  error?.message  || error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
@@ -143,10 +143,10 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
         setIsParticipated(true);
         console.log(response);
       } else {
-        alert("Participation failed! Please try again.");
+        alert(response?.data?.message || "Participation failed! Please try again");
       }
     } catch (error) {
-      alert("Participation failed! Please try again.");
+      alert(  error?.message  || error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
