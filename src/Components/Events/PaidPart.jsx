@@ -30,7 +30,7 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
     sponsor_task,
     whatsapp_group,
   } = event;
-  console.log(event); 
+  // console.log(event); 
   const navigate = useNavigate();
   const [buttonSelected, setButtonSelected] = useState("Solo");
   const [isModalOpen, setIsModalOpen] = useState(false);
