@@ -70,7 +70,7 @@ const UserProfile = ({ user }) => {
           <p className="font-bold text-black">Unique QR Code</p>
           {is_verified ? (
             <div className=" flex items-center justify-center flex-col">
-              <QRCode value={`${API_URL}/api/scan/${fest_pass}`} size={100} />
+              <QRCode value={`https://https://admin-frontend-five-psi.vercel.app//dashboard/users/entry?pass=${fest_pass}`} size={100} />
               <p className="text-center mt-10">
                 Show this QR code while entering in the college.
               </p>
