@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Api from '../../Functions/api';
 import 'aos/dist/aos.css';
 import Spinner2 from '../ShimmerAndSpinner/Spinner2';
-import sponsors from './sponsors.json';
 
 const Sponsors = () => {
 
   const { fetchApi, isLoading } = Api();
-  const [sponsorsData, setSponsorsData] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const [sponsors, setSponsorsData] = useState([]);
   const [loading, setIsLoading] = useState(true);
 
   const convertToTitleCase = (str) => {
@@ -18,31 +16,30 @@ const Sponsors = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchApi('GET', 'api/sponsors', 'sponsors');
+        const response = await fetchApi('GET', 'api/sponsor/title', 'sponsors');
         if (response?.status == 200) {
-          console.log(response?.data);
-          setSponsorsData(response?.data);
+          setSponsorsData(response?.data?.data);
           setIsLoading(false);
         }
       } catch (error) {
         console.error('Error fetching sponsors data:', error);
-        setErrors(errors);
+        setErrors(error);
       }
     };
     fetchData();
   }, []);
 
-  // if (loading) {
-  //   return (
-  //     <div className='w-screen h-screen flex justify-center items-center'>
-  //       <Spinner2 />
-  //     </div>
-  //   );
-  // }
-
-  const renderSponsorSection = (sponsorType) => {
+  if (loading) {
     return (
-      <div className='flex flex-col mb-8'>
+      <div className='w-screen h-screen flex justify-center items-center'>
+        <Spinner2 />
+      </div>
+    );
+  }
+
+  const renderSponsorSection = (sponsorType, index) => {
+    return (
+      <div key={index} className='flex flex-col mb-8'>
         <h2 className='text-2xl lg:text-3xl xl:text-5xl font-bold mb-8 font-serif text-blue-700 opacity-90 text-center transform hover:scale-110 transition-transform' style={{ WebkitTextStroke: '0.3px linear-darkBlue' }}>
           {convertToTitleCase(sponsorType)}
         </h2>
@@ -78,18 +75,11 @@ const Sponsors = () => {
           SPONSORS</h1>
       </div>
       <div>
-        {errors ?
-          <div>
-            Page Under Construction
-          </div> :
-
-          Object.keys(sponsors).map(sponsorType => (
-            renderSponsorSection(sponsorType)
-          ))
-
-        }
-
+        {Object.keys(sponsors).map((sponsorType, index) => (
+          renderSponsorSection(sponsorType, index)
+        ))}
       </div>
+
     </div>
   );
 };
