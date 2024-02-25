@@ -17,7 +17,7 @@ const Footer = () => {
     }, [navigate]);
 
     useEffect(() => {
-        setIsOnDashboard(location.pathname === '/dashboard/userTeams');
+        setIsOnDashboard(location.pathname.includes('/dashboard'));
     }, [location]);
 
     const handleTeamClick = (tab) => {
