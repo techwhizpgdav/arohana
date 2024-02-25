@@ -1,7 +1,7 @@
 import React from 'react'
 import Api from '../../Functions/api'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , useParams} from 'react-router-dom'
 import UserProfile from './UserProfile'
 import UserEventDetails from './UserEventDetails'
 import UserTeams from './UserTeams'
@@ -14,12 +14,14 @@ import Spinner2 from '../ShimmerAndSpinner/Spinner2'
 import Submission from './Submission'
 const MobileDasboard = () => {
      const { authUser } = Api();
+     const {id} = useParams();
      const [user, setUser] = useState({});
      const navigate = useNavigate();
      const [isLoggedIn, setIsLoggedIn] = useState(false);
      const [isLoading, setIsLoading] = useState(true);
-     const [activeComponent, setActiveComponent] = useState('userProfile');
+     const [activeComponent, setActiveComponent] = useState('');
      const [hamOpen, setHamOpen] = useState(false);
+     
      useEffect(() => {
        const checkAndNavigate = async () => {
          const token = localStorage.getItem('token');
@@ -32,6 +34,7 @@ const MobileDasboard = () => {
          }
        };
        checkAndNavigate();
+       setActiveComponent(id);
      }, [navigate]);
 
      useEffect(() => {

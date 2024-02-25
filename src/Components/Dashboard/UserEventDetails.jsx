@@ -92,18 +92,24 @@ return (
 
       <div className="grid gap-20 w-screen mdmax:w-full mt-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {participatedEvents.map((event, index) => (
-          <div key={index} className="border p-8 rounded-lg flex flex-col md:flex-row justify-around items-center bg-slate-300  w-full   mdmax:w-96" >
-            <h2 className="text-xl font-bold absolute -translate-y-16 -translate-x-24 ">{index + 1}</h2>
+          <div key={index} className="border p-8 rounded-lg flex-col justify-between items-center flex bg-slate-300  w-full  mdmax:w-96" >
+            <div className=' flex mb-5 gap-5 w-full justify-between'>
+              <h2 className="text-xl font-bold ">{index + 1}</h2>
+              <h1 className="text-lg font-semibold max-w-60">{event?.title}</h1>
+            </div>
 
             <div className='flex flex-col justify-center gap-10 '>
-              <h1 className="text-lg font-semibold">{event?.title.split(' ').slice(0,1)}</h1>
               <p className="text-gray-700">
                 Approval: {event?.pivot?.allowed ? 'Allowed' : 'Pending'}
               </p>
-              
               <p className="text-gray-700">
                 {event?.pivot?.team_name !=null ? `Team Size: ${event?.pivot?.team_size}` : 'Solo'}
               </p>
+              <button>
+                <Link to={`/competition/${event?.id}`}  className="bg-haldi p-2 rounded-lg text-white  transition-all duration-500">
+                  View Details
+                </Link>
+              </button>
             </div>
 
           </div>

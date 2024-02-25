@@ -73,10 +73,10 @@ const Footer = () => {
                                 <h2 className={`mb-6 text-sm font-semibold text-${textColor} uppercase dark:text-${textColor}`}>Team</h2>
                                 <ul className={`text-${textColor} dark:text-${textColor} font-medium`}>
                                     <li className="mb-4">
-                                        <p onClick={() => handleTeamClick("core_team")} className="cursor-pointer">Hyperion - PGDAV</p>
+                                        <p onClick={() => handleTeamClick("core_team")} className="cursor-pointer hover:underline">Hyperion - PGDAV</p>
                                     </li>
                                     <li>
-                                        <p onClick={() => handleTeamClick("web_developer")} className="cursor-pointer">Website Development Team <br />
+                                        <p onClick={() => handleTeamClick("web_developer")} className="cursor-pointer hover:underline">Website Development Team <br />
                                         Techwhiz - IT Society</p>
                                     </li>
                                 </ul>

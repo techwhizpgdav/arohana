@@ -25,7 +25,7 @@ export default function PopOver({ details }) {
             <Popover.Button
               className={`
                 ${open ? "text-white" : "text-white/90"}
-                group flex items-center rounded-md bg-orange-700 px-2 py-2 text-base font-medium hover:text-white sm:text-sm md:text-base lg:text-lg`}
+                group flex items-center rounded-md  bg-linear-lightBlue px-2 py-2 text-base font-medium hover:text-white sm:text-sm md:text-base lg:text-lg`}
             >
               <span>Details</span>
               <svg
@@ -54,7 +54,7 @@ export default function PopOver({ details }) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute  mdmax:left-52 z-10 mt-3  -translate-x-1/2 transform px-4 sm:px-0 w-2/5  mdmax:w-4/5 ">
+              <Popover.Panel className="absolute  z-10 mt-3 -translate-x-1/2 transform px-4 sm:px-0 w-2/5   smmax:w-screen ">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
                   <div className="relative grid gap-8 bg-white p-7 ">
                     <div className=" flex justify-center">
@@ -77,7 +77,7 @@ export default function PopOver({ details }) {
                       {teamMembers.map((member, index) => {
                         return (
                         <div className=" mt-2">
-                          <div className="flex justify-between gap-20 uppercase ">
+                          <div className="flex justify-between gap-20 uppercase smmax:gap-3 ">
                             {member.name.split(' ').slice(0,1)}
                             <div >
                               <p className=" lowercase overflow-hidden max-w-68">{member.email}</p>

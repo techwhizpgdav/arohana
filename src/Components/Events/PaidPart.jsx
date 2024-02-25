@@ -30,7 +30,7 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
     sponsor_task,
     whatsapp_group,
   } = event;
-  console.log(event); 
+  // console.log(event); 
   const navigate = useNavigate();
   const [buttonSelected, setButtonSelected] = useState("Solo");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -114,10 +114,10 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
           setTeamCode(response?.data?.data?.team_code);
         }
       } else {
-        alert("Participation failed! Please try again.");
+        alert( response?.data?.message || "Participation failed! Please try again.");
       }
     } catch (error) {
-      alert("Participation failed! Please try again.");
+      alert( error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
@@ -143,10 +143,10 @@ const PaidPart = ({ event, closeModal, onParticipation }) => {
         setIsParticipated(true);
         console.log(response);
       } else {
-        alert("Participation failed! Please try again.");
+        alert(response?.data?.message || "Participation failed! Please try again");
       }
     } catch (error) {
-      alert("Participation failed! Please try again.");
+      alert(  error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 

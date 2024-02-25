@@ -19,6 +19,7 @@ import RegistrationForm from './Components/RegisterEvents/RegisterForm';
 import Categories from './Components/Events/Categories';
 import Email from './Components/ForgetPass/Email';
 import ResetPass from './Components/ForgetPass/ResetPass';
+import StarNight from './Pages/StarNight';
 const AppLayout = () => (
   <div>
     <Navbar />
@@ -44,6 +45,7 @@ const appRouters = () => (
         <Route path="registration" element={<Tutorial />} />
         <Route path="tutorial" element={<Tutorial2 />} />
         <Route path="thanks" element={< Thanks />} />
+        <Route path="starnight" element={< StarNight />} />
         <Route path="verify" element={<  Verify />} />
         <Route path="dashboard/:id" element={<Dashboard />} />
         <Route path="event-registration" element={<RegistrationForm />} />

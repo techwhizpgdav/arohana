@@ -100,6 +100,11 @@ const DesktopNav = () => {
                   Timeline
                 </p>
               </Link>
+              <Link data-aos="fade-down" to="/sponsors" >
+              <p className= {navbarStyle('/sponsors')}>
+                  Sponsors
+                </p>
+              </Link>
               <Link data-aos="fade-up" to="/teams" >
                 <p className= {navbarStyle('/teams')}>
                   Teams

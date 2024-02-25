@@ -87,7 +87,7 @@ if(participatedEvents?.length  == 0){
       <div className='flex flex-wrap items-center gap-44 justify-center pt-20 pb-40'>
         {
           participatedEvents?.map((event, index) => (
-            <div key={index} className='flex items-center justify-center gap-10 border-2 border-rose-800 rounded-2xl  p-6'>
+            <div key={index} className='flex items-center justify-center gap-10 border-2 border-black rounded-2xl  p-6 smmax:p-4'>
               {
                 (
                   <>

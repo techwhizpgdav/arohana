@@ -108,10 +108,10 @@ const UnpaidPart = ({ event, closeModal, onParticipation }) => {
           setTeamCode(response?.data?.data?.team_code);
         }
       } else {
-        alert("Participation failed! Please try again.");
+        alert(response?.data?.message || "Participation failed! Please try again.");
       }
     } catch (error) {
-      alert(error.message);
+      alert( error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
@@ -137,10 +137,10 @@ const UnpaidPart = ({ event, closeModal, onParticipation }) => {
         setIsParticipated(true);
         console.log("OnsubmitTeam \n" + response);
       } else {
-        alert("Participation failed! Please try again.");
+        alert(response?.data?.message || "Participation failed! Please try again.");
       }
     } catch (error) {
-      alert("Participation failed! Please try again.");
+      alert( error?.response?.data?.message || "Participation failed! Please try again.");
     }
   };
 
