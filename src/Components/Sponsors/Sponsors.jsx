@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Api from '../../Functions/api';
+import 'aos/dist/aos.css';
+import Spinner2 from '../ShimmerAndSpinner/Spinner2';
 import sponsors from './sponsors.json';
-import bg from '../../assets/Bg/sponsor.jpg';
 
 const Sponsors = () => {
+
+  const { fetchApi, isLoading } = Api();
+  const [sponsorsData, setSponsorsData] = useState([]);
+  const [errors, setErrors] = useState([]);
+  const [loading, setIsLoading] = useState(true);
 
   const convertToTitleCase = (str) => {
     return str.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchApi('GET', 'api/sponsors', 'sponsors');
+        if (response?.status == 200) {
+          console.log(response?.data);
+          setSponsorsData(response?.data);
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('Error fetching sponsors data:', error);
+        setErrors(errors);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // if (loading) {
+  //   return (
+  //     <div className='w-screen h-screen flex justify-center items-center'>
+  //       <Spinner2 />
+  //     </div>
+  //   );
+  // }
 
   const renderSponsorSection = (sponsorType) => {
     return (
@@ -41,14 +73,22 @@ const Sponsors = () => {
     <div className="sponsor-wrapper w-full flex flex-col items-center">
       <div className="py-5">
         <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold mt-4 mb-8 font-serif
-         text-haldi-orange  opacity-80 text-shadow-lg transform hover:scale-110 transition-transform " 
-         style={{ WebkitTextStroke: '0.2px yellow' }}>
+         text-haldi-orange  opacity-80 text-shadow-lg transform hover:scale-110 transition-transform "
+          style={{ WebkitTextStroke: '0.2px yellow' }}>
           SPONSORS</h1>
       </div>
       <div>
-        {Object.keys(sponsors).map(sponsorType => (
-          renderSponsorSection(sponsorType)
-        ))}
+        {errors ?
+          <div>
+            Page Under Construction
+          </div> :
+
+          Object.keys(sponsors).map(sponsorType => (
+            renderSponsorSection(sponsorType)
+          ))
+
+        }
+
       </div>
     </div>
   );
