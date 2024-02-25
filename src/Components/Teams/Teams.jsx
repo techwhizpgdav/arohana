@@ -10,11 +10,10 @@ const Teams = () => {
     const { state } = useLocation();
 
     // Set default value for tab based on state
-    const { tab } = state || { tab: 'student_council' };
+    const { tab } = state || { tab: 'core_team' };
 
     const [activeTab, setActiveTab] = useState(tab);
     const teams = {
-        student_council: teamData.student_council,
         core_team: teamData.core_team,
         web_developer: teamData.web_developer,
     };
@@ -47,7 +46,6 @@ const Teams = () => {
 
             {/* Tab Buttons */}
             <div className="flex justify-center mx-4 flex-col sm:flex-row">
-                <button className={`mr-4 px-6 py-3 mb-4 sm:mb-0 w-full font-bold rounded-lg shadow-lg whitespace-normal ${activeTab === 'student_council' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('student_council')}>Student Council</button>
                 <button className={`mr-4 px-6 py-3 mb-4 sm:mb-0 w-full font-bold rounded-lg shadow-lg whitespace-normal ${activeTab === 'core_team' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('core_team')}>Core Team</button>
                 <button className={`px-6 py-3 w-full font-bold rounded-lg shadow-lg whitespace-normal ${activeTab === 'web_developer' ? 'bg-yellow-500 text-white hover:scale-105' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`} onClick={() => handleTabClick('web_developer')}>Web Development Team</button>
             </div>
