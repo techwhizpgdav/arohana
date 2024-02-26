@@ -41,6 +41,7 @@ const CompetitionDetailsPage = () => {
   const [isOnMobile, setIsOnMobile] = useState(false);
   const [sponsorStep, setSponsorStep] = useState(0);
   const [online, setOnline] = useState(1);
+  const [deadlinepassed, setDeadline] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth < 764) {
@@ -56,6 +57,7 @@ const CompetitionDetailsPage = () => {
     result.then((response) => {
       if (response?.status === 200) {
         setOnline(response?.data?.data?.online);
+        console.log(response?.data?.data?.competition?.deadline);
         setAlreadyParticipated(response?.data?.data?.participated);
         setEvent(response?.data?.data?.competition);
         if (response?.data?.data?.competition?.sponsor_task == 1) {
@@ -101,8 +103,19 @@ const CompetitionDetailsPage = () => {
     venue,
     image_url,
     sponsor_task,
-    whatsapp_group
+    whatsapp_group,
+    deadline
   } = event;
+  // condition for deadline, if it is today then set the step to 3
+    const deadEnd = new Date(deadline);
+    const now = new Date();
+
+    useEffect(() => {
+      if (deadEnd < now) {
+        setDeadline(true);
+      }
+    }, [deadEnd, now, user]);
+      
   function closeModal() {
     setIsOpen(false);
   }
@@ -264,8 +277,8 @@ const CompetitionDetailsPage = () => {
                   </button>
                 )}
                 {step === 3 && (
-                  <p className="max-w-60 text-sm md:text-base">
-                    Please wait for the admin to verify your account.
+                  <p className="max-w-60 text-sm md:text-base text-center text-haldi-red">
+                    Deadline for participation has passed
                   </p>
                 )}
                 <div>
@@ -298,17 +311,29 @@ const CompetitionDetailsPage = () => {
                     ) : (
                       <>
                         {!isChildParticipated ? (
-                          <button
-                            className="bg-rose-500 h-10 md:h-12 w-32 md:w-40 rounded-md"
-                            onClick={openModal}
-                          >
-                            <div className="flex flex-row items-center justify-center">
-                              <IoTicketOutline color="white" size={24} />
-                              <p className="text-sm md:text-base text-white mx-2">
-                                Participate
-                              </p>
-                            </div>
-                          </button>
+                        <>
+                        {
+                          deadlinepassed ? (
+                            <p
+                              className="bg-gray-400 text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
+                            >
+                              Deadline Passed
+                            </p>
+                          ) : (
+                            <button
+                              className="bg-rose-500 h-12 w-40 rounded-md"
+                              onClick={openModal}
+                            >
+                              <div className="flex flex-row items-center justify-center">
+                                <IoTicketOutline color="white" size={24} />
+                                <p className="text-lg text-white mx-2">
+                                  Participate
+                                </p>
+                              </div>
+                            </button>
+                          )
+                        }
+                        </>
                         ) : (
                           <p
                             className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
@@ -423,6 +448,8 @@ const CompetitionDetailsPage = () => {
                       </Link>
                     </button>
                   )}
+
+
                   {
                     (alreadyParticipated || isChildParticipated ) && whatsapp_group !=null? (
                       <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
@@ -451,18 +478,29 @@ const CompetitionDetailsPage = () => {
                       ) : (
                         <>
                           {!isChildParticipated ? (
+                        <>
+                        {
+                          deadlinepassed ? (
+                            <p
+                              className="bg-gray-400 text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
+                            >
+                              Deadline Passed
+                            </p>
+                          ) : (
                             <button
                               className="bg-rose-500 h-12 w-40 rounded-md"
                               onClick={openModal}
                             >
                               <div className="flex flex-row items-center justify-center">
-                                <IoTicketOutline color="white" size={30} />
+                                <IoTicketOutline color="white" size={24} />
                                 <p className="text-lg text-white mx-2">
-                                  {" "}
-                                  Participate{" "}
+                                  Participate
                                 </p>
                               </div>
                             </button>
+                          )
+                        }
+                        </>
                           ) : (
                             <p
                               className=" bg-haldi text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
