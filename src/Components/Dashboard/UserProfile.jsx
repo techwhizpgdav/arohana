@@ -2,11 +2,10 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Qrcode from "../../assets/qrcode.jpg";
 import { Link } from "react-router-dom";
-import Api from "../../Functions/api";
 import QRCode from "react-qr-code";
 import { API_URL } from "../../Functions/Constants";
-const UserProfile = ({ user }) => {
-  console.log(user);
+import { data } from "jquery";
+const UserProfile = ({ user, pass }) => {
   const {
     name,
     college,
@@ -17,8 +16,7 @@ const UserProfile = ({ user }) => {
     phone_number,
     fest_pass,
   } = user;
-  const { fetchApi } = Api();
-  const [qrCodeUrl, setQrCodeUrl] = useState("");
+
   return (
     <div className="border rounded-md shadow-md p-4 h-3/4 ">
       <h2 className="text-3xl font-bold mb-20">Profile</h2>
@@ -67,10 +65,24 @@ const UserProfile = ({ user }) => {
           </div>
         </div>
         <div className="flex gap-8 items-center justify-center flex-col  ">
+          <div>
+              {
+                pass > 0 ? <div>
+                    Fest Pass is used on : 
+                    {
+                      pass.map((dates) =>{
+                        <p>
+                          {dates}
+                        </p>
+                      } )
+                    }
+                </div>:null
+              }
+          </div>
           <p className="font-bold text-black">Unique QR Code</p>
           {is_verified ? (
             <div className=" flex items-center justify-center flex-col">
-              <QRCode value={`${API_URL}/api/scan/${fest_pass}`} size={100} />
+              <QRCode value={`${API_URL}/api/scan/${fest_pass}`} size={150} />
               <p className="text-center mt-10">
                 Show this QR code while entering in the college.
               </p>
