@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import Qrcode from "../../assets/qrcode.jpg";
 import { Link } from "react-router-dom";
 import QRCode from "react-qr-code";
-import { API_URL } from "../../Functions/Constants";
-import { data } from "jquery";
-const UserProfile = ({ user, pass }) => {
+import Api from '../../Functions/api';
+import Spinner2 from "../ShimmerAndSpinner/Spinner2";
+
+const UserProfile = ({ user }) => {
   const {
     name,
     college,
@@ -16,6 +17,25 @@ const UserProfile = ({ user, pass }) => {
     phone_number,
     fest_pass,
   } = user;
+
+  const {fetchApi} = Api();
+  const [pass,setPass] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(()=>{
+    fetchApi("GET", 'api/entries').then((data)=>{
+      setPass(data?.data?.data);
+      setIsLoading(false);
+    })
+  }, [user]);
+
+
+
+  if(isLoading){
+    return <Spinner2 />
+  }
+
+
 
   return (
     <div className="border rounded-md shadow-md p-4 h-3/4 ">
@@ -67,14 +87,18 @@ const UserProfile = ({ user, pass }) => {
         <div className="flex gap-8 items-center justify-center flex-col  ">
           <div>
               {
-                pass > 0 ? <div>
-                    Fest Pass is used on : 
+                fest_pass != "0" ? 
+                <div style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
+                    <h2 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '20px' }}>Fest Pass Usage</h2>
                     {
-                      pass.map((dates) =>{
-                        <p>
-                          {dates}
-                        </p>
-                      } )
+                      pass.map((dates , index) => {
+                        const date = new Date(dates?.updated_at);
+                        return (
+                          <p className="text-center font-semibold pt-1" key={index} style={{ backgroundColor: '#e9ecef', padding: '10px', borderRadius: '5px', marginBottom: '10px' }}>
+                            {`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
+                          </p>
+                        )
+                      })
                     }
                 </div>:null
               }
@@ -82,7 +106,7 @@ const UserProfile = ({ user, pass }) => {
           <p className="font-bold text-black">Unique QR Code</p>
           {is_verified ? (
             <div className=" flex items-center justify-center flex-col">
-              <QRCode value={`${API_URL}/api/scan/${fest_pass}`} size={150} />
+              <QRCode value={`https://admin-frontend-five-psi.vercel.app/dashboard/users/entry?pass=${fest_pass}`} size={140} />
               <p className="text-center mt-10">
                 Show this QR code while entering in the college.
               </p>

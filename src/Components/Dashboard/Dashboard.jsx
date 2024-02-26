@@ -26,7 +26,6 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeComponent, setActiveComponent] = useState('');
   const [hamOpen, setHamOpen] = useState(false);
-  const [pass,setPass] = useState();
 
   const {fetchApi} = Api();
 
@@ -39,9 +38,6 @@ const Dashboard = () => {
       }
       if (token) {
         authUser().then((data) => {
-          fetchApi("GET", 'api/entries').then((data)=>{
-            setPass(data?.data?.data);
-          })
           setUser(data);
           setIsLoading(false);
         })
@@ -161,7 +157,7 @@ const Dashboard = () => {
           onClick={() => setHamOpen(false)}
         >
           <Welcome user={user} />
-            {activeComponent === 'userProfile' && <UserProfile user={user} pass = {pass} />}
+            {activeComponent === 'userProfile' && <UserProfile user={user} />}
             {activeComponent === 'userEventDetails' && <UserEventDetails user={user} />}
             {activeComponent === 'userTeams' && <UserTeams user={user} />}
             {activeComponent === 'userSubmission' && <Submission user={user} />}
