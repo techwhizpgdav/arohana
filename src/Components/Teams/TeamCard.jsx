@@ -37,7 +37,7 @@ export default TeamCard;
 //   "name": "Yesshasvi Pandita",
 //   "position": "Technical Head",
 //   "mobile": "8209857354",
-//   "photo": "https://arohana.b-cdn.net/Hyperion%20Core%20Team/WhatsApp%20Image%202023-08-15%20at%2012.50.30%20PM.jpeg.jpg",
+//   "photo": "https://arohana1.b-cdn.net/Hyperion%20Core%20Team/WhatsApp%20Image%202023-08-15%20at%2012.50.30%20PM.jpeg.jpg",
 //   "instagram": "https://www.instagram.com/yeshassavi_pandita/",
 //   "linkedin": "https://www.linkedin.com/in/yeshassavi-pandita-b632741b3/"
 // },

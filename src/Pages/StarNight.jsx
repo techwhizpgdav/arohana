@@ -6,7 +6,7 @@ const StarNight = () => {
     <div className="bg-black flex flex-col items-center justify-center absolute w-[100%]">
       <div className="flex flex-col items-center relative">
         <video autoPlay muted loop className="absolute w-[100%] h-[100%]">
-          <source src="https://arohana.b-cdn.net/main.mp4" type="video/mp4" />
+          <source src="https://arohana1.b-cdn.net/main.mp4" type="video/mp4" />
         </video>
         <h1 className="text-[22rem] text-white bebas bg-[#000] tracking-wide leading-[100vh] mix-blend-multiply">
           STAR NIGHT
