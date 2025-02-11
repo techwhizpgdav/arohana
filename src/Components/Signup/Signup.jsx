@@ -7,63 +7,60 @@ import axios from "axios";
 import { API_URL } from "../../Functions/Constants";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
-import SponsorTask from "./SponsorTask";
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+
 const Signup = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [showNormalPassword, setShowNormalPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const checkAndNavigate = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        navigate("/");
+      }
+    };
+    checkAndNavigate();
+  }, [navigate]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    if (token) {
+      localStorage.setItem("token", token);
+      navigate("/"); // Redirect after storing the token
+    }
+  }, [navigate]);
+
+  const handleGoogleLogin = () => {
+    window.location.href = "https://backend.pgdavhyperion.in/api/auth/redirect/google";
+  };
+
   const initialValues = {
     name: "",
     email: "",
     password: "",
     password_confirmation: "",
-    phone: "",
-    college: "",
-    college_id: "",
-    instagram_id: "",
-    // sponsor_task: "",
   };
+
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
-    .matches(
-      /^.{8,}$/,
-      "Minimum 8 characters"
-    )
+      .matches(/^.{8,}$/, "Minimum 8 characters")
       .required("Required"),
     password_confirmation: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Required"),
-    college: Yup.string().required("Required"),
-    phone: Yup.string()
-      .required("Required")
-      .matches(/^[6-9]\d{9}$/, "Invalid phone number"),
-    college_id: Yup.string().required("Photo ID is required"),
-    // sponsor_task: Yup.string().required("Sponsor Task Screen Shot is required"),
   });
 
   const onSubmit = async (values) => {
     setIsLoading(true);
-    const formData = new FormData();
-    for (const key in values) {
-        if (!values[key]) continue;
-        if ((key === "college_id" || key === "sponsor_task") && values[key].name) {
-          formData.append(key, values[key], values[key].name);
-        } else if (key === "instagram_id" && values[key] !== "") {
-          formData.append(key, values[key]);
-        } else if (key !== "instagram_id") {
-          formData.append(key, values[key]);
-        }
-      }
     try {
-      const response = await axios.post(`${API_URL}/register`, formData, {
+      const response = await axios.post(`${API_URL}/register`, values, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
@@ -78,335 +75,78 @@ const Signup = () => {
       }
     } catch (error) {
       setIsLoading(false);
-      console.log(error); // Log the entire error object to the console
-      alert(
-        error?.response?.data?.message ||
-          error.message ||
-          "Signup failed! Please try again."
-      );
+      console.error(error);
+      alert(error?.response?.data?.message || error.message || "Signup failed! Please try again.");
     }
   };
 
-  useEffect(() => {
-    const checkAndNavigate = async () => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        navigate("/");
-      }
-    };
-    checkAndNavigate();
-  }, [navigate]);
-const handleAutofill = (e) => {
-    e.preventDefault();
-    const name = e.target.elements.name.value;
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.password.value;
-    const password_confirmation = e.target.elements.password_confirmation.value;
-    const college = e.target.elements.college.value;
-    const college_idFile = e.target.elements.college_id.files[0]; // Get the uploaded file
-    // const sponsor_taskFile = e.target.elements.sponsor_task.files[0]; // Get the uploaded file
-    const values = {
-        name,
-        email,
-        password,
-        password_confirmation,
-        college,
-        phone: e.target.elements.phone.value,
-        college_id: college_idFile,
-        instagram_id: e.target.elements.instagram_id.value,
-        // sponsor_task: sponsor_taskFile,
-    };
-    onSubmit(values);
-};
-    function closeModal() {
-        setIsOpen(false)
-    }
-
-    function openModal() {
-        setIsOpen(true)
-    }
-    
   return (
-    <>
-    
-    {/* <SponsorTask /> */}
-
     <div className={`${isLoading ? "opacity-40" : "opacity-100"} w-full`}>
       <div className="container-login100 min-h-screen mt-2">
-        <div className="wrap-login100 ">
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
-          >
-            {({ values, errors }) => (
-              <Form
-                className="login100-form validate-form"
-                onSubmit={handleAutofill}
-              >
+        <div className="wrap-login100">
+          <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+            {({ errors }) => (
+              <Form className="login100-form validate-form">
                 <span className="login100-form-logo">
-                  <img src={Profile} alt="" />
+                  <img src={Profile} alt="User Profile" />
                 </span>
                 <span className="login100-form-title">Signup</span>
-                <div
-                  className="wrap-input100 validate-input"
-                  data-validate="Enter username"
-                >
-                  <Field
-                    type="text"
-                    name="name"
-                    className="input100 text-white placeholder:text-white"
-                    placeholder="Username"
-                  />
+
+                <div className="wrap-input100 validate-input" data-validate="Enter username">
+                  <Field type="text" name="name" className="input100 text-white placeholder:text-white" placeholder="Username" />
                   <span className="focus-input100" data="&#xf207;"></span>
                 </div>
-                <ErrorMessage
-                  name="name"
-                  component="div"
-                  className="error-message"
-                />
-                <div
-                  className="wrap-input100 validate-input"
-                  data-validate="Enter email"
-                >
-                  <Field
-                    type="email"
-                    name="email"
-                    className="input100 placeholder:text-white"
-                    placeholder="Email"
-                  />
+                <ErrorMessage name="name" component="div" className="error-message" />
+
+                <div className="wrap-input100 validate-input -mt-4" data-validate="Enter email">
+                  <Field type="email" name="email" className="input100 placeholder:text-white" placeholder="Email" />
                   <span className="focus-input100" data="&#xf15a;"></span>
                 </div>
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="error-message"
-                />
-              <div className="wrap-input100 validate-input" data-validate="Enter password">
-                <Field
-                  type={showNormalPassword ? "text" : "password"}
-                  name="password"
-                  className="input100 placeholder:text-white"
-                  placeholder="Password"
-                />
+                <ErrorMessage name="email" component="div" className="error-message" />
 
-                <span className="focus-input100" data="&#xf191;"></span>
-              </div>
-                <button type="button" onClick={() => setShowNormalPassword(!showNormalPassword)} className=" text-lg text-white hover:cursor-pointer relative -top-16 left-56">
-                  {showNormalPassword ? <IoMdEyeOff /> : <IoEye />}
-                </button>
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="error-message max-w-60"
-                />
-                
-                <div
-                  className="wrap-input100 validate-input"
-                  data-validate="Confirm password"
-                >
-                  <Field
-                    type= {showConfirmPassword ? "text" : "password"}
-                    name="password_confirmation"
-                    className="input100 placeholder:text-white"
-                    placeholder="Confirm Password"
-                  />
+                <div className="wrap-input100 validate-input -mt-4" data-validate="Enter password">
+                  <Field type={showNormalPassword ? "text" : "password"} name="password" className="input100 placeholder:text-white" placeholder="Password" />
                   <span className="focus-input100" data="&#xf191;"></span>
                 </div>
-                <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className=" text-lg text-white hover:cursor-pointer relative -top-16 left-56">
+                <button type="button" onClick={() => setShowNormalPassword(!showNormalPassword)} className="text-lg text-white hover:cursor-pointer relative -top-16 left-56">
+                  {showNormalPassword ? <IoMdEyeOff /> : <IoEye />}
+                </button>
+                <ErrorMessage name="password" component="div" className="error-message max-w-60" />
+
+                <div className="wrap-input100 validate-input -mt-8" data-validate="Confirm password">
+                  <Field type={showConfirmPassword ? "text" : "password"} name="password_confirmation" className="input100 placeholder:text-white" placeholder="Confirm Password" />
+                  <span className="focus-input100" data="&#xf191;"></span>
+                </div>
+                <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="text-lg text-white hover:cursor-pointer relative -top-16 left-56">
                   {showConfirmPassword ? <IoMdEyeOff /> : <IoEye />}
                 </button>
-                <ErrorMessage
-                  name="password_confirmation"
-                  component="div"
-                  className="error-message"
-                />
+                <ErrorMessage name="password_confirmation" component="div" className="error-message -mt-8" />
 
-                <div
-                  className="wrap-input100 validate-input"
-                  data-validate="Enter college"
-                >
-                  <Field
-                    type="text"
-                    name="college"
-                    className="input100 placeholder:text-white"
-                    placeholder="College"
-                  />
-                  <span className="focus-input100" data="&#xf133;"></span>
-                </div>
-                <ErrorMessage
-                  name="college"
-                  component="div"
-                  className="error-message"
-                />
-                <div
-                  className="wrap-input100 validate-input"
-                  data-validate="Enter college"
-                >
-                  <Field
-                    type="text"
-                    name="phone"
-                    className="input100 placeholder:text-white"
-                    placeholder="Phone"
-                  />
-                  <span className="focus-input100" data="&#xf155;"></span>
-                </div>
-                <ErrorMessage
-                  name="phone"
-                  component="div"
-                  className="error-message"
-                />
-
-                <div
-                  className=" mb-2 wrap-input100 validate-input"
-                  data-validate="Enter college"
-                >
-                  <Field
-                    type="text"
-                    name="instagram_id"
-                    className="input100 placeholder:text-white"
-                    placeholder="Instagram ID (Optional)"
-                  />
-                  <span className="focus-input100" data="&#xf16d;"></span>
-                </div>
-                <div className=" max-w-60 text-white mb-8">
-                  Do you have public account with 1000+ followers on Instagram?
-                  If Yes we have a 🎁 for you.
-                </div>
-                
-                <div className="validate-input mb-4">
-                  <Field
-                    name="college_id"
-                    type="file"
-                    className="input100 placeholder:text-white file-input"
-                    accept="image/*"
-                    id="college_id"
-                  />
-                  <label htmlFor="college_id" className="file-label">
-                    {values.college_id
-                      ? values.college_id.split("\\").pop()
-                      : "Upload College ID"}
-                  </label>
-                </div>
-                <ErrorMessage
-                  name="college_id"
-                  component="div"
-                  className="error-message"
-                />
-                {/* <div className="validate-input mb-4">
-                  <Field
-                    name="sponsor_task"
-                    type="file"
-                    className="input100 placeholder:text-white file-input"
-                    accept="image/*"
-                    id="sponsor_task"
-                  />
-                  <label htmlFor="sponsor_task" className="file-label">
-                    {values.sponsor_task
-                      ? values.sponsor_task.split("\\").pop()
-                      : "Upload Sponsor Task"}
-                  </label>
-                </div>
-                <ErrorMessage
-                  name="sponsor_task"
-                  component="div"
-                  className="error-message"
-                /> */}
-
-                <div>
-                {/* <div className="inset-0 flex items-center justify-center">
-                    <button
-                    type="button"
-                    onClick={openModal}
-                    className="rounded-md border border-transparent  z-20 text-white"
-                    >
-                     How to do Sponsor Task?
-                    </button>
-                </div> */}
-
-                <Transition appear show={isOpen} as={Fragment}>
-                    <Dialog as="div" className="relative z-10" onClose={closeModal}>
-                    <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                    >
-                        <div className="fixed inset-0 bg-black/25" />
-                    </Transition.Child>
-
-                    <div className="fixed inset-0 overflow-y-auto">
-                        <div className="flex min-h-full items-center justify-center p-4 text-center">
-                        <Transition.Child
-                            as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 scale-95"
-                            enterTo="opacity-100 scale-100"
-                            leave="ease-in duration-200"
-                            leaveFrom="opacity-100 scale-100"
-                            leaveTo="opacity-0 scale-95"
-                        >
-                            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                            <Dialog.Title
-                                as="h3"
-                                className="text-lg font-medium leading-6 text-gray-900"
-                            >
-                                Follow the steps to complete the Sponsor Task.
-                            </Dialog.Title>
-                            <div className="mt-2">
-                            <div className=" text-center">
-                            <a href='https://play.google.com/store/apps/details?id=com.zingbusbtoc.zingbus' className= "text-haldi underline  ">
-                                Click here to download the app.
-                            </a>
-                            </div>
-                            <ul className="list-disc p-4">
-                                <li>Proceed to download the application and ensure to provide a five-star rating.</li>
-                                <li>Compose a review consisting of two to three sentences of high quality.</li>
-                                <li>Ensure that the review is published and visible to the public.</li>
-                                <li>Capture a screenshot of the published review and upload it to the designated location here.</li>
-                            </ul>
-                            </div>
-
-                            <div className="mt-4">
-                                <button
-                                type="button"
-                                className="inline-flex justify-center rounded-md border border-transparent bg-haldi-orange px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                onClick={closeModal}
-                                >
-                                Got it, thanks!
-                                </button>
-                            </div>
-                            </Dialog.Panel>
-                        </Transition.Child>
-                        </div>
-                    </div>
-                    </Dialog>
-                </Transition>
-                </div>
-
-                <div className="container-login100-form-btn">
-                  <button
-                    type="submit"
-                    className={`login100-form-btn mt-4 ${
-                      Object.keys(errors).length
-                        ? "opacity-40 cursor-not-allowed"
-                        : "cursor-pointer opacity-100"
-                    }`}
-                    disabled={!!Object.keys(errors).length}
-                  >
+                <div className="container-login100-form-btn mt-8">
+                  <button type="submit" className={`login100-form-btn -mt-8 ${Object.keys(errors).length ? "opacity-40 cursor-not-allowed" : "cursor-pointer opacity-100"}`} disabled={!!Object.keys(errors).length}>
                     Signup
                   </button>
                 </div>
+
+                <hr className="mt-6" />
+
+                {/* Google Login Button */}
+                <div className="px-6 sm:px-0 max-w-sm mt-8">
+                  <button type="button" onClick={handleGoogleLogin} className="text-white w-full bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2">
+                    <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+                      <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
+                    </svg>
+                    Sign up with Google
+                    <div></div>
+                  </button>
+                </div>
+
               </Form>
             )}
           </Formik>
         </div>
       </div>
     </div>
-    </> 
   );
 };
 

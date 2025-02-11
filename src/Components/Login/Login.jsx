@@ -51,13 +51,13 @@ const Login = ({ path }) => {
      const handleGoogleLogin = () => {
           window.location.href = 'https://backend.pgdavhyperion.in/api/auth/redirect/google';
      };
-
+// User clicks on google-> login success-> back to login page-> taken token from link-> checkAndNavigate checks token in params-> redirects to /
      useEffect(() => {
           const urlParams = new URLSearchParams(window.location.search);
           const token = urlParams.get('token');
           if (token) {
                localStorage.setItem('token', token);
-               navigate('/'); //. Redirect to the desired page after storing the token
+               navigate('/'); // Redirect to the desired page after storing the token
           }
      }, [navigate]);
 
@@ -98,17 +98,20 @@ const Login = ({ path }) => {
                                                   <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
                                                        <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
                                                   </svg>
-                                                  Sign in/up with Google
+                                                  Sign in with Google
                                                   <div></div>
                                              </button>
                                         </div>
                                         <hr className='mt-4' />
-                                        <div className="text-center pt-6">
-                                             <Link to="/registration" className="txt1">
-                                                  Don't Have an account? <span className='text-white font-medium'> Sign Up</span>
+                                        <div className="text-center pt-6 -mb-4">
+                                             {/* taking user directly to signup page, rather than registration wil contains T&C */}
+                                             <Link to="/signup" className="txt1">
+                                                  Not a member?{"  "}
+                                                  <span className="text-white font-semibold">Sign Up</span>
                                              </Link>
+
                                         </div>
-                                        <div className="text-center pt-6">
+                                        <div className="text-center pt-6 font-extralight">
                                              <Link to="/forget-password" className="txt1">
                                                   Forgot Password?
                                              </Link>
