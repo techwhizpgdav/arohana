@@ -43,6 +43,13 @@ Make sure you have the following installed on your system:
    ```
    This will start the frontend development server.
 
+Shortcut->
+```
+git clone https://github.com/techwhizpgdav/arohana.git;
+cd arohana;
+npm i;
+npm start;
+```
 5. **Set Up Backend**:
    - Navigate to the backend directory.
    - Start the PHP server or configure your preferred server environment.
