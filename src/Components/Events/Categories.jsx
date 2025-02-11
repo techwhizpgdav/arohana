@@ -50,7 +50,7 @@ const Categories = () => {
           <div key={name} className="w-full">
             {/* Category Name */}
             <h2 className="text-2xl font-bold text-[#a62639] mb-4">{name}</h2>
-            <div className="flex gap-6 overflow-x-auto pb-4 scroll-snap-x mandatory custom-scrollbar">
+            <div className="flex gap-6 overflow-x-auto pb-4 select-none scroll-snap-x mandatory custom-scrollbar">
               {categoryCompetitions.map(
                 ({ id, image_url, society, date, tag_line, title }) => {
                   const { month, day } = date
@@ -59,7 +59,7 @@ const Categories = () => {
                   return (
                     <div
                       key={title}
-                      className="lg:min-w-[350px] md:min-w-[300px] min-w-[275px] bg-white shadow-lg rounded-3xl overflow-hidden p-4 flex flex-col"
+                      className="lg:min-w-[350px] min-w-[300px] bg-white shadow-lg rounded-3xl overflow-hidden p-4 flex flex-col"
                     >
                       {/* Image Section */}
                       <div className="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden">
