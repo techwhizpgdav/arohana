@@ -57,7 +57,7 @@ const Login = ({ path }) => {
           const token = urlParams.get('token');
           if (token) {
                localStorage.setItem('token', token);
-               navigate('/'); // Redirect to the desired page after storing the token
+               navigate('/'); //. Redirect to the desired page after storing the token
           }
      }, [navigate]);
 
