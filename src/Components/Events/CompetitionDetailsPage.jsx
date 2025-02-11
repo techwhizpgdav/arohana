@@ -63,6 +63,8 @@ const CompetitionDetailsPage = () => {
         if (response?.data?.data?.competition?.sponsor_task == 1) {
           setSponsorStep(1);
         }
+        console.log(response);
+        
       }
     });
   }, [navigate]);
