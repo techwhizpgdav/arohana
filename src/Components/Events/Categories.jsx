@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import Api from "../../Functions/api";
 import { useNavigate } from "react-router-dom";
 import "aos/dist/aos.css";
-import CategoryCards from "./CategoryCards";
 import Spinner2 from "../ShimmerAndSpinner/Spinner2";
-import { Heart, Share } from "lucide-react";
 import { Link } from "react-router-dom";
 // /api/categories -> getting heading for events  - id - name // 1 dance
 // /api/category-competitions/:id fetch all data to
