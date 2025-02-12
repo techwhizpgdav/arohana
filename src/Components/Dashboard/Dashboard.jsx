@@ -1,170 +1,127 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
+import React from "react";
+import { useEffect, useState } from "react";
+import Qrcode from "../../assets/qrcode.jpg";
+import { Link } from "react-router-dom";
+import QRCode from "react-qr-code";
 import Api from '../../Functions/api';
-import { TypeAnimation } from 'react-type-animation';
-import UserProfile from './UserProfile';
-import UserEventDetails from './UserEventDetails';
-import UserTeams from './UserTeams';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import Welcome from './Welcome';
-import '../../Button.css';
-import { FaUser, FaCalendar, FaUsers, FaRegFilePdf } from 'react-icons/fa';
-import Spinner2 from '../ShimmerAndSpinner/Spinner2';
-import Submission from './Submission';
-import { useParams} from 'react-router-dom';
+import Spinner2 from "../ShimmerAndSpinner/Spinner2";
 
-
-const Dashboard = () => {
-  const { authUser } = Api();
-  const [user, setUser] = useState('');
-  const {id } = useParams();
-  const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState('');
-  const [hamOpen, setHamOpen] = useState(false);
+const UserProfile = ({ user }) => {
+  const {
+    name,
+    college,
+    qrCode,
+    email,
+    email_verified_at,
+    is_verified,
+    phone_number,
+    fest_pass,
+  } = user;
 
   const {fetchApi} = Api();
+  const [pass,setPass] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(()=>{
+    fetchApi("GET", 'api/entries').then((data)=>{
+      setPass(data?.data?.data);
+      setIsLoading(false);
+    })
+  }, [user]);
 
-  useEffect(() => {
-    setActiveComponent(id);
-    const checkAndNavigate = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        navigate('/login');
-      }
-      if (token) {
-        authUser().then((data) => {
-          setUser(data);
-          setIsLoading(false);
-        })
-        setIsLoggedIn(true);
-      }
-    };
-    checkAndNavigate();
 
-  }, [navigate]);
-  useEffect(() => {
-    document.querySelectorAll('button').forEach(button => {
-      button.innerHTML = '<div><span>' + button.textContent.trim().split('').join('</span><span>') + '</span></div>';
-    });
-  }, [navigate, hamOpen, activeComponent, user]);
 
-  useEffect(() => {
-    AOS.init({duration: 1000});
-    AOS.refresh(); 
-  }, []);
-
-  if (user?.length === 0 || isLoading) {
-    return <div className='dashboard-hero h-screen flex justify-center items-center text-white'>
-      <Spinner2 />
-    </div>;
+  if(isLoading){
+    return <Spinner2 />
   }
 
+
+
   return (
-    <>    
-      <div className=' absolute top-5'>
-      <div className={`hamburger ${hamOpen? 'is-active' :''} `} onClick={() => setHamOpen(!hamOpen)}>
-          <div className="hamburger__container">
-            <div className="hamburger__inner"></div>
-            <div className="hamburger__hidden"></div>
+    <div className="border rounded-md shadow-md p-4 h-3/4 ">
+      <h2 className="text-3xl font-bold mb-20">Profile</h2>
+      <div className="flex mdmax:flex-col-reverse justify-around gap-10">
+      hi hello
+        <div>
+          <div className="flex gap-2 mb-4 ">
+            <p className="font-bold">Name:</p>
+            <p>{name}</p>
           </div>
-        </div>   
-      </div>
-
-      <div className="flex  " data-aos="fade-up">
-        <div className={`${!hamOpen? 'w-0 mdmax:w-0' :'w-1/5 mdmax:w-screen'} dashboard-left-body` } >
-            {
-              !hamOpen? <div></div>:
-              <div className='h-screen dashboard-left flex items-center justify-center' >
-              <div className='button-list'>
-                  <div className=''>
-                  <FaUser className=' absolute scale-125 text-white left-52 translate-y-4'/>
-
-                    <button
-                      onClick={() => setActiveComponent('userProfile')}
-                      className={`button  ${activeComponent === 'userProfile' ? 'open' : 'close'}`}
-                    >
-                      <p>Profile</p>
-                    </button>
-                  </div>
-                  <div>
-                  <FaCalendar className=' absolute scale-125 text-white left-52 translate-y-4'/>
-                    <button 
-                      onClick={() => setActiveComponent('userEventDetails')}
-                      className={` button reverse ${activeComponent === 'userEventDetails' ? 'open' : 'close'}`} 
-                    >
-                      <p>Participations</p>
-                    </button>
-                  </div>
-                  <div>
-                    <FaUsers className=' absolute scale-125 text-white left-52 translate-y-4'/>
-                    <button
-                      onClick={() => setActiveComponent('userTeams')}
-                      className={`button ${activeComponent === 'userTeams' ? 'open' : 'close'}`}
-                    >
-                      <p>Teams</p>
-                    </button>
-                  </div>
-                  <div>
-                    <FaRegFilePdf className=' absolute scale-125 text-white left-52 translate-y-4'/>
-                    <button
-                      onClick={() => setActiveComponent('userSubmission')}
-                      className={`button ${activeComponent === 'userSubmission' ? 'open' : 'close'}`}
-                    >
-                      <p>Submission</p>
-                    </button>
-                  </div>
-                </div>
-      
-              <div className='flex gap-1 absolute top-10 '>
-                <TypeAnimation
-                  sequence={[
-                    `Namaste ${user?.name.split(' ')[0]} 🙏`,
-                    4000, 
-                    `Hola ${user?.name.split(' ')[0]} 👋`,
-                    4000,
-                    `Hello ${user?.name.split(' ')[0]} 👐`,
-                    4000,
-                    `Bonjour ${user?.name.split(' ')[0]} 👋`,
-                    4000
-                  ]}
-                  wrapper="span"
-                  speed={10}
-                  
-                  style={{ fontSize: '20px', display: 'inline-block', width: '300px' , padding: '10px' , color: 'black',
-                  textAlign: 'center', fontWeight: 'bold',  borderRadius: '10px'  
-
-                }}
-                  repeat={3}
-                />
-                
-              </div>
-              </div>
-            }
+          <div className="flex gap-2 mb-4">
+            <p className="font-bold">Email:</p>
+            <p>{email}</p>
+          </div>
+          <div className="flex gap-2 mb-4">
+            <p className="font-bold">Email Verification Status :</p>
+            <p>
+              {email_verified_at ? (
+                "Verified"
+              ) : (
+                <Link
+                  to={"/verify"}
+                  className=" bg-black p-1 rounded-lg text-white hover:bg-teal-600 transition-all duration-500 "
+                >
+                  Verify Now
+                </Link>
+              )}
+            </p>
+          </div>
+          <div className="flex gap-2 mb-4">
+            <p className="font-bold">College:</p>
+            <p>{college}</p>
+          </div>
+          <div className="flex gap-2 mb-4">
+            <p className="font-bold">Phone Number:</p>
+            <p>+91 {phone_number}</p>
+          </div>
+          <div className="flex gap-2 mb-4">
+            <p className="font-bold">Fest Pass:</p>
+            <p>{is_verified == 0 ? "Pending⌛" : "Verified✅"}</p>
+          </div>
+          <div className="flex gap-2 mb-4">
+            <b>
+              You can participate in events and submit drive links without
+              account verification.
+            </b>
+          </div>
         </div>
-        {
-          hamOpen? null:
-          <div className='menu ' onClick={() => setHamOpen(!hamOpen)}>
+        <div className="flex gap-8 items-center justify-center flex-col  ">
+          <div>
+              {
+                fest_pass != "0" ? 
+                <div style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
+                    <h2 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '20px' }}>Fest Pass Usage</h2>
+                    {
+                      pass.map((dates , index) => {
+                        const date = new Date(dates?.updated_at);
+                        return (
+                          <p className="text-center font-semibold pt-1" key={index} style={{ backgroundColor: '#e9ecef', padding: '10px', borderRadius: '5px', marginBottom: '10px' }}>
+                            {`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
+                          </p>
+                        )
+                      })
+                    }
+                </div>:null
+              }
           </div>
-        
-        }
-        <div 
-          className={`dashboard-body ${hamOpen ? 'w-4/5 mdmax:w-0' : 'w-full mdmax:w-full'} ${hamOpen ? 'pl-10 mdmax:pl-0 maxHieght' : 'pl-10'} `} 
-          onClick={() => setHamOpen(false)}
-        >
-          <Welcome user={user} />
-            {activeComponent === 'userProfile' && <UserProfile user={user} />}
-            {activeComponent === 'userEventDetails' && <UserEventDetails user={user} />}
-            {activeComponent === 'userTeams' && <UserTeams user={user} />}
-            {activeComponent === 'userSubmission' && <Submission user={user} />}
+          <p className="font-bold text-black">Unique QR Code</p>
+          {is_verified ? (
+            <div className=" flex items-center justify-center flex-col">
+              <QRCode value={`https://admin-frontend-five-psi.vercel.app/dashboard/users/entry?pass=${fest_pass}`} size={140} />
+              <p className="text-center mt-10">
+                Show this QR code while entering in the college.
+              </p>
+            </div>
+          ) : (
+            <p>
+              QR Code not available, please wait until your account get Verified
+              from the admin.
+            </p>
+          )}
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default Dashboard
+export default UserProfile;
