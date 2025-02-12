@@ -41,7 +41,7 @@ const Categories = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <h1 className="text-4xl font-bold mt-10 mb-5" data-aos="fade-up">
-        Events
+        Competitions
       </h1>
       <div className="w-full max-w-[1300px] mx-auto flex flex-col gap-12 p-4">
         {competitions.map((category) => (
