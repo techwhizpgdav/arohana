@@ -64,7 +64,7 @@ const CompetitionDetailsPage = () => {
           setSponsorStep(1);
         }
         console.log(response);
-        
+
       }
     });
   }, [navigate]);
@@ -117,7 +117,7 @@ const CompetitionDetailsPage = () => {
         setDeadline(true);
       }
     }, [deadEnd, now, user]);
-      
+
   function closeModal() {
     setIsOpen(false);
   }
@@ -264,7 +264,7 @@ const CompetitionDetailsPage = () => {
                       to="/login"
                       className="text-rose-500 font-semibold text-sm md:text-base"
                     >
-                      Login to Participate
+                      Login to participate
                     </Link>
                   </button>
                 )}
@@ -304,7 +304,7 @@ const CompetitionDetailsPage = () => {
                               : "/dashboard/userProfile"
                           }
                           className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                        > 
+                        >
                          {
                             online ? "Submit Entry" : "Dashboard"
                          }
@@ -368,7 +368,7 @@ const CompetitionDetailsPage = () => {
             </div>
           </div>
         </>
-      ) : 
+      ) :
 // ! Desktop View
       (
         <>
@@ -561,7 +561,7 @@ const CompetitionDetailsPage = () => {
                   <div className=" flex flex-col justify-center items-center gap-10 mt-5">
                     <div className="">
                       Complete the sponsor task to participate in the event.
-              
+
                     </div>
                     <div>
                       The steps for sponsor tasks are given in the rules section at the bottom of the page  , complete the task and you are good to go.
@@ -606,7 +606,7 @@ const CompetitionDetailsPage = () => {
                       className="text-rose-700"
                       onClick={() => navigate("/dashboard/userProfile")}
                     >
-                      Go to Dashboard 
+                      Go to Dashboard
                     </button>
                   ) : (
                     <button
