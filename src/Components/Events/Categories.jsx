@@ -43,7 +43,7 @@ const Categories = () => {
       <h1 className="text-4xl font-bold mt-10 mb-5" data-aos="fade-up">
         Events
       </h1>
-      <div className="w-full max-w-[1300px] mx-auto flex flex-col gap-6 p-4">
+      <div className="w-full max-w-[1300px] mx-auto flex flex-col gap-12 p-4">
         {competitions.map((category) => (
           <CategorySection
             key={category.name}
