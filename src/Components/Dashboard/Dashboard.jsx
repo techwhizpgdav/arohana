@@ -38,9 +38,6 @@ const Dashboard = () => {
       if (token) {
         authUser().then((data) => {
           setUser(data);
-          /** ----------------------------- */
-          console.log(data);
-          /** ----------------------------- */
           setIsLoading(false);
         });
         setIsLoggedIn(true);
