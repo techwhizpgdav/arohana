@@ -16,7 +16,7 @@ const CompetitionCard = ({
   const { month, day } = date ? formatDate(date) : { month: "N/A", day: "--" };
 
   return (
-    <div className="flex-shrink-0 w-[315px] bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col">
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg h-full flex flex-col">
       <div className="relative w-full pt-[66.67%]">
         <img
           src={
@@ -32,10 +32,13 @@ const CompetitionCard = ({
       <div className="p-4 flex flex-col flex-grow">
         <div className="flex items-start gap-3 mb-3">
           <DateDisplay  month={month} day={day} />
-          <TitleSection title={title} tagLine={tag_line} />
+          <div>
+            <TitleSection title={title} tagLine={tag_line} />
+            <div className="mt-2">
+              <DetailsList society={society} date={date} />
+            </div>
+          </div>
         </div>
-
-        <DetailsList society={society} date={date} />
 
         <Link
           className="mt-auto px-4 py-2 bg-[#a62639] text-white rounded-lg hover:bg-[#db324d] transition-all text-center"
