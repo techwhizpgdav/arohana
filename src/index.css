@@ -184,3 +184,15 @@ text {
   overflow-x: auto; /* Allows horizontal scrolling without arrows */
   overflow-y: hidden; /* Hide vertical scrollbar */
 }
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.slick-track{
+  margin: 0;
+}
