@@ -1,8 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom'
-import Navbar from './Pages/NavbarPage';
-import Home from './Pages/HomePage';
-import Footer from './Pages/FooterPage';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import Navbar from "./Pages/NavbarPage";
+import Home from "./Pages/HomePage";
+import Footer from "./Pages/FooterPage";
 import CompetitionDetailsPage from "./Components/Events/CompetitionDetailsPage";
 import Teams from "./Pages/TeamsPage";
 import Sponsors from "./Pages/SponsorsPage";
@@ -48,7 +53,7 @@ const appRouters = () => (
         <Route path="verify" element={<Verify />} />
         <Route path="dashboard/:id" element={<Dashboard />} />
         <Route path="event-registration" element={<RegistrationForm />} />
-        <Route path="categories" element={<Categories />} />
+        <Route path="competitions" element={<Categories />} />
         <Route path="competition/:id" element={<CompetitionDetailsPage />} />
 
         <Route path="*" element={<Home />} />
@@ -56,5 +61,4 @@ const appRouters = () => (
     </Routes>
   </Router>
 );
-
 export default appRouters;

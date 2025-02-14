@@ -11,7 +11,7 @@ import Eventbg from "../assets/eventbg1.jpg";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Formik, Form, Field } from "formik";
-import * as Yup from 'yup'
+import * as Yup from "yup";
 const NavbarPage = () => {
   const navigate = useNavigate();
   const [alertMessage, setAlertMessage] = useState(null);
@@ -25,8 +25,8 @@ const NavbarPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const initialValues = {
-    sponsor_task:''
-  }
+    sponsor_task: "",
+  };
   const validationSchema = Yup.object({
     sponsor_task: Yup.string().required("Sponsor Task Screen Shot is required"),
   });
@@ -36,14 +36,18 @@ const NavbarPage = () => {
     const formData = new FormData();
     formData.append("sponsor_task", values.sponsor_task);
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post(`${API_URL}/api/user/upload-sponsor`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          'Authorization': `Bearer ${token}`,
-          Accept: "application/json",
-        },
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `${API_URL}/api/user/upload-sponsor`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+          },
+        }
+      );
       const data = response.data;
       if (response.status === 200) {
         setIsloading(false);
@@ -58,7 +62,7 @@ const NavbarPage = () => {
     }
   };
   useEffect(() => {
-    if (location.pathname.includes("categories/")) {
+    if (location.pathname.includes("competitions/")) {
       window.document.body.style.background = `url(${Eventbg}) no-repeat fixed`;
       window.document.body.style.backgroundSize = "cover";
     } else {
@@ -121,12 +125,12 @@ const NavbarPage = () => {
 
   const handleAutofill = (e) => {
     e.preventDefault();
-    const sponsor_taskFile = e.target.elements.sponsor_task.files[0]; 
+    const sponsor_taskFile = e.target.elements.sponsor_task.files[0];
     const values = {
-        sponsor_task: sponsor_taskFile,
+      sponsor_task: sponsor_taskFile,
     };
     onSubmit(values);
-};
+  };
 
   return (
     <>
@@ -137,7 +141,10 @@ const NavbarPage = () => {
        absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-haldi-orange text-white p-8 rounded-lg flex flex-col items-center gap-2 mdmax:w-4/5 mdmax:p-3`}
       >
         <p className="">{alertMessage}</p>
-        <p className=" max-w-96">We have generated a unique QR code for you. Please use this to gain entry into the College fest.</p>
+        <p className=" max-w-96">
+          We have generated a unique QR code for you. Please use this to gain
+          entry into the College fest.
+        </p>
         <Link to={"/dashboard/userProfile"}>
           <button
             className="bg-white text-black p-2 rounded-lg mt-4 w-40 "
@@ -217,46 +224,46 @@ const NavbarPage = () => {
                       </ul>
                     </div>
 
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-              >
-              {({ values, errors }) => (
-                <Form>
-                <div className=" flex items-center justify-center mb-4">
-                      <Field
-                        name="sponsor_task"
-                        type="file"
-                        className="placeholder:text-white file-input"
-                        accept="image/*"
-                        id="sponsor_task"
-                    
-                      />
-                      <label htmlFor="sponsor_task" className=" hover:cursor-pointer bg-haldi border-white border-2 text-white rounded-2xl w-48 px-2 py-2 ">
-                        {values.sponsor_task
-                          ? values.sponsor_task.split("\\").pop()
-                          : "Upload Sponsor Task"}
-                      </label>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <button
-                        disabled={!!Object.keys(errors).length}
-                        type="submit"
-                        className={`inline-flex justify-center rounded-md border border-transparent bg-haldi-orange px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
-                          Object.keys(errors).length
-                            ? "opacity-40 cursor-not-allowed"
-                            : "cursor-pointer opacity-100"
-                        }`}
-                      >
-                        Submit
-                      </button>
-                    </div>
-                </Form>
-              )}
-              </Formik>
-
-
+                    <Formik
+                      initialValues={initialValues}
+                      validationSchema={validationSchema}
+                      onSubmit={onSubmit}
+                    >
+                      {({ values, errors }) => (
+                        <Form>
+                          <div className=" flex items-center justify-center mb-4">
+                            <Field
+                              name="sponsor_task"
+                              type="file"
+                              className="placeholder:text-white file-input"
+                              accept="image/*"
+                              id="sponsor_task"
+                            />
+                            <label
+                              htmlFor="sponsor_task"
+                              className=" hover:cursor-pointer bg-haldi border-white border-2 text-white rounded-2xl w-48 px-2 py-2 "
+                            >
+                              {values.sponsor_task
+                                ? values.sponsor_task.split("\\").pop()
+                                : "Upload Sponsor Task"}
+                            </label>
+                          </div>
+                          <div className="mt-4 text-center">
+                            <button
+                              disabled={!!Object.keys(errors).length}
+                              type="submit"
+                              className={`inline-flex justify-center rounded-md border border-transparent bg-haldi-orange px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+                                Object.keys(errors).length
+                                  ? "opacity-40 cursor-not-allowed"
+                                  : "cursor-pointer opacity-100"
+                              }`}
+                            >
+                              Submit
+                            </button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
                   </Dialog.Panel>
                 </Transition.Child>
               </div>

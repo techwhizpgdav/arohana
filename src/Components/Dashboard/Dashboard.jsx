@@ -1,191 +1,228 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Dashboard.css";
-import Api from "../../Functions/api";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
+import Api from "../../Functions/api";
+import {
+  FaUser,
+  FaCalendar,
+  FaUsers,
+  FaRegFilePdf,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// Components
 import UserProfile from "./UserProfile";
 import UserEventDetails from "./UserEventDetails";
 import UserTeams from "./UserTeams";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Welcome from "./Welcome";
-import "../../Button.css";
-import { FaUser, FaCalendar, FaUsers, FaRegFilePdf } from "react-icons/fa";
-import Spinner2 from "../ShimmerAndSpinner/Spinner2";
 import Submission from "./Submission";
-import { useParams } from "react-router-dom";
+import Spinner2 from "../ShimmerAndSpinner/Spinner2";
 
 const Dashboard = () => {
-  const { authUser } = Api();
+  const { authUser, fetchApi } = Api();
   const [user, setUser] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
-  const [activeComponent, setActiveComponent] = useState("");
-  const [hamOpen, setHamOpen] = useState(false);
+  const [activeComponent, setActiveComponent] = useState("userProfile"); // Default value
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  const { fetchApi } = Api();
+  const menuItems = [
+    {
+      id: "userProfile",
+      label: "Profile",
+      icon: <FaUser />,
+      color: "from-blue-500 to-cyan-600",
+    },
+    {
+      id: "userEventDetails",
+      label: "Participations",
+      icon: <FaCalendar />,
+      color: "from-blue-500 to-cyan-600",
+    },
+    {
+      id: "userTeams",
+      label: "Teams",
+      icon: <FaUsers />,
+      color: "from-green-500 to-emerald-600",
+    },
+    {
+      id: "userSubmission",
+      label: "Submission",
+      icon: <FaRegFilePdf />,
+      color: "from-orange-500 to-rose-600",
+    },
+  ];
 
+  // Handle initial component state and URL params
   useEffect(() => {
-    setActiveComponent(id);
+    if (id) {
+      setActiveComponent(id);
+    } else if (!location.pathname.includes("/dashboard/")) {
+      // Set default active component if no ID in URL
+      setActiveComponent("userProfile");
+    }
+  }, [id, location]);
+
+  // Auth check and user data fetch
+  useEffect(() => {
     const checkAndNavigate = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
         navigate("/login");
+        return;
       }
-      if (token) {
-        authUser().then((data) => {
-          setUser(data);
-          setIsLoading(false);
-        });
-        setIsLoggedIn(true);
+      try {
+        const userData = await authUser();
+        // Deep compare to avoid unnecessary state updates
+        if (JSON.stringify(userData) !== JSON.stringify(user)) {
+          setUser(userData);
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Auth error:", error);
+        navigate("/login");
       }
     };
     checkAndNavigate();
-  }, [navigate]);
-  useEffect(() => {
-    document.querySelectorAll("button").forEach((button) => {
-      button.innerHTML =
-        "<div><span>" +
-        button.textContent.trim().split("").join("</span><span>") +
-        "</span></div>";
-    });
-  }, [navigate, hamOpen, activeComponent, user]);
+  }, [navigate, authUser]);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
     AOS.refresh();
   }, []);
 
-  if (user?.length === 0 || isLoading) {
+  if (isLoading) {
     return (
-      <div className="dashboard-hero h-screen flex justify-center items-center text-white">
+      <div className="min-h-screen  flex justify-center items-center bg-gray-50">
         <Spinner2 />
       </div>
     );
   }
 
-  return (
-    <>
-      <div className=" absolute top-5">
-        <div
-          className={`hamburger ${hamOpen ? "is-active" : ""} `}
-          onClick={() => setHamOpen(!hamOpen)}
-        >
-          <div className="hamburger__container">
-            <div className="hamburger__inner"></div>
-            <div className="hamburger__hidden"></div>
-          </div>
-        </div>
-      </div>
-      <div className="flex  " data-aos="fade-up">
-        <div
-          className={`${
-            !hamOpen ? "w-0 mdmax:w-0" : "w-1/5 mdmax:w-screen"
-          } dashboard-left-body`}
-        >
-          {!hamOpen ? (
-            <div></div>
-          ) : (
-            <div className="h-screen dashboard-left flex items-center justify-center">
-              <div className="button-list">
-                <div className="">
-                  <FaUser className=" absolute scale-125 text-white left-52 translate-y-4" />
-                  <button
-                    onClick={() => setActiveComponent("userProfile")}
-                    className={`button  ${
-                      activeComponent === "userProfile" ? "open" : "close"
-                    }`}
-                  >
-                    <p>Profile</p>
-                  </button>
-                </div>
-                <div>
-                  <FaCalendar className=" absolute scale-125 text-white left-52 translate-y-4" />
-                  <button
-                    onClick={() => setActiveComponent("userEventDetails")}
-                    className={` button reverse ${
-                      activeComponent === "userEventDetails" ? "open" : "close"
-                    }`}
-                  >
-                    <p>Participations</p>
-                  </button>
-                </div>
-                <div>
-                  <FaUsers className=" absolute scale-125 text-white left-52 translate-y-4" />
-                  <button
-                    onClick={() => setActiveComponent("userTeams")}
-                    className={`button ${
-                      activeComponent === "userTeams" ? "open" : "close"
-                    }`}
-                  >
-                    <p>Teams</p>
-                  </button>
-                </div>
-                <div>
-                  <FaRegFilePdf className=" absolute scale-125 text-white left-52 translate-y-4" />
-                  <button
-                    onClick={() => setActiveComponent("userSubmission")}
-                    className={`button ${
-                      activeComponent === "userSubmission" ? "open" : "close"
-                    }`}
-                  >
-                    <p>Submission</p>
-                  </button>
-                </div>
-              </div>
+  const handleMenuClick = (componentId) => {
+    setActiveComponent(componentId);
+    navigate(`/dashboard/${componentId}`);
+    if (window.innerWidth < 1024) {
+      setSidebarOpen(false);
+    }
+  };
 
-              <div className="flex gap-1 absolute top-10 ">
-                <TypeAnimation
-                  sequence={[
-                    `Namaste ${user?.name.split(" ")[0]} 🙏`,
-                    4000,
-                    `Hola ${user?.name.split(" ")[0]} 👋`,
-                    4000,
-                    `Hello ${user?.name.split(" ")[0]} 👐`,
-                    4000,
-                    `Bonjour ${user?.name.split(" ")[0]} 👋`,
-                    4000,
-                  ]}
-                  wrapper="span"
-                  speed={10}
-                  style={{
-                    fontSize: "20px",
-                    display: "inline-block",
-                    width: "300px",
-                    padding: "10px",
-                    color: "black",
-                    textAlign: "center",
-                    fontWeight: "bold",
-                    borderRadius: "10px",
-                  }}
-                  repeat={3}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-        {hamOpen ? null : (
-          <div className="menu " onClick={() => setHamOpen(!hamOpen)}></div>
-        )}
-        <div
-          className={`dashboard-body ${
-            hamOpen ? "w-4/5 mdmax:w-0" : "w-full mdmax:w-full"
-          } ${hamOpen ? "pl-10 mdmax:pl-0 maxHieght" : "pl-10"} `}
-          onClick={() => setHamOpen(false)}
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const renderGreeting = () => (
+    <div className="mb-8">
+      <TypeAnimation
+        sequence={[
+          `Namaste ${user?.name?.split(" ")[0]} 🙏`,
+          4000,
+          `Hola ${user?.name?.split(" ")[0]} 👋`,
+          4000,
+          `Hello ${user?.name?.split(" ")[0]} 👐`,
+          4000,
+          `Bonjour ${user?.name?.split(" ")[0]} 👋`,
+          4000,
+        ]}
+        wrapper="div"
+        speed={10}
+        className="text-xl font-bold text-gray-800 bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg"
+        repeat={3}
+      />
+    </div>
+  );
+
+  const renderActiveComponent = () => {
+    switch (activeComponent) {
+      case "userProfile":
+        return <UserProfile user={user} />;
+      case "userEventDetails":
+        return <UserEventDetails user={user} />;
+      case "userTeams":
+        return <UserTeams user={user} />;
+      case "userSubmission":
+        return <Submission user={user} />;
+      default:
+        return <UserProfile user={user} />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Mobile Header */}
+      <div className="lg:hidden flex items-center justify-between p-4 bg-white shadow-md">
+        <button
+          onClick={toggleSidebar}
+          className="text-gray-600 hover:text-gray-900 focus:outline-none"
         >
-          <Welcome user={user} />
-          {activeComponent === "userProfile" && <UserProfile user={user} />}
-          {activeComponent === "userEventDetails" && (
-            <UserEventDetails user={user} />
-          )}
-          {activeComponent === "userTeams" && <UserTeams user={user} />}
-          {activeComponent === "userSubmission" && <Submission user={user} />}
+          {isSidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+        <div className="text-lg font-semibold text-gray-900">
+          {menuItems.find((item) => item.id === activeComponent)?.label ||
+            "Dashboard"}
         </div>
+        <div className="w-8" />
       </div>
-    </>
+
+      <div className="flex">
+        {/* Sidebar */}
+        <aside
+          className={`${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } transform lg:translate-x-0 fixed lg:relative z-30 w-80 min-h-screen bg-white shadow-lg transition-transform duration-300 ease-in-out`}
+        >
+          <div className="flex flex-col h-full">
+            <div className="p-6">{renderGreeting()}</div>
+
+            <nav className="flex-1 px-4 pb-4">
+              <div className="space-y-4">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleMenuClick(item.id)}
+                    className={`w-full flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+                      activeComponent === item.id
+                        ? `bg-gradient-to-r ${item.color} text-white shadow-lg scale-105`
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    <span className="text-lg mr-3">{item.icon}</span>
+                    <span className="font-medium">{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </aside>
+
+        {/* Overlay for mobile */}
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+            onClick={toggleSidebar}
+          />
+        )}
+
+        {/* Main Content */}
+        <main className="flex-1 p-4 lg:p-8">
+          <div className="max-w-7xl mx-auto">
+            <Welcome
+              user={user}
+              message={
+                "Ready to make memories? Explore events and get involved!"
+              }
+            />
+            {renderActiveComponent()}
+          </div>
+        </main>
+      </div>
+    </div>
   );
 };
+
 export default Dashboard;

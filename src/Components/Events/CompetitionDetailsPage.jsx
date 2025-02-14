@@ -57,14 +57,11 @@ const CompetitionDetailsPage = () => {
     result.then((response) => {
       if (response?.status === 200) {
         setOnline(response?.data?.data?.online);
-        console.log(response?.data?.data?.competition?.deadline);
         setAlreadyParticipated(response?.data?.data?.participated);
         setEvent(response?.data?.data?.competition);
         if (response?.data?.data?.competition?.sponsor_task == 1) {
           setSponsorStep(1);
         }
-        console.log(response);
-
       }
     });
   }, [navigate]);

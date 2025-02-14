@@ -1,124 +1,178 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import Api from '../../Functions/api';
-import { useEffect, useState } from 'react';
-import Spinner2 from '../ShimmerAndSpinner/Spinner2';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Api from "../../Functions/api";
+import Spinner2 from "../ShimmerAndSpinner/Spinner2";
+import {
+  FaCheckCircle,
+  FaClock,
+  FaUser,
+  FaUsers,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 
-const UserEventDetails = ({user}) => {
-  const navigate = useNavigate();
-  const { authUser, fetchApi } = Api();
-  const [step , setStep] = useState(1);
+const UserEventDetails = ({ user }) => {
+  const { fetchApi } = Api();
+  const [step, setStep] = useState(1);
   const [participatedEvents, setParticipatedEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  if (user?.length === 0) {
-    return < Spinner2 />; 
+
+  useEffect(() => {
+    if (!user?.email_verified_at) {
+      setStep(2);
+    } else {
+      setIsLoading(true);
+      setStep(4);
+      fetchApi("get", "api/participations")
+        .then((data) => {
+          setParticipatedEvents(data?.data?.data[0]?.competitions || []);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, []);
+
+  if (user?.length === 0 || isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <Spinner2 />
+      </div>
+    );
   }
-// * Uncomment this code after working on this section 
 
-
- useEffect(() => {
-  if(user?.email_verified_at == null){
-    setStep(2);
-  } 
-  else if(user?.email_verified_at != null ){
-    setIsLoading(true);
-    setStep(4);
-      fetchApi('get', `api/participations`).then((data) => {
-        setParticipatedEvents(data?.data?.data[0]?.competitions);
-        console.log(data?.data?.data[0]?.competitions);
-      setIsLoading(false);
-    });
+  // Email not verified state
+  if (step === 2) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 p-4">
+        <div className="text-center space-y-4">
+          <FaCheckCircle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-gray-800">
+            Email Verification Required
+          </h2>
+          <p className="text-gray-600 max-w-md">
+            Please verify your email address to access your event details
+          </p>
+        </div>
+        <Link
+          to="/verify"
+          className="bg-gradient-to-r from-blue-500 to-blue-600 text-gray-600 px-6 py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 
+                     transition-all duration-300 shadow-lg"
+        >
+          Verify Email Now
+        </Link>
+      </div>
+    );
   }
+
+  // Waiting for admin verification
+  if (step === 3) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-4">
+        <div className="text-center space-y-4 max-w-md">
+          <FaClock className="w-16 h-16 text-blue-500 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-gray-800">
+            Verification in Progress
+          </h2>
+          <p className="text-gray-600">
+            Your email has been verified. Please wait while admin verifies your
+            account and sponsorship tasks.
+          </p>
+        </div>
+      </div>
+    );
   }
-  , [user]);
 
+  // No events state
+  if (participatedEvents.length === 0) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 p-4">
+        <div className="text-center space-y-4">
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <FaUser className="w-8 h-8 text-gray-400" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800">No Events Yet</h2>
+          <p className="text-gray-600 max-w-md">
+            You haven't participated in any events. Start your journey now!
+          </p>
+        </div>
+        <Link
+          to="/competitions"
+          className="bg-gradient-to-r from-purple-500 to-purple-600 text-gray-600 px-6 py-3 rounded-lg hover:from-blue-500 hover:to-cyan-600 hover:text-white transition-all duration-300 shadow-lg"
+        >
+          Explore Events
+        </Link>
+      </div>
+    );
+  }
 
-if(isLoading){
-  return <div className= 'absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-    <Spinner2 />
-  </div>;
-}
-
-if(step ==2){
+  // Main events display
   return (
-    <div className='flex flex-col items-center gap-10 justify-center'>
-    <p>
-      Please verify your email to continue
-    </p>
-    <Link to = {'/verify'} className=' bg-black p-2 rounded-lg text-white hover:bg-teal-600 transition-all duration-500 '>Verify Email</Link>
-  </div>
-  )
-}
+    <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          Your Event Participations
+        </h1>
+        <p className="mt-3 text-gray-500">
+          Track and manage your event participation details
+        </p>
+      </div>
 
-if(step ==3){
-  return (
-    <div className='flex flex-col items-center justify-center pt-20'>
-    <p>
-      Your email has been verified, please wait for the admin to verify your account and Sponshirship tasks.
-    </p>
-  </div>
-  )
-}
-
-
-if(participatedEvents?.length == 0){
-  return (
-    <div className='flex flex-col items-center justify-center pt-20'>
-    <p>
-      You have not participated in any event yet.
-    </p>
-    <Link className= 'bg-black p-2 rounded-lg text-white hover:bg-teal-600 transition-all duration-500' to = {'/events'}
-    >
-        Participate Now 
-    </Link>
-  </div>
-  )
-}
-
-if(isLoading){
-  return <div className= 'absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-    <Spinner2 />
-  </div>;
-
-}
-
-
-return (
-  <div className="container mx-auto py-10 px-4 md:px-0">
-  {participatedEvents.length > 0 && (
-    <>
-      <h1 className="text-center text-xl font-bold pt-10 ">Here are the details of the events you have participated in:</h1>
-
-      <div className="grid gap-20 w-screen mdmax:w-full mt-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {participatedEvents.map((event, index) => (
-          <div key={index} className="border p-8 rounded-lg flex-col justify-between items-center flex bg-slate-300  w-full  mdmax:w-96" >
-            <div className=' flex mb-5 gap-5 w-full justify-between'>
-              <h2 className="text-xl font-bold ">{index + 1}</h2>
-              <h1 className="text-lg font-semibold max-w-60">{event?.title}</h1>
-            </div>
+          <div
+            key={index}
+            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <span className="bg-gray-100 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">
+                  #{index + 1}
+                </span>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    event?.pivot?.allowed
+                      ? "bg-green-100 text-green-800"
+                      : "bg-yellow-100 text-yellow-800"
+                  }`}
+                >
+                  {event?.pivot?.allowed ? "Approved" : "Pending"}
+                </span>
+              </div>
 
-            <div className='flex flex-col justify-center gap-10 '>
-              <p className="text-gray-700">
-                Approval: {event?.pivot?.allowed ? 'Allowed' : 'Pending'}
-              </p>
-              <p className="text-gray-700">
-                {event?.pivot?.team_name !=null ? `Team Size: ${event?.pivot?.team_size}` : 'Solo'}
-              </p>
-              <button>
-                <Link to={`/competition/${event?.id}`}  className="bg-haldi p-2 rounded-lg text-white  transition-all duration-500">
-                  View Details
-                </Link>
-              </button>
-            </div>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4 line-clamp-2">
+                {event?.title}
+              </h2>
 
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-gray-600">
+                  {event?.pivot?.team_name ? (
+                    <FaUsers className="mr-2" />
+                  ) : (
+                    <FaUser className="mr-2" />
+                  )}
+                  <span>
+                    {event?.pivot?.team_name
+                      ? `Team Size: ${event?.pivot?.team_size}`
+                      : "Solo Participation"}
+                  </span>
+                </div>
+              </div>
+
+              <Link
+                to={`/competition/${event?.id}`}
+                className="flex items-center justify-center w-full bg-gradient-to-r from-indigo-500 to-indigo-600 
+                         text-white px-4 py-2 rounded-lg hover:from-indigo-600 hover:to-indigo-700 
+                         transition-all duration-300 group"
+              >
+                View Details
+                <FaExternalLinkAlt className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+            </div>
           </div>
         ))}
       </div>
-    </>
-  )}
-</div>
-);
-}
+    </div>
+  );
+};
 
-export default UserEventDetails
+export default UserEventDetails;
