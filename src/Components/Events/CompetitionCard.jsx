@@ -17,7 +17,7 @@ const CompetitionCard = ({
 
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-lg h-full flex flex-col">
-      <div className="relative w-full pt-[66.67%]">
+      <div className="relative w-full lg:pt-[66.67%] pt-[56%]">
         <img
           src={
             !image_url.startsWith("https://arohana")

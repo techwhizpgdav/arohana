@@ -23,21 +23,21 @@ const Teams = () => {
     };
 
     return (
-        <div className="w-full flex flex-col items-center team-wrapper">
+        <div className="w-full flex flex-col items-center team-wrapper bg-gray-300">
             <div className="py-5">
-                <h1 className="main-head text-5xl lg:text-6xl xl:text-7xl font-bold mt-4 mb-8 font-serif">TEAM</h1>
+                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold mt-4 mb-8 font-serif">TEAM</h1>
             </div>
 
-            <div className="flex flex-col items-center mb-8">
+            <div className="flex flex-col items-center mb-16">
                 <h2 className="text-4xl font-extrabold mb-4 text-center text-yellow-500">PRINCIPAL</h2>
                 <InchargeCard data={teamData.principal[0]} />
             </div>
 
 
             {/* Faculty Mentors */}
-            <div className="w-full flex flex-col items-center mb-12">
+            <div className="w-full flex flex-col items-center mb-16">
                 <h2 className="text-4xl font-extrabold mb-4 text-center text-yellow-500">Faculty Mentors</h2>
-                <div className="w-1/2 flex flex-wrap justify-around gap-8">
+                <div className="flex flex-wrap justify-around gap-8">
                     {teamData.incharge.map((member, index) => (
                         <InchargeCard key={index} data={member} />
                     ))}
@@ -51,7 +51,7 @@ const Teams = () => {
             </div>
 
             {/* Team Cards */}
-            <div className="w-full md:w-2/3 lg:w-3/4 mx-auto rounded-lg p-6 lg:p-12">
+            <div className="rounded-lg p-6 lg:p-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
                     {teams[activeTab].map((member, index) => (
                         <TeamCard key={index} member={member} />
