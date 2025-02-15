@@ -66,15 +66,15 @@ const UserProfile = ({ user }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div className="p-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-0">
+      <div className="max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden">
+        <div className="p-4 sm:p-8 ">
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
               Profile Details
             </h2>
             <span
-              className={`px-4 py-1 rounded-full text-sm font-medium ${
+              className={`px-3 sm:px-4 py-1 rounded-full text-sm font-medium ${
                 is_verified
                   ? "bg-green-100 text-green-800"
                   : "bg-yellow-100 text-yellow-800"
@@ -83,14 +83,13 @@ const UserProfile = ({ user }) => {
               {is_verified ? "Verified ✓" : "Pending"}
             </span>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Left Section - Profile Information */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {profileItems.map(({ icon, label, value }, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-lg p-4 transition-all duration-300 hover:shadow-md"
+                  className="bg-gray-100/70 rounded-lg p-3 sm:p-4 transition-all duration-300 hover:shadow-md"
                 >
                   <div className="flex items-center space-x-3">
                     <div className="text-red-600">{icon}</div>
@@ -103,7 +102,7 @@ const UserProfile = ({ user }) => {
               ))}
 
               {/* Email Verification Status */}
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
                 <div className="flex justify-between items-center">
                   <p className="text-sm text-gray-500">Email Verification</p>
                   {email_verified_at ? (
@@ -113,7 +112,7 @@ const UserProfile = ({ user }) => {
                   ) : (
                     <Link
                       to="/verify"
-                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                      className="bg-red-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
                     >
                       Verify Now
                     </Link>
@@ -123,18 +122,18 @@ const UserProfile = ({ user }) => {
             </div>
 
             {/* Right Section - QR Code and Pass Usage */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* QR Code Section */}
-              <div className="bg-gray-50 rounded-lg p-6 text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-gray-50 rounded-lg p-4 sm:p-6 text-center">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
                   Entry Pass QR Code
                 </h3>
                 {is_verified ? (
-                  <div className="flex flex-col items-center space-y-4">
-                    <div className="bg-white p-4 rounded-lg shadow-md inline-block">
+                  <div className="flex flex-col items-center space-y-3 sm:space-y-4">
+                    <div className="bg-white p-3 sm:p-4 rounded-lg shadow-md inline-block">
                       <QRCode
                         value={`https://admin-frontend-five-psi.vercel.app/dashboard/users/entry?pass=${fest_pass}`}
-                        size={160}
+                        size={140}
                       />
                     </div>
                     <p className="text-sm text-gray-600">
@@ -150,8 +149,8 @@ const UserProfile = ({ user }) => {
 
               {/* Pass Usage History */}
               {fest_pass !== "0" && (
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <div className="flex justify-center items-center space-x-2 mb-4">
+                <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+                  <div className="flex justify-center items-center space-x-2 mb-3 sm:mb-4">
                     <CalendarDays className="w-5 h-5 text-red-600" />
                     <h3 className="text-lg font-semibold text-gray-900">
                       Pass Usage History
@@ -164,7 +163,7 @@ const UserProfile = ({ user }) => {
                         return (
                           <div
                             key={index}
-                            className="bg-white p-3 rounded-lg shadow-sm text-gray-700 hover:shadow-md transition-shadow"
+                            className="bg-white p-2 sm:p-3 rounded-lg shadow-sm text-gray-700 hover:shadow-md transition-shadow"
                           >
                             {`${date.getFullYear()}-${
                               date.getMonth() + 1

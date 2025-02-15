@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Outlet,
+  Navigate,
 } from "react-router-dom";
 import Navbar from "./Pages/NavbarPage";
 import Home from "./Pages/HomePage";
@@ -51,6 +52,7 @@ const appRouters = () => (
         <Route path="thanks" element={<Thanks />} />
         <Route path="starnight" element={<StarNight />} />
         <Route path="verify" element={<Verify />} />
+        <Route path="dashboard" element={<Navigate to={"userProfile"} />} />
         <Route path="dashboard/:id" element={<Dashboard />} />
         <Route path="event-registration" element={<RegistrationForm />} />
         <Route path="competitions" element={<Categories />} />
