@@ -1,44 +1,121 @@
-import { Disclosure } from '@headlessui/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function FaqSection({ color }) {
-  const [openIndex, setOpenIndex] = useState(null);
+const FAQSection = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [openedIndexes, setOpenedIndexes] = useState(new Set());
 
-  const QuestionAndAnswer = [
-    {
-      "What is Arohana": 'Arohana is the grand annual cultural festival of P. G. D. A. V. College organised by Hyperion - the cultural society of P. G. D. A. V. College.',
-      "When is Arohana": "Arohana is a three day event which is usually held in the month of February, and this year it is scheduled to be held from 27th to 29th February.",
-      "How to participate in Arohana": "To participate in Arohana, you can register for the events through the official website of Arohana. Just go to the events section and click on the event you want to participate in. Fill in the required details and you are good to go.",
-      "What are the events in Arohana": "Arohana has a variety of events ranging from dance, music, drama, fashion, fine arts, literary and many more. You can check out the events section on the official website for more details.",
-      "Does Arohana have any celebrity performances": "Yes, We have had Raftaar, Milind Gaaba, Beat Crush, The Local Train as our previous years' artists.",
-    }
-  ];
-
-  const styling = !color ? "border-haldi-orange" : "border-white";
-  const questionColor = !color ? "text-gray-600" : "text-white";
+  const toggleAccordion = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+    setOpenedIndexes((prevIndexes) => {
+      const newIndexes = new Set(prevIndexes);
+      if (prevIndexes.has(index)) {
+        newIndexes.delete(index);
+      } else {
+        newIndexes.add(index);
+      }
+      return newIndexes;
+    });
+  };
 
   return (
-    <div className="max-w-xl mx-auto p-4 block">
-      <h1 className={`text-3xl font-bold text-center mb-4 ${!color ? "text-black" : "text-white"}`}>Frequently Asked Questions</h1>
-      <div className={`rounded-lg border-2 p-4 ${styling} ${color ? " bg-shade-haldi" : ""}`}>
-        {Object.keys(QuestionAndAnswer[0]).map((question, index) => (
-          <Disclosure key={index}>
-            {({ open }) => (
-              <>
-                <Disclosure.Button className={`flex justify-between w-full px-4 py-2 text-lg font-semibold text-left rounded-lg focus:outline-none ${questionColor} ${!color? 'hover:bg-haldi-orange hover:text-white':'hover:bg-white hover:text-black'} transition-all duration-200 `}>
-                  <span>{question}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={open ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
+    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="grid md:grid-cols-5 gap-10">
+        <div className="md:col-span-2">
+          <div className="max-w-xs">
+            <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">
+              Frequently<br />asked questions
+            </h2>
+            <p className="mt-1 hidden md:block text-gray-600">
+              Answers to the most frequently asked questions.
+            </p>
+          </div>
+        </div>
+
+        <div className="md:col-span-3">
+          <div className="divide-y divide-gray-200">
+            {faqContent.map((faq, index) => (
+              <div
+                key={index}
+                className={`pt-6 pb-3 ${openedIndexes.has(index) ? "text-black" : ""}`}
+              >
+                <button
+                  className={`group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start ${
+                    openedIndexes.has(index) ? "text-black" : "text-gray-800"
+                  } rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500`}
+                  aria-expanded={activeIndex === index}
+                  onClick={() => toggleAccordion(index)}
+                >
+                  {faq.question}
+                  <svg
+                    className={`${
+                      activeIndex === index ? "hidden" : "block"
+                    } shrink-0 size-5 text-gray-600 group-hover:text-gray-500`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
-                </Disclosure.Button>
-                <Disclosure.Panel className={`px-4 pt-4 pb-2 text-sm font-normal text-left ${color? 'text-white':''}`}>
-                  {QuestionAndAnswer[0][question]}
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-        ))}
+                  <svg
+                    className={`${
+                      activeIndex === index ? "block" : "hidden"
+                    } shrink-0 size-5 text-gray-600 group-hover:text-gray-500`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m18 15-6-6-6 6" />
+                  </svg>
+                </button>
+                <div
+                  className={`w-full overflow-hidden transition-[height] duration-300 ${
+                    activeIndex === index ? "block" : "hidden"
+                  }`}
+                >
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+const faqContent = [
+  {
+    question: "What’s the buzz about Arohana?",
+    answer: "Arohana is the ultimate cultural fiesta of P.G.D.A.V. College, powered by Hyperion – the college’s cultural powerhouse. Think insane performances, mind-blowing art, and three days of non-stop energy!"
+  },
+  {
+    question: "When is Arohana lighting up the stage?",
+    answer: "Block your dates! Arohana is a three-day spectacle held every February. This year, we’re bringing the madness from 27th to 29th February – don’t miss out!"
+  },
+  {
+    question: "How do I get in on the action at Arohana?",
+    answer: "Easy-peasy! Hop onto Arohana’s official website, navigate to the events section, choose your battlefield (ahem, event), register, and boom – you’re in!"
+  },
+  {
+    question: "What jaw-dropping events can I expect?",
+    answer: "From electrifying dance battles and soul-stirring music to gripping drama, high-fashion runways, fine arts, literary showdowns, and so much more – Arohana is where legends are made!"
+  },
+  {
+    question: "Any star-studded performances to look forward to?",
+    answer: "Absolutely! We’ve hosted icons like Raftaar, Milind Gaaba, Beat Crush, and The Local Train in the past. Who’s next? Stay tuned for the big reveal!"
+  }
+];
+
+export default FAQSection;
