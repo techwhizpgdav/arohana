@@ -3,29 +3,27 @@ import { FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const TeamCard = ({ member }) => {
   return (
-    <div className="relative rounded-2xl p-5 mb-5 hover:scale-102 transition-transform bg-gradient-to-br from-gray-800 to-gray-200 shadow-xl border-2 border-gray-200 transform hover:rotate-1">
-      <div className="mx-auto overflow-hidden rounded-full" style={{ width: '200px', height: '200px', filter: 'drop-shadow(0 0 15px rgba(0, 0, 255, 0.5))', clipPath: 'circle(50%)' }}>
-        <img
-          src={member.photo}
-          alt={member.name}
-          className="object-cover hover:scale-105 transition-transform rounded-full"
-          style={{ width: '100%', height: '100%', clipPath: 'circle(50%)' }}
-        />
+    <div className="relative rounded-3xl overflow-hidden hover:shadow-xl transform hover:scale-105 transition-transform bg-white w-[280px]">
+      <div className='p-16 bg-gradient-to-b from-haldi-red/70 to-haldi-red rounded-3xl'></div>
+      <div className="mx-auto overflow-hidden -translate-y-16 rounded-full p-1 bg-white" style={{ width: '100px', height: '100px'}}>
+          <img
+              src={member.photo}
+              alt={member.name}
+              className="object-cover hover:scale-105 transition-transform rounded-full border-4 border-haldi-red"
+              style={{ width: '100%', height: '100%', clipPath: 'circle(50%)' }}
+          />
       </div>
-      <div className="flex flex-col mx-auto justify-center items-center mt-8 backdrop-filter backdrop-blur-lg bg-opacity-50 rounded-xl bg-gray-800 p-8">
-        <h3 className="text-xl font-semibold text-white text-center">{member.name}</h3>
-        <p className="text-black-500 text-center">{member?.position}</p>
-        {member.role && <p className="text-black-500 text-center">{member.role}</p>}
-        {member.mobile && (
-          <p className="text-black text-center">
-            Mobile: <a href={`tel:${member.mobile}`}>{member.mobile}</a>
-          </p>
-        )}
-        <div className='flex justify-center gap-2 mt-4'>
-          {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors"><FaInstagram size={24} /></a>}
-          {member.github && <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors"><FaGithub size={24} /></a>}
-          {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600 transition-colors"><FaLinkedin size={24} /></a>}
-        </div>
+      <div className='-mt-8 p-8 pt-0'>
+          <div className="flex flex-col items-center">
+              <h3 className="text-lg font-semibold text-center">{member.name}</h3>
+              <p className="font-medium">{member.position}</p>
+              <span className='w-full h-1 bg-haldi-red mt-2 rounded-full'></span>
+              <div className="flex justify-center items center gap-2 mt-4 text-2xl">
+                {member.instagram && <a href={member.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>}
+                {member.github && <a href={member.github} target="_blank" rel="noopener noreferrer"><FaGithub /></a>}
+                {member.linkedin && <a href={member.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>}
+              </div>
+          </div>
       </div>
     </div>
   );

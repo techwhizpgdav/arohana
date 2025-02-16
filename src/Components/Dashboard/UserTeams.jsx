@@ -17,17 +17,14 @@ const UserTeams = ({ user }) => {
   // * Uncomment this code after working on this section
 
   useEffect(() => {
-    if (user?.email_verified_at == null) {
-      setStep(2);
-    } else if (user?.email_verified_at != null) {
+    // Only proceed if user is verified and teams data hasn't been fetched yet
+    if (user?.email_verified_at && participatedEvents.length === 0) {
       setIsLoading(true);
-      setStep(4);
 
       const fetchData = async () => {
         try {
-          await new Promise((resolve) => setTimeout(resolve, 1000)); // Add a small delay
           const data = await fetchApi("get", `api/my-team`);
-          setParticipatedEvents(data?.data.data);
+          setParticipatedEvents(data?.data.data || []);
         } catch (error) {
           console.error("API request failed:", error);
         } finally {
@@ -37,7 +34,7 @@ const UserTeams = ({ user }) => {
 
       fetchData();
     }
-  }, [user]);
+  }, [user?.email_verified_at]); 
 
   if (isLoading) {
     return (
@@ -80,7 +77,7 @@ const UserTeams = ({ user }) => {
         </p>
         <Link
           className="bg-black text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-all duration-300 shadow-md"
-          to="/categories"
+          to="/competitions"
         >
           Participate Now
         </Link>
