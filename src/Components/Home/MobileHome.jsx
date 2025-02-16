@@ -5,6 +5,7 @@ import { MobilePara } from "../../Functions/Constants";
 import "./Home.css";
 import Faq from "./Faq";
 import { Link } from "react-router-dom";
+import FAQSection from "./Faq";
 const MobileHome = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [clickedIndex, setClickedIndex] = useState(null);
@@ -49,7 +50,8 @@ const MobileHome = () => {
         </div>
       </div>
       <div className=" mt-20">
-        <Faq color={false} />
+        {/* <Faq color={false} /> */}
+        <FAQSection/>
       </div>
     </>
   );

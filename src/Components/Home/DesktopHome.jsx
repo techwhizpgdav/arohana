@@ -8,7 +8,6 @@ const DesktopHome = () => {
     <div  className='' >        
 
       <LandingPage />
-
       <div className=' -z-10'>
       <BottomPage />
       </div>
