@@ -36,12 +36,11 @@ const FAQSection = () => {
             {faqContent.map((faq, index) => (
               <div
                 key={index}
-                className={`pt-6 pb-3 ${openedIndexes.has(index) ? "text-black" : ""}`}
+                className={`pt-6 pb-3 text-black`}
               >
                 <button
-                  className={`group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start ${
-                    openedIndexes.has(index) ? "text-black" : "text-gray-800"
-                  } rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500`}
+                  className={`group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start 
+                    text-black rounded-lg transition hover:text-gray-500 focus:outline-none`}
                   aria-expanded={activeIndex === index}
                   onClick={() => toggleAccordion(index)}
                 >
@@ -109,7 +108,7 @@ const faqContent = [
     answer: "Easy-peasy! Hop onto Arohana’s official website, navigate to the events section, choose your battlefield (ahem, event), register, and boom – you’re in!"
   },
   {
-    question: "What jaw-dropping events can I expect?",
+    question: "What jaw-dropping events can we expect?",
     answer: "From electrifying dance battles and soul-stirring music to gripping drama, high-fashion runways, fine arts, literary showdowns, and so much more – Arohana is where legends are made!"
   },
   {
