@@ -1,10 +1,10 @@
 import React from 'react'
-import Timeline from '../Components/Timeline/Timeline'
+import TimelineDemo from '../Components/Timeline/Timeline'
 
 const TimelinePage = () => {
   return (
     <>
-      <Timeline />
+      <TimelineDemo />
       {/* timeline */}
     </>
   )

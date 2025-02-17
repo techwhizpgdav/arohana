@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LandingPage from './LandingPage';
 import BottomPage from './BottomPage';
-import FaqSection from './Faq';
 const DesktopHome = () => {
 
   return (

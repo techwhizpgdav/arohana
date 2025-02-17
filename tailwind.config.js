@@ -45,7 +45,6 @@ export default {
         'xxlmax': {'max': '1280px'},
         'xxxlmax':{'max':'1345px'},
       },
-      // backgroung image
       backgroundImage:{
         'hero': "url('./src/assets/Image/bg-1.jpg')",
         'hero2': "url('./src/assets/Image/bg-2.jpg')",
@@ -53,7 +52,7 @@ export default {
       },
       fontFamily: {
         'logo': ['Berkshire Swash', 'serif'],
-      },
+      }
     },
   },
   plugins: [],
