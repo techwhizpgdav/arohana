@@ -30,6 +30,39 @@ const BottomPage = () => {
 
   return (
     <>
+    {/* From the pricipal section  */}
+    <section class="py-14 mt-40 relative ">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
+                <div class="img-box">
+                    <img src="https://www.pgdavcollege.in/uploads/about/IMG_1219.jpg" alt="About Us tailwind page"
+                        class="max-lg:mx-auto object-cover rounded-xl shadow-2xl"/>
+                </div>
+                <div class="lg:pl-[100px] flex items-center">
+                    <div class="data w-full">
+                        <h2
+                            class="font-manrope font-bold text-3xl lg:text-4xl text-black mb-9 max-lg:text-center relative">
+                            Message from the Principal</h2>
+                        <p class="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
+                        P.G.D.A.V. College, a proud part of the <span className='font-bold '>University of Delhi since 1957 </span>, 
+                        blends modern education with Indian values. With top-notch faculty, 
+                        state-of-the-art infrastructure, and a commitment to inclusive learning, 
+                        we nurture excellence in academics, arts, and sports. 
+                        Join us in our mission of nation-building through value-based education.
+                        <br />
+                        <q className='underline font-light decoration-teal-500 decoration-2'>असतो मा सद्गमय - From untruth to the truth! (Brhadarayanka Upanishad).</q>
+                        
+                        <br /><br />
+                        <div class="flex justify-end">
+                        <span class="font-extrabold">Prof. Krishna Sharma</span>
+                    </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div className="bottomPage">
         <input type="checkbox" onChange={handleCheckboxChange} />
 
@@ -68,7 +101,7 @@ const BottomPage = () => {
         </div>
         <div className="md:h-[400px] h-[250px] flex justify-center">
           <img 
-            src="https://readymadeui.com/photo.webp" 
+            src="https://i.pinimg.com/736x/9b/a7/e9/9ba7e95b8e727fd72dce9313c96e74f6.jpg" 
             className="w-[80%] sm:w-full h-full object-cover rounded-lg shadow-lg" 
             alt="Arohana Event"
           />
