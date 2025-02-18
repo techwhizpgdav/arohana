@@ -66,8 +66,11 @@ const CategorySection = ({ name, competitions, formatDate }) => {
       <h2 className="text-2xl font-bold text-[#a62639] mb-2 ml-6 sm:ml-10">
         {name}
       </h2>
-      <div className="px-6">
-        <Slider {...settings}>
+      <div className="px-6 ">
+        <Slider
+          className="hover:cursor-grab active:cursor-grabbing"
+          {...settings}
+        >
           {competitions.map((competition) => (
             <div key={competition.title} className="sm:p-4 md:h-[480px] h-auto">
               <CompetitionCard {...competition} formatDate={formatDate} />
