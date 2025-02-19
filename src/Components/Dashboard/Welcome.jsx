@@ -1,15 +1,18 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React from "react";
+import { useEffect, useState } from "react";
 function WelcomeBanner({ user, message }) {
   const currentHour = new Date().getHours();
   const [greeting, setGreeting] = useState("");
   const [background, setBackground] = useState("from-blue-500 to-indigo-600");
 
   useEffect(() => {
-    if (currentHour < 12) {
+    if (currentHour >= 0 && currentHour < 6) {
+      setGreeting("Good Night");
+      setBackground("from-gray-900 to-black"); // Late Night colors
+    } else if (currentHour >= 6 && currentHour < 12) {
       setGreeting("Good Morning");
       setBackground("from-yellow-400 to-orange-500"); // Morning colors
-    } else if (currentHour < 18) {
+    } else if (currentHour >= 12 && currentHour < 18) {
       setGreeting("Good Afternoon");
       setBackground("from-blue-400 to-violet-600"); // Afternoon colors
     } else {

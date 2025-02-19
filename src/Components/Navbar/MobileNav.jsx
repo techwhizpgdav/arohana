@@ -116,7 +116,7 @@ useEffect(() => {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } z-40 w-full h-screen fixed top-23 transition-all duration-500 ease-in-out  ${`${
+        } z-[100] w-full h-screen fixed top-23 transition-all duration-500 ease-in-out  ${`${
           isOnDashboard
             ? "bg-gradient-to-r to-linear-lightBlue from-linear-darkBlue "
             : bgcolor

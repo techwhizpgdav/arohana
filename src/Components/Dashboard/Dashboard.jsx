@@ -152,7 +152,7 @@ const Dashboard = () => {
       <div className="flex h-full">
         {/* Sidebar for desktop */}
         <aside className="hidden lg:block w-80 min-h-screen bg-white shadow-lg">
-          <div className="flex flex-col h-full">
+          <div className="sticky top-0 flex flex-col h-screen overflow-y-auto">
             <div className="p-6">{renderGreeting()}</div>
             <nav className="flex-1 px-4 pb-4">
               <div className="space-y-4">
@@ -177,7 +177,7 @@ const Dashboard = () => {
 
         {/* Main Content */}
         <main className="flex-1 pb-20 lg:pb-8 p-4 lg:p-8 overflow-y-auto">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl  mx-auto">
             <Welcome
               user={user}
               message="Ready to make memories? Explore events and get involved!"
@@ -188,7 +188,7 @@ const Dashboard = () => {
       </div>
 
       {/*Navigation for Mobile */}
-      <div className="fixed bottom-0 left-0 right-0 z-1000 lg:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
         <nav className="bg-white border-t border-gray-200 shadow-lg">
           <div className="flex items-center justify-around h-16">
             {menuItems.map((item) => (

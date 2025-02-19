@@ -1,6 +1,7 @@
 "use client";
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Timeline = ({ eventsData }) => {
   const ref = useRef(null);
@@ -23,43 +24,44 @@ export const Timeline = ({ eventsData }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   // Sort event dates in ascending order
-  const sortedDates = Object.keys(eventsData).sort((a, b) => new Date(a) - new Date(b));
+  const sortedDates = Object.keys(eventsData).sort(
+    (a, b) => new Date(a) - new Date(b)
+  );
 
   // Bright colors for underline effect
   const brightColors = [
-    'red-500', 
-    'yellow-500', 
-    'green-500', 
-    'blue-500',
-    'purple-500', 
-    'pink-500', 
-    'indigo-500',
-    'orange-500',    // New bright color (orange)
-    'cyan-500',      // New bright color (cyan)
-    'lime-500',      // New bright color (lime green)
-    'teal-500',      // New bright color (teal)
-    'emerald-500',   // New bright color (emerald green)
-    'rose-500',      // New bright color (rose pink)
-    'violet-500'     // New bright color (violet)
+    "red-500",
+    "yellow-500",
+    "green-500",
+    "blue-500",
+    "purple-500",
+    "pink-500",
+    "indigo-500",
+    "orange-500", // New bright color (orange)
+    "cyan-500", // New bright color (cyan)
+    "lime-500", // New bright color (lime green)
+    "teal-500", // New bright color (teal)
+    "emerald-500", // New bright color (emerald green)
+    "rose-500", // New bright color (rose pink)
+    "violet-500", // New bright color (violet)
   ];
-  
+
   const colorMap = {
-    'red-500': '#f56565',
-    'yellow-500': '#ecc94b',
-    'green-500': '#48bb78',
-    'blue-500': '#4299e1',
-    'purple-500': '#9f7aea',
-    'pink-500': '#ed64a6',
-    'indigo-500': '#667eea',
-    'orange-500': '#ed8936',    // Hex for bright orange
-    'cyan-500': '#00b5d8',      // Hex for bright cyan
-    'lime-500': '#84cc16',      // Hex for bright lime green
-    'teal-500': '#38b2ac',      // Hex for bright teal
-    'emerald-500': '#34d399',   // Hex for bright emerald green
-    'rose-500': '#f56565',      // Hex for rose pink
-    'violet-500': '#9f7aea'     // Hex for violet
+    "red-500": "#f56565",
+    "yellow-500": "#ecc94b",
+    "green-500": "#48bb78",
+    "blue-500": "#4299e1",
+    "purple-500": "#9f7aea",
+    "pink-500": "#ed64a6",
+    "indigo-500": "#667eea",
+    "orange-500": "#ed8936", // Hex for bright orange
+    "cyan-500": "#00b5d8", // Hex for bright cyan
+    "lime-500": "#84cc16", // Hex for bright lime green
+    "teal-500": "#38b2ac", // Hex for bright teal
+    "emerald-500": "#34d399", // Hex for bright emerald green
+    "rose-500": "#f56565", // Hex for rose pink
+    "violet-500": "#9f7aea", // Hex for violet
   };
-  
 
   return (
     <div className="w-full bg-white font-sans md:px-10" ref={containerRef}>
@@ -90,10 +92,14 @@ export const Timeline = ({ eventsData }) => {
 
             {eventsData[date].map((event) => {
               // Randomly select color for underline
-              const randomColor = brightColors[Math.floor(Math.random() * brightColors.length)];
+              const randomColor =
+                brightColors[Math.floor(Math.random() * brightColors.length)];
 
               return (
-                <div key={event.id} className="flex justify-start py-4 md:gap-10">
+                <div
+                  key={event.id}
+                  className="flex justify-start py-4 md:gap-10"
+                >
                   {/* Circle Indicator */}
                   <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
                     {/* <div className="h-10 absolute left-4 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
@@ -103,12 +109,19 @@ export const Timeline = ({ eventsData }) => {
                   {/* Event Details */}
                   <div className="relative pl-20 pr-4 md:pl-4 w-full">
                     <h3 className="text-2xl mb-2 text-left font-bold text-neutral-800">
-                      {event.title} - 
-                      <span 
-                        className="uppercase underline decoration-4" 
-                        style={{ textDecorationColor: colorMap[randomColor] }}
+                      <Link
+                        to={`/competition/${event.id}`}
+                        className="cursor-pointer hover:text-neutral-800/80"
                       >
-                        by {event.name} society
+                        <span
+                          className={`uppercase hover:text-neutral-800/80 underline decoration-4`}
+                          style={{ textDecorationColor: colorMap[randomColor] }}
+                        >
+                          {event.title}
+                        </span>
+                      </Link>{" "}
+                      <span className={`uppercase text-xl text-neutral-700 `}>
+                        {event.name}
                       </span>
                     </h3>
                     <p className="text-sm text-gray-600">
@@ -125,10 +138,12 @@ export const Timeline = ({ eventsData }) => {
         {/* Ray Tracing Beams */}
         <div
           style={{ height: height + "px" }}
-          className="absolute left-8 top-0 overflow-hidden w-[8px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent via-neutral-200 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]">
+          className="absolute left-8 top-0 overflow-hidden w-[8px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent via-neutral-200 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+        >
           <motion.div
             style={{ height: heightTransform, opacity: opacityTransform }}
-            className="absolute inset-x-0 top-0 w-[8px] bg-gradient-to-t from-fuchsia-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"/>
+            className="absolute inset-x-0 top-0 w-[8px] bg-gradient-to-t from-fuchsia-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+          />
         </div>
       </div>
     </div>
