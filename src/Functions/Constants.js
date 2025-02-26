@@ -7,16 +7,16 @@ export let isLogin = false;
 export const API_URL = 'https://backend.pgdavhyperion.in';
 
 export const MobilePara = `
-  <div class="text-lg text-gray-800 leading-relaxed space-y-4">
+  <div className="text-lg text-gray-800 leading-relaxed space-y-4">
     <p>
-      <strong>Ārohaṇa</strong> is the <span class="underline decoration-blue-600">grand cultural festival</span> of 
+      <strong>Ārohaṇa</strong> is the <span className="underline decoration-blue-600">grand cultural festival</span> of 
       <strong> P.G.D.A.V. College, University of Delhi</strong>. It blends <em>tradition & modernity</em>, bringing students 
-      together through <span class="underline decoration-amber-400">music, dance, drama, literature, and fine arts</span>.
+      together through <span className="underline decoration-amber-400">music, dance, drama, literature, and fine arts</span>.
     </p>
 
     <p>
       With thrilling competitions, exhibitions, food stalls, and interactive games, 
-      <strong>Ārohaṇa</strong> is more than an event—it's a <span class="underline decoration-green-500">celebration of creativity, culture, and community</span>.
+      <strong>Ārohaṇa</strong> is more than an event—it's a <span className="underline decoration-green-500">celebration of creativity, culture, and community</span>.
     </p>
   </div>
 `;

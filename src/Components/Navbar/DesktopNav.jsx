@@ -72,12 +72,12 @@ const DesktopNav = () => {
       } `}
       data-aos="fade-down"
     >
-      <div className=" px-40">
+      <div className="px-36">
         <div className="flex justify-between items-center">
           <div data-aos="fade-right">
             <Link
               to="/"
-              className={`logo absolute -top-8 flex items-center py-4 px-2 gap-12 xxlmax:-left-32
+              className={`logo absolute -top-8 flex items-center py-4 px-2 gap-12
             text-${color}`}
             >
               <TypeAnimation
@@ -102,7 +102,7 @@ const DesktopNav = () => {
               />
             </Link>
           </div>
-          <div className="flex gap-40 ">
+          <div>
             <div className="hidden md:flex items-center space-x-6">
               <Link to="/" data-aos="fade-down">
                 <p className={navbarStyle("/")}>Home</p>
@@ -122,7 +122,7 @@ const DesktopNav = () => {
               </Link>
             </div>
           </div>
-          <div className="hidden md:flex items-center justify-center space-x-3 ">
+          {/* <div className="hidden md:flex items-center justify-center space-x-3 ">
             {isLoggedIn ? (
               <div className=" flex justify-center items-center gap-10">
                 <Link to={"/dashboard/userProfile"}>
@@ -167,7 +167,7 @@ const DesktopNav = () => {
                 </Link>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
