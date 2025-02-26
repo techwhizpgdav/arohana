@@ -158,7 +158,7 @@ const Footer = () => {
                     target="__blank"
                     className="hover:underline"
                   >
-                    Techwhiz
+                    TechWhiz
                   </a>
                 </span>
               </div>

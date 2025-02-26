@@ -1,140 +1,122 @@
 {
-    "core_team": [
-        {
-            "name": "Vaibhav Jaiswal",
-            "position": "President",
-            "mobile": "8287639217",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/vaibhavvv007/",
-            "linkedin": "https://www.linkedin.com/in/vaibhavjaiswall/"
-        },
-        {
-            "name": "Rajat Jaiswal",
-            "position": "Vice President",
-            "mobile": "7428763444",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/rajat_7428/",
-            "linkedin": "https://www.linkedin.com/in/rajat-jaiswal-1b11b7229/"
-        },
-        {
-            "name": "Devashish Mishra",
-            "position": "Treasurer",
-            "mobile": "7307942820",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/devashish._.mishra/",
-            "linkedin": "https://www.linkedin.com/in/devashish-mishra-b39a6622a/"
-        },
-        {
-            "name": "Soubhagya Kukreja",
-            "position": "General Secretary",
-            "mobile": "9210272900",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/_soubhagyaa_/",
-            "linkedin": "https://www.linkedin.com/in/soubhagya-kukreja-918459263/"
-        },
-        {
-            "name": "Prateek Pandita",
-            "position": "Media Head",
-            "mobile": "9650376305",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/mr.prateek666/",
-            "linkedin": "https://www.linkedin.com/in/prateek-pandita-77464724a/"
-        },
-        {
-            "name": "Atharv Mishra",
-            "position": "Core Trainee",
-            "mobile": "8587914667",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/atharv.mishraa/",
-            "linkedin": "https://www.linkedin.com/in/atharvmishra/"
-        },
-        {
-            "name": "Ayush Tripathi",
-            "position": "Core Trainee",
-            "mobile": "9580242440",
-            "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-            "instagram": "https://www.instagram.com/ayush_tripathi_1501/"
-        }
-    ],
-    "web_developer": [
-        {
-            "name": "Anubhav Shukla",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Full Stack Developer",
-            "instagram": "https://www.instagram.com/anubhav_s_369/",
-            "github": "https://github.com/mr-robot369",
-            "linkedin": "https://www.linkedin.com/in/anubhav--shukla/"
-        },
-        {
-            "name": "Rishi Kumar",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Coordinator",
-            "role": "Full Stack Developer",
-            "instagram": "https://www.instagram.com/iamrishi.7/",
-            "github": "https://github.com/iamrishi7",
-            "linkedin": "https://www.linkedin.com/in/rishi-kumar-dezynation/"
-        },
-        {
-            "name": "Nishant Kumar Singh",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Full Stack Developer",
-            "instagram": "https://www.instagram.com/nishant_singh377",
-            "github": "https://github.com/Nishant5565",
-            "linkedin": "https://www.linkedin.com/in/nishant-kumar-singh-057730228/"
-        },
-        {
-            "name": "Sarthak Sharma",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Full Stack Developer"
-        },
-        {
-            "name": "Mehak Jha",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Coordinator",
-            "role": "UI/UX"
-        },
-        {
-            "name": "Jyoti Aswal",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "UI/UX",
-            "instagram": "https://www.instagram.com/.jyotiiiii?igsh=ZzJ4bjd5enZ4czJ6"
-        },
-        {
-            "name": "Suraj Yadav",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Backened Developer",
-            "instagram": "https://www.instagram.com/suraj.yadav.7/?next=%2F",
-            "github": "https://github.com/Suraj-14911",
-            "linkedin": "https://www.linkedin.com/in/suraj-yadav-00b715273/"
-        },
-        {
-            "name": "Susheel sahu",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Frontend Developer",
-            "instagram": "https://www.instagram.com/rohitsahu_xo_",
-            "github": "https://github.com/rohitsahu23866",
-            "linkedin": "https://www.linkedin.com/in/susheel-sahu-397315281/p"
-        },
-        {
-            "name": "Harsh Kumar",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Frontend Developer"
-        },
-        {
-            "name": "pratyush jha",
-            "photo": "https://images6.alphacoders.com/122/1227495.jpg",
-            "position": "Member",
-            "role": "Frontend Developer",
-            "instagram": "https://www.instagram.com/pratyush_jh?igsh=MWwyZzNzOHFqZjQwYw==",
-            "github": "https://github.com/PratyushJha19",
-            "linkedin": "https://www.linkedin.com/in/pratyush-jha-1348b8263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-        }
-    ]
+  "core_team": [
+    {
+      "name": "Tanishq Goel",
+      "position": "President",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Prachi R. Chauhan",
+      "position": "Vice President",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Yashika Sharma",
+      "position": "Treasurer",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Bilal Anis",
+      "position": "General Secretary",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Yash Shrivastava",
+      "position": "Media Head",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Snaha Rajkumari",
+      "position": "Core Trainee",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Yugam Kainth",
+      "position": "Core Trainee",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/"
+    },
+    {
+      "name": "Abhishek Kumar",
+      "position": "Core Trainee",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "instagram": "https://www.instagram.com/"
+    }
+  ],
+  "web_developer": [
+    {
+      "name": "Rishi Kumar",
+      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "position": "President",
+      "role": "Full Stack Developer",
+      "instagram": "https://www.instagram.com/iamrishi.7/",
+      "github": "https://github.com/iamrishi7",
+      "linkedin": "https://www.linkedin.com/in/rishi-kumar-dezynation/"
+    },
+    {
+      "name": "Pratyush Jha",
+      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "position": "Coordinator",
+      "role": "Frontend Developer",
+      "instagram": "https://www.instagram.com/pratyush_jh",
+      "github": "https://github.com/PratyushJha19",
+      "linkedin": "https://www.linkedin.com/in/pratyush-jha-1348b8263"
+    },
+    {
+      "name": "Arpan Kumar",
+      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "position": "Member",
+      "role": "Frontend Developer",
+      "instagram": "https://www.instagram.com/",
+      "github": "https://github.com/Arpan-9911",
+      "linkedin": "https://www.linkedin.com/in/"
+    },
+    {
+      "name": "Arjun Malpani",
+      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "position": "Member",
+      "role": "Frontend Developer",
+      "instagram": "https://www.instagram.com/arjun_malpani_4",
+      "github": "https://github.com/arjunmalpani",
+      "linkedin": "https://www.linkedin.com/in/arjunmalpani"
+    },
+    {
+      "name": "Krishna Gupta",
+      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "position": "Member",
+      "role": "Frontend Developer",
+      "instagram": "https://www.instagram.com/",
+      "github": "https://github.com/KrishnaGupta0405",
+      "linkedin": "https://www.linkedin.com/in/krishna-gupta-739506254/"
+    },
+    {
+      "name": "Vidushi Sharma",
+      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "position": "Member",
+      "role": "UI/UX Designer",
+      "instagram": "https://www.instagram.com/",
+      "github": "https://github.com/",
+      "linkedin": "https://www.linkedin.com/in/"
+    }
+  ]
 }
