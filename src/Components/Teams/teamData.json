@@ -4,15 +4,15 @@
       "name": "Tanishq Goel",
       "position": "President",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/Tanishq%20Goyal%20President.webp",
       "instagram": "https://www.instagram.com/",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
-      "name": "Prachi R. Chauhan",
+      "name": "Prachi Ranjan Chauhan",
       "position": "Vice President",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/prachi_vice_president.jpg",
       "instagram": "https://www.instagram.com/",
       "linkedin": "https://www.linkedin.com/in/"
     },
@@ -20,7 +20,7 @@
       "name": "Yashika Sharma",
       "position": "Treasurer",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/yashika_sharma_treasurer.webp",
       "instagram": "https://www.instagram.com/",
       "linkedin": "https://www.linkedin.com/in/"
     },
@@ -28,7 +28,7 @@
       "name": "Bilal Anis",
       "position": "General Secretary",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/bilal_anis_core_trainee.jpg",
       "instagram": "https://www.instagram.com/",
       "linkedin": "https://www.linkedin.com/in/"
     },
@@ -36,7 +36,7 @@
       "name": "Yash Shrivastava",
       "position": "Media Head",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/Yash%20Srivastava%20Tech%20Head.jpg",
       "instagram": "https://www.instagram.com/",
       "linkedin": "https://www.linkedin.com/in/"
     },
@@ -44,22 +44,15 @@
       "name": "Snaha Rajkumari",
       "position": "Core Trainee",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/sneha_core_trainee.jpg",
       "instagram": "https://www.instagram.com/",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
-      "name": "Yugam Kainth",
+      "name": "Vanshika Shiromani",
       "position": "Core Trainee",
       "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
-      "instagram": "https://www.instagram.com/"
-    },
-    {
-      "name": "Abhishek Kumar",
-      "position": "Core Trainee",
-      "mobile": "00XXXXXXXX",
-      "photo": "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg",
+      "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/vanshika_shiromani_core_trainee.jpg",
       "instagram": "https://www.instagram.com/"
     }
   ],
@@ -87,9 +80,8 @@
       "photo": "https://images6.alphacoders.com/122/1227495.jpg",
       "position": "Member",
       "role": "Frontend Developer",
-      "instagram": "https://www.instagram.com/",
       "github": "https://github.com/Arpan-9911",
-      "linkedin": "https://www.linkedin.com/in/"
+      "linkedin": "https://www.linkedin.com/in/Arpan-9911"
     },
     {
       "name": "Arjun Malpani",

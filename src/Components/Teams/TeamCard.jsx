@@ -36,6 +36,7 @@ const TeamCard = ({ member }) => {
               "https://i.pinimg.com/736x/a9/28/09/a92809b1860bc5e77faebbb7acebf1a2.jpg"
             }
             alt={name}
+            loading="lazy"
             className="rounded-full w-40 h-40 object-cover"
           />
         </div>

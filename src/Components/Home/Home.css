@@ -1,108 +1,79 @@
 .home-bg {
-     position: relative;
-     background: url('https://arohana1.b-cdn.net/Bg-bottom1%20(1).jpg') no-repeat ;
+  position: relative;
+  background: url("https://arohana1.b-cdn.net/Bg-bottom1%20(1).jpg") no-repeat;
 }
 
 .home-bg:before {
-     content: "";
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Home.css */
 
-.mobileHome{
-  background-image: url("../../assets/MobileBg.png");
+.mobileHome {
+  background-image: url("/public/coverimage.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 #hero {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../../assets/MainBg2.png");
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url("/public/coverimage.webp");
   background-repeat: no-repeat;
   height: 100vh;
   min-height: 375px;
   position: relative;
   animation: zoomIn 1s;
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
+  background-attachment: fixed;
 }
-   
-   @media (min-height: 830px) {
-     #hero {
-      background-position: center ;
-     }
-   }
-   
-   @media (min-height: 680px) and (max-height: 829px) {
-     #hero {
-       background-position: center -300px;
-     }
-   }
-   
-   @media (min-height: 500px) and (max-height: 679px) {
-     #hero {
-       background-position: center -250px;
-     }
-   }
-   
-   @media (max-height: 499px) {
-     #hero {
-        background-position: center -200px;
-     }
-   }
 
-   @media (max-width: 768px) {
-    #hero {
-      background-image: url("../../assets/MobileBg.png");
-    }
-    
-   }
-   
-   .header_Arohana{
-    position: absolute;
-    text-transform:uppercase ;
-    top: 80vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-weight: 400;
-    font-style: normal;
-    font-size: 140px;
-    text-shadow: 2px 2px 4px #000000;
-    z-index: 10;
-    animation: Trim 2s;
-    font-family: 'Samarkan';
-   }
-  .row{
-    position: absolute;
-    top: 100vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgb(255, 98, 0);
-    text-shadow: 3px 3px 4px #000000;
-    font-family: "Marck Script", cursive;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 90px;
-    z-index: 10;
-    width: 100%;
-    text-align: center;
-    -webkit-text-stroke:  1px #ffffff;
+
+
+.header_Arohana {
+  position: absolute;
+  text-transform: uppercase;
+  top: 80vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 140px;
+  text-shadow: 2px 2px 4px #000000;
+  z-index: 10;
+  animation: Trim 2s;
+  font-family: "Samarkan";
+}
+.row {
+  position: absolute;
+  top: 100vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 98, 0);
+  text-shadow: 3px 3px 4px #000000;
+  font-family: "Marck Script", cursive;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 90px;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .header_Arohana {
+    font-size: 80px;
   }
-
-  @media screen and (max-width: 768px) {
-    .header_Arohana{
-      font-size: 80px;
-    }
-    .row{
-      font-size: 30px;
-      right: 20px;
-
-    }
-    
+  .row {
+    font-size: 30px;
+    right: 20px;
   }
+}

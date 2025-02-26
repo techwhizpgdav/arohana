@@ -103,17 +103,18 @@ const CompetitionDetailsPage = () => {
     image_url,
     sponsor_task,
     whatsapp_group,
-    deadline
+    deadline,
+    form_link,
   } = event;
   // condition for deadline, if it is today then set the step to 3
-    const deadEnd = new Date(deadline);
-    const now = new Date();
+  const deadEnd = new Date(deadline);
+  const now = new Date();
 
-    useEffect(() => {
-      if (deadEnd < now) {
-        setDeadline(true);
-      }
-    }, [deadEnd, now, user]);
+  useEffect(() => {
+    if (deadEnd < now) {
+      setDeadline(true);
+    }
+  }, [deadEnd, now, user]);
 
   function closeModal() {
     setIsOpen(false);
@@ -255,102 +256,15 @@ const CompetitionDetailsPage = () => {
 
               {/* Participant Actions */}
               <div className="flex flex-col items-center gap-4 justify-center mt-4 md:mt-8">
-                {step === 1 && (
-                  <button>
-                    <Link
-                      to="/login"
-                      className="text-rose-500 font-semibold text-sm md:text-base"
-                    >
-                      Login to participate
-                    </Link>
-                  </button>
-                )}
-                {step === 2 && (
-                  <button>
-                    <Link
-                      to="/verify"
-                      className="bg-black p-2 rounded-lg text-white hover:bg-haldi transition-all duration-500 text-sm md:text-base"
-                    >
-                      Verify Email
-                    </Link>
-                  </button>
-                )}
-                {step === 3 && (
-                  <p className="max-w-60 text-sm md:text-base text-center text-haldi-red">
-                    Deadline for participation has passed
-                  </p>
-                )}
-                <div>
-                {
-                    (alreadyParticipated || isChildParticipated ) && whatsapp_group !=null? (
-                      <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
-                        <FaWhatsapp color="white" size={20} />
-                        Join Group
-                      </a>
-                    ) : null
-                  }
-                </div>
-                {step === 4 && (
-                  <>
-                    {alreadyParticipated ? (
-                      <button>
-                        <Link
-                          to={
-                            online
-                              ? "/dashboard/userSubmission"
-                              : "/dashboard/userProfile"
-                          }
-                          className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                        >
-                         {
-                            online ? "Submit Entry" : "Dashboard"
-                         }
-                        </Link>
-                      </button>
-                    ) : (
-                      <>
-                        {!isChildParticipated ? (
-                        <>
-                        {
-                          deadlinepassed ? (
-                            <p
-                              className="bg-gray-400 text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
-                            >
-                              Deadline Passed
-                            </p>
-                          ) : (
-                            <button
-                              className="bg-rose-500 h-12 w-40 rounded-md"
-                              onClick={openModal}
-                            >
-                              <div className="flex flex-row items-center justify-center">
-                                <IoTicketOutline color="white" size={24} />
-                                <p className="text-lg text-white mx-2">
-                                  Participate
-                                </p>
-                              </div>
-                            </button>
-                          )
-                        }
-                        </>
-                        ) : (
-                          <p
-                            className="bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                            onClick={() =>{
-                              {
-                                online ? navigate("/dashboard/userSubmission") : navigate("/dashboard/userProfile")
-                              }
-                            }}
-                          >
-                            {
-                              online ? "Submit Entry" : "Dashboard"
-                            }
-                          </p>
-                        )}
-                      </>
-                    )}
-                  </>
-                )}
+                <Link
+                  className="flex justify-center items-center bg-rose-500 h-12 w-40 rounded-md"
+                  to={form_link || ""}
+                >
+                  <div className="flex flex-row items-center justify-center">
+                    <IoTicketOutline color="white" size={24} />
+                    <p className="text-lg text-white mx-2">Participate</p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -365,9 +279,8 @@ const CompetitionDetailsPage = () => {
             </div>
           </div>
         </>
-      ) :
-// ! Desktop View
-      (
+      ) : (
+        // ! Desktop View
         <>
           <div className="flex flex-row my-16 items-center justify-center text-center gap-3">
             <RiDoubleQuotesL />
@@ -427,97 +340,15 @@ const CompetitionDetailsPage = () => {
                       </p>
                     )}
                   </div>
-                  {step === 1 && (
-                    <button>
-                      <Link
-                        to="/login"
-                        className="text-rose-500 font-semibold "
-                      >
-                        Login to Participate
-                      </Link>
-                    </button>
-                  )}
-                  {step === 2 && (
-                    <button>
-                      <Link
-                        to={"/verify"}
-                        className=" bg-black p-2 rounded-lg text-white hover:bg-haldi transition-all duration-500 "
-                      >
-                        Verify Email
-                      </Link>
-                    </button>
-                  )}
-
-
-                  {
-                    (alreadyParticipated || isChildParticipated ) && whatsapp_group !=null? (
-                      <a href={whatsapp_group} className=" bg-green-500  font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer gap-2" >
-                        <FaWhatsapp color="white" size={20} />
-                        Join Group
-                      </a>
-                    ) : null
-                  }
-                  {step == 4 && (
-                    <>
-                      {alreadyParticipated ? (
-                        <button>
-                          <Link
-                           to ={
-                            online
-                            ? "/dashboard/userSubmission"
-                            : "/dashboard/userProfile"
-                           }
-                            className=" bg-haldi text-sm md:text-base font-semibold h-10 md:h-12 w-32 md:w-40 rounded-md flex items-center justify-center text-white cursor-pointer"
-                          >
-                            {
-                              online ? "Submit Entry" : "Dashboard"
-                            }
-                          </Link>
-                        </button>
-                      ) : (
-                        <>
-                          {!isChildParticipated ? (
-                        <>
-                        {
-                          deadlinepassed ? (
-                            <p
-                              className="bg-gray-400 text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
-                            >
-                              Deadline Passed
-                            </p>
-                          ) : (
-                            <button
-                              className="bg-rose-500 h-12 w-40 rounded-md"
-                              onClick={openModal}
-                            >
-                              <div className="flex flex-row items-center justify-center">
-                                <IoTicketOutline color="white" size={24} />
-                                <p className="text-lg text-white mx-2">
-                                  Participate
-                                </p>
-                              </div>
-                            </button>
-                          )
-                        }
-                        </>
-                          ) : (
-                            <p
-                              className=" bg-haldi text-lg font-semibold h-12 w-40 rounded-md flex flex-row items-center justify-center text-white hover:cursor-pointer"
-                              onClick={() =>
-                                {
-                                  online ? navigate("/dashboard/userSubmission") : navigate("/dashboard/userProfile")
-                                }
-                              }
-                            >
-                              {
-                                online ? "Submit Entry" : "Dashboard"
-                              }
-                            </p>
-                          )}
-                        </>
-                      )}
-                    </>
-                  )}
+                  <Link
+                    className="flex justify-center items-center bg-rose-500 h-12 w-40 rounded-md"
+                    to={form_link || ""}
+                  >
+                    <div className="flex flex-row items-center justify-center">
+                      <IoTicketOutline color="white" size={24} />
+                      <p className="text-lg text-white mx-2">Participate</p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -558,10 +389,11 @@ const CompetitionDetailsPage = () => {
                   <div className=" flex flex-col justify-center items-center gap-10 mt-5">
                     <div className="">
                       Complete the sponsor task to participate in the event.
-
                     </div>
                     <div>
-                      The steps for sponsor tasks are given in the rules section at the bottom of the page  , complete the task and you are good to go.
+                      The steps for sponsor tasks are given in the rules section
+                      at the bottom of the page , complete the task and you are
+                      good to go.
                     </div>
                     <button
                       onClick={() => setSponsorStep(0)}

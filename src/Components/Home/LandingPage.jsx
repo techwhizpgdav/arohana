@@ -65,13 +65,16 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className='landingPage' data-aos="fade-up" >
-        <section id="hero" className="text-white tm-font-big tm-parallax">    
-        <div className="dark-div"></div> 
-        <div className="row" style={{opacity: opacity , transition: 'opacity 0.5s'}}>
-                The Annual Cultural Fest 
+    <div className="landingPage" data-aos="fade-up">
+      <section id="hero" className="text-white">
+        <div className="dark-div"></div>
+        <div
+          className="row"
+          style={{ opacity: opacity, transition: "opacity 0.5s" }}
+        >
+          The Annual Cultural Fest
         </div>
-        </section>
+      </section>
     </div>
   );
 };
