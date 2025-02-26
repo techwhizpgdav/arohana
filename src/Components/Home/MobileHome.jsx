@@ -42,22 +42,22 @@ const MobileHome = () => {
       <div className="h-screen flex justify-center items-center mobileHome"></div>
 
       {/* From the pricipal section  */}
-      <section class="py-14 mt-40 relative ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
-            <div class="img-box">
+      <section className="py-14 mt-40 relative ">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-9">
+            <div className="img-box">
               <img
                 src="https://www.pgdavcollege.in/uploads/about/IMG_1219.jpg"
                 alt="About Us tailwind page"
-                class="max-lg:mx-auto object-cover rounded-xl shadow-2xl"
+                className="max-lg:mx-auto object-cover rounded-xl shadow-2xl"
               />
             </div>
-            <div class="lg:pl-[100px] flex items-center">
-              <div class="data w-full">
-                <h2 class="font-manrope font-bold text-3xl lg:text-4xl text-black mb-9 max-lg:text-center relative">
+            <div className="lg:pl-[100px] flex items-center">
+              <div className="data w-full">
+                <h2 className="font-manrope font-bold text-3xl lg:text-4xl text-black mb-9 max-lg:text-center relative">
                   Message from the Principal
                 </h2>
-                <p class="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
+                <p className="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
                   P.G.D.A.V. College, a proud part of the{" "}
                   <span className="font-bold ">
                     University of Delhi since 1957{" "}
@@ -74,8 +74,8 @@ const MobileHome = () => {
                   </q>
                   <br />
                   <br />
-                  <div class="flex justify-end">
-                    <span class="font-extrabold">Prof. Krishna Sharma</span>
+                  <div className="flex justify-end">
+                    <span className="font-extrabold">Prof. Krishna Sharma</span>
                   </div>
                 </p>
               </div>

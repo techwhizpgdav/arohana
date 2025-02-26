@@ -43,17 +43,17 @@ const appRouters = () => (
         <Route path="forget-password" element={<Email />} />
         <Route path="password-reset/:token" element={<ResetPass />} />
         <Route path="teams" element={<Teams />} />
-        <Route path="sponsors" element={<Sponsors />} />
+        {/* <Route path="sponsors" element={<Sponsors />} /> */}
         <Route path="timeline" element={<Timeline />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="signup" element={<Signup />} />
+        {/* <Route path="login" element={<LoginPage />} /> */}
+        {/* <Route path="signup" element={<Signup />} /> */}
         <Route path="registration" element={<Tutorial />} />
         <Route path="tutorial" element={<Tutorial2 />} />
         <Route path="thanks" element={<Thanks />} />
         <Route path="starnight" element={<StarNight />} />
         <Route path="verify" element={<Verify />} />
-        <Route path="dashboard" element={<Navigate to={"userProfile"} />} />
-        <Route path="dashboard/:id" element={<Dashboard />} />
+        {/* <Route path="dashboard" element={<Navigate to={"userProfile"} />} /> */}
+        {/* <Route path="dashboard/:id" element={<Dashboard />} /> */}
         <Route path="event-registration" element={<RegistrationForm />} />
         <Route path="competitions" element={<Categories />} />
         <Route path="competition/:id" element={<CompetitionDetailsPage />} />

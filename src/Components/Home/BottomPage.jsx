@@ -31,19 +31,19 @@ const BottomPage = () => {
   return (
     <>
     {/* From the pricipal section  */}
-    <section class="py-14 mt-40 relative ">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
-                <div class="img-box">
+    <section className="py-14 mt-40 relative ">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-9">
+                <div className="img-box">
                     <img src="https://www.pgdavcollege.in/uploads/about/IMG_1219.jpg" alt="About Us tailwind page"
-                        class="max-lg:mx-auto object-cover rounded-xl shadow-2xl"/>
+                        className="max-lg:mx-auto object-cover rounded-xl shadow-2xl"/>
                 </div>
-                <div class="lg:pl-[100px] flex items-center">
-                    <div class="data w-full">
+                <div className="lg:pl-[100px] flex items-center">
+                    <div className="data w-full">
                         <h2
-                            class="font-manrope font-bold text-3xl lg:text-4xl text-black mb-9 max-lg:text-center relative">
+                            className="font-manrope font-bold text-3xl lg:text-4xl text-black mb-9 max-lg:text-center relative">
                             Message from the Principal</h2>
-                        <p class="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
+                        <p className="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto">
                         P.G.D.A.V. College, a proud part of the <span className='font-bold '>University of Delhi since 1957 </span>, 
                         blends modern education with Indian values. With top-notch faculty, 
                         state-of-the-art infrastructure, and a commitment to inclusive learning, 
@@ -53,8 +53,8 @@ const BottomPage = () => {
                         <q className='underline font-light decoration-teal-500 decoration-2'>असतो मा सद्गमय - From untruth to the truth! (Brhadarayanka Upanishad).</q>
                         
                         <br /><br />
-                        <div class="flex justify-end">
-                        <span class="font-extrabold">Prof. Krishna Sharma</span>
+                        <div className="flex justify-end">
+                        <span className="font-extrabold">Prof. Krishna Sharma</span>
                     </div>
                         </p>
                     </div>
@@ -70,18 +70,18 @@ const BottomPage = () => {
           <img className='source opacity-100' src='https://arohana1.b-cdn.net/Bg-bottom1%20(1).jpg' alt="Background" />
         </div>
 
-        <div class="flex w-2/3 mt-16 mb-16 items-center justify-center text">
+        <div className="flex w-2/3 mt-16 mb-16 items-center justify-center text">
             {/* <!-- First Edition: Linear Gradient --> */}
-            <span class="absolute mx-auto py-4 flex border w-fit blur-lg bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent text-6xl font-extrabold text-center select-none">
+            <span className="absolute mx-auto py-4 flex border w-fit blur-lg bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent text-6xl font-extrabold text-center select-none">
                 Curious about Arohana?
             </span>
-            <h1 class="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent text-6xl font-extrabold text-center select-auto">
+            <h1 className="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent text-6xl font-extrabold text-center select-auto">
                 Curious about Arohana?
             </h1>
         </div>
 
         {/* Previous code by Nishant bhaiya ;) */}
-        {/* <div class="grid md:grid-cols-2 items-center md:gap-4 gap-8 font-[sans-serif] max-w-5xl max-md:max-w-md mx-auto">
+        {/* <div className="grid md:grid-cols-2 items-center md:gap-4 gap-8 font-[sans-serif] max-w-5xl max-md:max-w-md mx-auto">
           <p className={`absolute text-white m-28 p-10 rounded-lg ${!isChecked ? 'opacity-0' : ''} duration-500 transition-all`} style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}>
             {MobilePara}
           </p>
@@ -109,17 +109,17 @@ const BottomPage = () => {
       </div>
       
       {/* Sponsors section */}
-      <div class="max-w-3xl mx-auto px-5 mt-40 mb-40">
-      <div class="flex flex-col justify-center">
-          <div class="text-center">
-              <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Meet our Sponsors</h2>
-              <p class="max-w-md mx-auto mt-2 text-gray-500">
+      <div className="max-w-3xl mx-auto px-5 mt-40 mb-40">
+      <div className="flex flex-col justify-center">
+          <div className="text-center">
+              <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Meet our Sponsors</h2>
+              <p className="max-w-md mx-auto mt-2 text-gray-500">
                   We are thankful to each and every company sponsored our
                   plugin which helped us to continue working on it.
               </p>
           </div>
-          <div class="flex flex-wrap items-center justify-center gap-10 mt-2 md:justify-around">
-              <div class="text-gray-400 "><svg xmlns="http://www.w3.org/2000/svg" width="120" height="60"
+          <div className="flex flex-wrap items-center justify-center gap-10 mt-2 md:justify-around">
+              <div className="text-gray-400 "><svg xmlns="http://www.w3.org/2000/svg" width="120" height="60"
                       fill-rule="evenodd">
                       <g transform="matrix(.06928 0 0 .06928 7.367398 13.505331)" fill="none">
                           <circle r="50.167" cy="237.628" cx="269.529" fill="#00d8ff"></circle>
@@ -134,22 +134,22 @@ const BottomPage = () => {
               </div>
 
 
-              <div class="text-gray-400 "><svg width="82" height="40" viewBox="0 0 148 90" class="text-black ">
+              <div className="text-gray-400 "><svg width="82" height="40" viewBox="0 0 148 90" className="text-black ">
                       <path d="M34.992 23.495h27.855v2.219H37.546v16.699h23.792v2.219H37.546v18.334h25.591v2.219H34.992v-41.69zm30.35 0h2.96l13.115 18.334 13.405-18.334L113.055.207 83.1 43.756l15.436 21.429H95.46L81.417 45.683 67.316 65.185h-3.018L79.85 43.756 65.343 23.495zm34.297 2.219v-2.219h31.742v2.219h-14.623v39.47h-2.554v-39.47H99.64zM.145 23.495h3.192l44.011 66.003L29.16 65.185 2.814 26.648l-.116 38.537H.145v-41.69zm130.98 38.801c-.523 0-.914-.405-.914-.928 0-.524.391-.929.913-.929.528 0 .913.405.913.929 0 .523-.385.928-.913.928zm2.508-2.443H135c.019.742.56 1.24 1.354 1.24.888 0 1.391-.535 1.391-1.539v-6.356h1.391v6.362c0 1.808-1.043 2.849-2.77 2.849-1.62 0-2.732-1.01-2.732-2.556zm7.322-.08h1.379c.118.853.95 1.395 2.149 1.395 1.117 0 1.937-.58 1.937-1.377 0-.685-.521-1.097-1.708-1.377l-1.155-.28c-1.62-.38-2.36-1.166-2.36-2.487 0-1.602 1.304-2.668 3.26-2.668 1.82 0 3.15 1.066 3.23 2.58h-1.354c-.13-.828-.85-1.346-1.894-1.346-1.1 0-1.832.53-1.832 1.34 0 .642.472 1.01 1.64 1.284l.987.243c1.838.43 2.596 1.178 2.596 2.53 0 1.72-1.33 2.799-3.453 2.799-1.987 0-3.323-1.029-3.422-2.637z" fill="currentColor" fill-rule="nonzero"></path>
                   </svg>
               </div>
 
 
-              <div class="text-gray-400 "><svg viewBox="0 0 248 31" class="w-auto h-5 text-slate-900 ">
+              <div className="text-gray-400 "><svg viewBox="0 0 248 31" className="w-auto h-5 text-slate-900 ">
                       <path fill-rule="evenodd" clipRule="evenodd" d="M25.517 0C18.712 0 14.46 3.382 12.758 10.146c2.552-3.382 5.529-4.65 8.931-3.805 1.941.482 3.329 1.882 4.864 3.432 2.502 2.524 5.398 5.445 11.722 5.445 6.804 0 11.057-3.382 12.758-10.145-2.551 3.382-5.528 4.65-8.93 3.804-1.942-.482-3.33-1.882-4.865-3.431C34.736 2.92 31.841 0 25.517 0zM12.758 15.218C5.954 15.218 1.701 18.6 0 25.364c2.552-3.382 5.529-4.65 8.93-3.805 1.942.482 3.33 1.882 4.865 3.432 2.502 2.524 5.397 5.445 11.722 5.445 6.804 0 11.057-3.381 12.758-10.145-2.552 3.382-5.529 4.65-8.931 3.805-1.941-.483-3.329-1.883-4.864-3.432-2.502-2.524-5.398-5.446-11.722-5.446z" fill="#38bdf8"></path>
                       <path fill-rule="evenodd" clipRule="evenodd" d="M76.546 12.825h-4.453v8.567c0 2.285 1.508 2.249 4.453 2.106v3.463c-5.962.714-8.332-.928-8.332-5.569v-8.567H64.91V9.112h3.304V4.318l3.879-1.143v5.937h4.453v3.713zM93.52 9.112h3.878v17.849h-3.878v-2.57c-1.365 1.891-3.484 3.034-6.285 3.034-4.884 0-8.942-4.105-8.942-9.389 0-5.318 4.058-9.388 8.942-9.388 2.801 0 4.92 1.142 6.285 2.999V9.112zm-5.674 14.636c3.232 0 5.674-2.392 5.674-5.712s-2.442-5.711-5.674-5.711-5.674 2.392-5.674 5.711c0 3.32 2.442 5.712 5.674 5.712zm16.016-17.313c-1.364 0-2.477-1.142-2.477-2.463a2.475 2.475 0 012.477-2.463 2.475 2.475 0 012.478 2.463c0 1.32-1.113 2.463-2.478 2.463zm-1.939 20.526V9.112h3.879v17.849h-3.879zm8.368 0V.9h3.878v26.06h-3.878zm29.053-17.849h4.094l-5.638 17.849h-3.807l-3.735-12.03-3.771 12.03h-3.806l-5.639-17.849h4.094l3.484 12.315 3.771-12.315h3.699l3.734 12.315 3.52-12.315zm8.906-2.677c-1.365 0-2.478-1.142-2.478-2.463a2.475 2.475 0 012.478-2.463 2.475 2.475 0 012.478 2.463c0 1.32-1.113 2.463-2.478 2.463zm-1.939 20.526V9.112h3.878v17.849h-3.878zm17.812-18.313c4.022 0 6.895 2.713 6.895 7.354V26.96h-3.878V16.394c0-2.713-1.58-4.14-4.022-4.14-2.55 0-4.561 1.499-4.561 5.14v9.567h-3.879V9.112h3.879v2.285c1.185-1.856 3.124-2.749 5.566-2.749zm25.282-6.675h3.879V26.96h-3.879v-2.57c-1.364 1.892-3.483 3.034-6.284 3.034-4.884 0-8.942-4.105-8.942-9.389 0-5.318 4.058-9.388 8.942-9.388 2.801 0 4.92 1.142 6.284 2.999V1.973zm-5.674 21.775c3.232 0 5.674-2.392 5.674-5.712s-2.442-5.711-5.674-5.711-5.674 2.392-5.674 5.711c0 3.32 2.442 5.712 5.674 5.712zm22.553 3.677c-5.423 0-9.481-4.105-9.481-9.389 0-5.318 4.058-9.388 9.481-9.388 3.519 0 6.572 1.82 8.008 4.605l-3.34 1.928c-.79-1.678-2.549-2.749-4.704-2.749-3.16 0-5.566 2.392-5.566 5.604 0 3.213 2.406 5.605 5.566 5.605 2.155 0 3.914-1.107 4.776-2.749l3.34 1.892c-1.508 2.82-4.561 4.64-8.08 4.64zm14.472-13.387c0 3.249 9.661 1.285 9.661 7.89 0 3.57-3.125 5.497-7.003 5.497-3.591 0-6.177-1.607-7.326-4.177l3.34-1.927c.574 1.606 2.011 2.57 3.986 2.57 1.724 0 3.052-.571 3.052-2 0-3.176-9.66-1.391-9.66-7.781 0-3.356 2.909-5.462 6.572-5.462 2.945 0 5.387 1.357 6.644 3.713l-3.268 1.82c-.647-1.392-1.904-2.035-3.376-2.035-1.401 0-2.622.607-2.622 1.892zm16.556 0c0 3.249 9.66 1.285 9.66 7.89 0 3.57-3.124 5.497-7.003 5.497-3.591 0-6.176-1.607-7.326-4.177l3.34-1.927c.575 1.606 2.011 2.57 3.986 2.57 1.724 0 3.053-.571 3.053-2 0-3.176-9.66-1.391-9.66-7.781 0-3.356 2.908-5.462 6.572-5.462 2.944 0 5.386 1.357 6.643 3.713l-3.268 1.82c-.646-1.392-1.903-2.035-3.375-2.035-1.401 0-2.622.607-2.622 1.892z"  fill="currentColor"></path>
                   </svg>
               </div>
 
 
-              <div class="text-gray-400 ">
+              <div className="text-gray-400 ">
                   <svg viewBox="0 0 105 22" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em"
-                      class="text-[#f03e2f]">
+                      className="text-[#f03e2f]">
                       <title>Sanity</title>
                       <path opacity="0.7" d="M78.1793 7.99261V21.0028H73.9031V10.2138L78.1793 7.99261Z" fill="currentColor"></path>
                       <path opacity="0.7" d="M20.9511 21.33L30.944 16.1051L29.7121 12.9141L23.1332 15.9821L20.9511 21.33Z" fill="currentColor"></path>
@@ -171,8 +171,8 @@ const BottomPage = () => {
               </div>
 
 
-              <div class="text-gray-400 ">
-                  <svg width="100" height="64" viewBox="0 0 284 65" fill="currentColor" class="text-black ">
+              <div className="text-gray-400 ">
+                  <svg width="100" height="64" viewBox="0 0 284 65" fill="currentColor" className="text-black ">
                       <path d="M141.68 16.25c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.46 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zm117.14-14.5c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.45 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zm-39.03 3.5c0 6 3.92 10 10 10 4.12 0 7.21-1.87 8.8-4.92l7.68 4.43c-3.18 5.3-9.14 8.49-16.48 8.49-11.05 0-19-7.2-19-18s7.96-18 19-18c7.34 0 13.29 3.19 16.48 8.49l-7.68 4.43c-1.59-3.05-4.68-4.92-8.8-4.92-6.07 0-10 4-10 10zm82.48-29v46h-9v-46h9zM37.59.25l36.95 64H.64l36.95-64zm92.38 5l-27.71 48-27.71-48h10.39l17.32 30 17.32-30h10.39zm58.91 12v9.69c-1-.29-2.06-.49-3.2-.49-5.81 0-10 4-10 10v14.8h-9v-34h9v9.2c0-5.08 5.91-9.2 13.2-9.2z"></path>
                   </svg>
               </div>

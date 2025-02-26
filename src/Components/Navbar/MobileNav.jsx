@@ -123,7 +123,7 @@ useEffect(() => {
         }`}`}
       >
         <div className="flex flex-col items-center justify-center h-full -mt-10 gap-10 ">
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
             <div className=" flex flex-col justify-center items-center gap-10">
               <Link
                 to={"/dashboard/userProfile"}
@@ -150,7 +150,7 @@ useEffect(() => {
                 Login
               </Link>
             </div>
-          )}
+          )} */}
 
           <Link to="/" className={navbarStyle} onClick={() => setIsOpen(false)}>
             Home
@@ -176,7 +176,7 @@ useEffect(() => {
           >
             Teams
           </Link>
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
             <button
               onClick={logout}
               className={` py-2 px-2 font-medium rounded ${
@@ -185,7 +185,7 @@ useEffect(() => {
             >
               Logout
             </button>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </>
