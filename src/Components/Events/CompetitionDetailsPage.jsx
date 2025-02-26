@@ -143,14 +143,14 @@ const CompetitionDetailsPage = () => {
         spaceBetween={15}
         className="mySwiper h-[26rem] mt-4 px-2"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <img
             className="rounded-xl h-[26rem] w-full object-cover
             "
             src={Slide7}
             alt=""
           />
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
           <img
             className="rounded-xl h-[26rem] w-full object-cover"
