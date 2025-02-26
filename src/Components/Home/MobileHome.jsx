@@ -114,16 +114,16 @@ const MobileHome = () => {
           ></div>
         </div>
         <div className="md:h-[400px] h-[250px] flex justify-center">
-          <img
+          {/* <img
             src="https://readymadeui.com/photo.webp"
             className="w-[80%] sm:w-full h-full object-cover rounded-lg shadow-lg"
             alt="Arohana Event"
-          />
+          /> */}
         </div>
       </div>
 
       {/* Sponsors section */}
-      <div className="max-w-3xl mx-auto px-5 mt-40 mb-40">
+      {/* <div className="max-w-3xl mx-auto px-5 mt-40 mb-40">
         <div className="flex flex-col justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">
@@ -296,7 +296,7 @@ const MobileHome = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-20">
         {/* <Faq color={false} /> */}
