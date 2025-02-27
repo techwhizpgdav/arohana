@@ -49,17 +49,17 @@ const TeamCard = ({ member }) => {
         <div className="mt-1 space-x-4 flex justify-center">
           {instagram && (
             <Link to={instagram} target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-xl text-gray-600 hover:text-yellow-500" />
+              <FaInstagram className="text-xl text-gray-600 hover:text-fuchsia-500" />
             </Link>
           )}
           {linkedin && (
             <Link to={linkedin} target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="text-xl text-gray-600 hover:text-yellow-500" />
+              <FaLinkedin className="text-xl text-gray-600 hover:text-linear-darkBlue" />
             </Link>
           )}
           {github && (
             <Link to={github} target="_blank" rel="noopener noreferrer">
-              <FaGithub className="text-xl text-gray-600 hover:text-yellow-500" />
+              <FaGithub className="text-xl text-gray-600 hover:text-black" />
             </Link>
           )}
         </div>
