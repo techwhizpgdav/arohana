@@ -1,11 +1,11 @@
 {
   "core_team": [
     {
-      "name": "Tanishq Goel",
+      "name": "Tanishq Goyal",
       "position": "President",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/Tanishq%20Goyal%20President.webp",
-      "instagram": "https://www.instagram.com/",
+      "instagram": "https://www.instagram.com/_trebbleclef_",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
@@ -13,7 +13,7 @@
       "position": "Vice President",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/prachi_vice_president.jpg",
-      "instagram": "https://www.instagram.com/",
+      "instagram": "https://www.instagram.com/prachichauhann_",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
@@ -21,7 +21,7 @@
       "position": "Treasurer",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/yashika_sharma_treasurer.webp",
-      "instagram": "https://www.instagram.com/",
+      "instagram": "https://www.instagram.com/yashikka_._._",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
@@ -29,23 +29,23 @@
       "position": "General Secretary",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/bilal_anis_core_trainee.jpg",
-      "instagram": "https://www.instagram.com/",
+      "instagram": "https://www.instagram.com/bilal_anis456",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
       "name": "Yash Shrivastava",
-      "position": "Media Head",
+      "position": "Tech Head",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/Yash%20Srivastava%20Tech%20Head.jpg",
-      "instagram": "https://www.instagram.com/",
+      "instagram": "https://www.instagram.com/yash.shrivastav.107",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
-      "name": "Snaha Rajkumari",
+      "name": "Sneha Ramakuri",
       "position": "Core Trainee",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/sneha_core_trainee.jpg",
-      "instagram": "https://www.instagram.com/",
+      "instagram": "https://www.instagram.com/sneha.ramakuri?utm_source=qr  ",
       "linkedin": "https://www.linkedin.com/in/"
     },
     {
@@ -53,13 +53,27 @@
       "position": "Core Trainee",
       "mobile": "00XXXXXXXX",
       "photo": "https://www.pgdavhyperion.in/assets/images/hyperion/vanshika_shiromani_core_trainee.jpg",
-      "instagram": "https://www.instagram.com/"
+      "instagram": "https://www.instagram.com/vanshika.aa._?utm_source=qr"
+    },
+    {
+      "name": "Abhishek",
+      "position": "Core Trainee",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://iili.io/3dApEVp.png",
+      "instagram": "https://www.instagram.com/me_being_abhishek"
+    },
+    {
+      "name": "Yugam Kainth",
+      "position": "Core Trainee",
+      "mobile": "00XXXXXXXX",
+      "photo": "https://iili.io/3dAyqqN.png",
+      "instagram": "https://www.instagram.com/yugamkainth"
     }
   ],
   "web_developer": [
     {
       "name": "Rishi Kumar",
-      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "photo": "https://iili.io/3dRD5Yu.jpg",
       "position": "President",
       "role": "Full Stack Developer",
       "instagram": "https://www.instagram.com/iamrishi.7/",
@@ -68,16 +82,16 @@
     },
     {
       "name": "Pratyush Jha",
-      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "photo": "https://iili.io/3d5dTdB.md.jpg",
       "position": "Coordinator",
-      "role": "Frontend Developer",
+      "role": "Full Stack Developer",
       "instagram": "https://www.instagram.com/pratyush_jh",
       "github": "https://github.com/PratyushJha19",
       "linkedin": "https://www.linkedin.com/in/pratyush-jha-1348b8263"
     },
     {
       "name": "Arpan Kumar",
-      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "photo": "https://iili.io/3dAZyBt.jpg",
       "position": "Member",
       "role": "Frontend Developer",
       "github": "https://github.com/Arpan-9911",
@@ -85,7 +99,7 @@
     },
     {
       "name": "Arjun Malpani",
-      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "photo": "https://iili.io/3dAvdGV.jpg",
       "position": "Member",
       "role": "Frontend Developer",
       "instagram": "https://www.instagram.com/arjun_malpani_4",
@@ -103,7 +117,7 @@
     },
     {
       "name": "Vidushi Sharma",
-      "photo": "https://images6.alphacoders.com/122/1227495.jpg",
+      "photo": "https://iili.io/3dAtH4n.jpg",
       "position": "Member",
       "role": "UI/UX Designer",
       "instagram": "https://www.instagram.com/",
